@@ -9247,9 +9247,14 @@ KTUtil.ready(function() {
         KTLayoutQuickCartPanel.init('kt_quick_cart');
     }
 
-    // Init Inline Search
+    // Init Inline Search For Desktop Mode
     if (typeof KTLayoutSearchInline !== 'undefined') {
         KTLayoutSearchInline().init('kt_quick_search_inline');
+    }
+
+    // Init Dropdown Search For Tablet & Mobile Modes
+    if (typeof KTLayoutSearch !== 'undefined') {
+        KTLayoutSearch().init('kt_quick_search_dropdown');
     }
 });
 
@@ -9481,8 +9486,9 @@ var KTLayoutHeaderMenu = function() {
     var _offcanvasElement;
     var _offcanvasObject;
 
-    // Private functions
+	// Private functions
 	var _init = function() {
+		// Initialize Offcanvas Panel For Horizontal  Menu On Mobile Mode
 		_offcanvasObject = new KTOffcanvas(_offcanvasElement, {
 			overlay: true,
 			baseClass: 'header-menu-wrapper',
@@ -9493,6 +9499,7 @@ var KTLayoutHeaderMenu = function() {
 			}
 		});
 
+		// Initialize Menu For Desktop & Mobile Modes
 		_menuObject = new KTMenu(_menuElement, {
 			submenu: {
 				desktop: 'dropdown',
@@ -9604,10 +9611,10 @@ var KTLayoutHeader = function() {
 
 	// Private functions
 	var _init = function() {
-		var options = {
+        var options = {
             offset: {
-                desktop: 300,
-                tabletAndMobile: false
+                desktop: 200,
+                tabletAndMobile: 300
             }
 		};
 
@@ -9709,7 +9716,7 @@ var KTLayoutStickyCard = function() {
 
 						if (KTUtil.isBreakpointUp('lg')) {
 							if (typeof KTLayoutHeader !== 'undefined' && KTLayoutHeader.isFixed()) {
-								pos = pos + KTLayoutHeader.getHeight();
+								pos = pos + 70;
 							}
 
 							if (typeof KTLayoutSubheader !== 'undefined' && KTLayoutSubheader.isFixed()) {
