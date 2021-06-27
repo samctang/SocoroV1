@@ -12,5 +12,9 @@ namespace Socoro.Web.Controllers
         {
             return View();
         }
+        public IActionResult ViewOperation()
+        {
+            return View();
+        }
     }
 }
