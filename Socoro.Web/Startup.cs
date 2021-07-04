@@ -1,13 +1,23 @@
+using Socoro.Application.Extensions;
+using Socoro.Infrastructure.Extensions;
+using Socoro.Web.Abstractions;
+using Socoro.Web.Extensions;
+using Socoro.Web.Permission;
+using Socoro.Web.Services;
+using AspNetCoreHero.ToastNotification;
+using AspNetCoreHero.ToastNotification.Extensions;
+using AutoMapper;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Reflection;
 
 namespace Socoro.Web
 {
@@ -15,15 +25,38 @@ namespace Socoro.Web
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration _configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProvider>();
+            services.AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>();
+            services.AddNotyf(o =>
+            {
+                o.DurationInSeconds = 10;
+                o.IsDismissable = true;
+                o.HasRippleEffect = true;
+            });
+            services.AddApplicationLayer();
+            services.AddInfrastructure(_configuration);
+            services.AddPersistenceContexts(_configuration);
+            services.AddRepositories();
+            services.AddSharedInfrastructure(_configuration);
+            services.AddMultiLingualSupport();
+            services.AddControllersWithViews().AddFluentValidation(fv =>
+            {
+                fv.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+                fv.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+            });
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddDistributedMemoryCache();
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<IActionContextAccessor, ActionContextAccessor>();
+            services.AddScoped<IViewRenderService, ViewRenderService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,18 +72,20 @@ namespace Socoro.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseNotyf();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseCookiePolicy();
+            app.UseMultiLingualFeature();
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{area=KAM}/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

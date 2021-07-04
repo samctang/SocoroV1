@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "S+sXZIuI5THcgd/UcNUENwNrImLxoCYWwnnNs2Ey242yyPLM7isQLLa4e/4PqRcNvzWgvC8U5xQwxhjnA1WHXw==",
+  "success": true,
+  "projectFilePath": "C:\\git\\Socoro\\Socoro.Domain\\Socoro.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Sam\\.nuget\\packages\\aspnetcorehero.abstractions\\1.0.0\\aspnetcorehero.abstractions.1.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
