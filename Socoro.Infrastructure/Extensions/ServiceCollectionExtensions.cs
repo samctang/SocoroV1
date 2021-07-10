@@ -26,6 +26,8 @@ namespace Socoro.Infrastructure.Extensions
             services.AddTransient(typeof(IRepositoryAsync<>), typeof(RepositoryAsync<>));
             services.AddTransient<IOperationRepository, OperationRepository>();
             services.AddTransient<IOperationCacheRepository, OperationCacheRepository>();
+            services.AddTransient<IOperationTypeRepository, OperationTypeRepository>();
+            services.AddTransient<IOperationTypeCacheRepository, OperationTypeCacheRepository>();
             services.AddTransient<ILogRepository, LogRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
 

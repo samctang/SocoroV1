@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 namespace Socoro.API.Controllers
 {
     [ApiController]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/[controller]")]
     public abstract class BaseApiController<T> : ControllerBase
     {
         private IMediator _mediatorInstance;

@@ -31,13 +31,13 @@ namespace Socoro.Api
             services.AddSharedInfrastructure(_configuration);
             services.AddEssentials();
             services.AddControllers();
-            services.AddMvc(o =>
+            /*services.AddMvc(o =>
             {
                 var policy = new AuthorizationPolicyBuilder()
                     .RequireAuthenticatedUser()
                     .Build();
                 o.Filters.Add(new AuthorizeFilter(policy));
-            });
+            });*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,120 @@
+﻿@model Socoro.Web.Areas.Shared.Models.CarrierViewModel
+@{
+    ViewData["Title"] = "Add Carrier";
+}
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card card-custom card-transparent">
+                <div class="card-body p-0">
+                    <!--begin::Wizard-->
+                    <div class="wizard wizard-4" id="kt_wizard" data-wizard-state="step-first" data-wizard-clickable="true">
+                        <!--begin::Card-->
+                        <div class="card card-custom card-shadowless rounded-top-0">
+                            <!--begin::Body-->
+                            <div class="card-body p-0">
+                                <div class="row justify-content-center py-8 px-8 py-lg-15 px-lg-10">
+                                    <div class="col-xl-12 col-xxl-10">
+                                        <!--begin::Wizard Form-->
+                                        <form class="form" id="kt_form">
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-9">
+                                                    <!--begin::Wizard Step 1-->
+                                                    <div class="my-5 step" data-wizard-type="step-content" data-wizard-state="current">
+                                                        <h5 class="text-dark font-weight-bold mb-10">Carrier's Details:</h5>
+                                                        <!--begin::Group-->
+                                                        <div class="form-group row">
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">
+                                                                Carrier Type:
+                                                            </label>
+                                                            <select id="type" class="selectpicker col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" data-ng-style="select-with-transition" name="CarrierViewModel.TypeId"></select>
+                                                            <script>
+                                                            </script>
+                                                        </div>
+                                                        <!--end::Group-->
+                                                        <!--begin::Group-->
+                                                        <div class="form-group row">
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">
+                                                                Carrier Name:
+                                                                <span style="color:red">*</span>
+                                                            </label>
+                                                            @Html.TextBoxFor(model => model.CarrierName, new { @class = "col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" })
+                                                        </div>
+                                                        <!--end::Group-->
+                                                        <div class="form-group row">
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">Phone:</label>
+                                                            @Html.TextBoxFor(model => model.Phone, new { @class = "col-lg-7 col-xl-7 form-control form-control-solid form-control-lg" })
+                                                            <label class="col-xl-1 col-lg-1 col-form-label">Ext:</label>
+                                                            @Html.TextBoxFor(model => model.PhoneExt, new { @class = "col-lg-1 col-xl-1 form-control form-control-solid form-control-lg" })
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">Last Name:</label>
+                                                            @Html.TextBoxFor(model => model.LastName, new { @class = "col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" })
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">First Name:</label>
+                                                            @Html.TextBoxFor(model => model.FirstName, new { @class = "col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" })
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">Middle Name:</label>
+                                                            @Html.TextBoxFor(model => model.MiddleName, new { @class = "col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" })
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">Address Line 1:</label>
+                                                            @Html.TextBoxFor(model => model.PhyAddr1, new { @class = "col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" })
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">Address Line 2:</label>
+                                                            @Html.TextBoxFor(model => model.PhyAddr2, new { @class = "col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" })
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">City:</label>
+                                                            @Html.TextBoxFor(model => model.PhyCity, new { @class = "col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" })
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">State</label>
+                                                            @Html.TextBoxFor(model => model.PhyState, new { @class = "col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" })
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">Zip Code</label>
+                                                            @Html.TextBoxFor(model => model.PhyZip, new { @class = "col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" })
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">Direct Connection</label>
+                                                            <select id="directConnection" class="selectpicker col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" data-ng-style="select-with-transition" name="CarrierViewModel.DirectConnection">
+                                                                <option value="1">Yes</option>
+                                                                <option value="0">No</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!--end::Wizard Step 1-->
+                                                    <div class="modal-footer">
+                                                        <input type="button" class="btn btn-light-primary font-weight-bold" value="Cancel" onclick="location.href='@Url.Action("Index","Home", new { area = "KAM"})'" />
+                                                        <button type="button" class="btn btn-primary font-weight-bold">Submit</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <!--end::Wizard Form-->
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Body-->
+                        </div>
+                        <!--end::Card-->
+                    </div>
+                    <!--end::Wizard-->
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>
+

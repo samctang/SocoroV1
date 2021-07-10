@@ -7,7 +7,7 @@ using Socoro.Application.Features.Operations.Queries.GetById;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
-namespace Socoro.Api.Controllers.v1
+namespace Socoro.Api.Controllers
 {
     public class OperationController : BaseApiController<OperationController>
     {
