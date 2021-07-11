@@ -9,3 +9,4 @@ C:\git\Socoro\Socoro.Domain\obj\Debug\net5.0\Socoro.Domain.csproj.CoreCompileInp
 C:\git\Socoro\Socoro.Domain\obj\Debug\net5.0\Socoro.Domain.dll
 C:\git\Socoro\Socoro.Domain\obj\Debug\net5.0\ref\Socoro.Domain.dll
 C:\git\Socoro\Socoro.Domain\obj\Debug\net5.0\Socoro.Domain.pdb
+C:\git\Socoro\Socoro.Domain\obj\Debug\net5.0\Socoro.Domain.csprojAssemblyReference.cache

@@ -1,6 +1,6 @@
 ﻿using AspNetCoreHero.Abstractions.Domain;
 
-namespace Socoro.Domain.Entities
+namespace Socoro.Infrastructure.Identity.Models
 {
     public class Company : AuditableEntity
     {
@@ -21,5 +21,6 @@ namespace Socoro.Domain.Entities
         public string MailState { get; set; }
         public string MailZip { get; set; }
         public int NoEmployees { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }

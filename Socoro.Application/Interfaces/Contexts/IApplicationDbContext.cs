@@ -18,12 +18,8 @@ namespace Socoro.Application.Interfaces.Contexts
 
         DbSet<Carrier> Carriers { get; set; }
         DbSet<CarrierType> CarrierTypes { get; set; }
-        DbSet<Company> Companies { get; set; }
-        DbSet<CompanyType> CompanyTypes { get; set; }
         DbSet<Customer> Customers { get; set; }
         DbSet<CustomerType> CustomerTypes { get; set; }
-        DbSet<Department> Departments { get; set; }
-        DbSet<Employee> Employees { get; set; }
         DbSet<EmployeeNote> EmployeeNotes { get; set; }
         DbSet<Operation> Operations { get; set; }
         DbSet<OperationProcess> OperationProcesses { get; set; }

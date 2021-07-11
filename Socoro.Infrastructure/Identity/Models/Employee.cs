@@ -1,18 +1,17 @@
 ﻿using System;
 using AspNetCoreHero.Abstractions.Domain;
+using Microsoft.AspNetCore.Identity;
 
-namespace Socoro.Domain.Entities
+namespace Socoro.Infrastructure.Identity.Models
 {
-    public class Employee : AuditableEntity
+    public class Employee : IdentityUser
     {
         public int CompanyId { get; set; }
         public int DepartmentId { get; set; }
         public string EmployerId { get; set; }
-        public string UserId { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
-        public string Email { get; set; }
         public string WorkPhone { get; set; }
         public string MobilePhone { get; set; }
         public string PhyAddr1 { get; set; }
@@ -28,5 +27,6 @@ namespace Socoro.Domain.Entities
         public DateTime? DoB { get; set; }
         public char Gender { get; set; }
         public DateTime? HireDate { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

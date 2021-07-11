@@ -1,8 +1,8 @@
 ﻿using AspNetCoreHero.Abstractions.Domain;
 
-namespace Socoro.Domain.Entities
+namespace Socoro.Infrastructure.Identity.Models
 {
-    public class Department : AuditableEntity
+    public class CompanyType : AuditableEntity
     {
         public string Description { get; set; }
     }
