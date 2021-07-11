@@ -21,9 +21,12 @@ namespace Socoro.Infrastructure.DbContexts
             _dateTime = dateTime;
             _authenticatedUser = authenticatedUser;
         }
-
+        public DbSet<Carrier> Carriers { get; set; }
+        public DbSet<CarrierType> CarrierTypes { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<CompanyType> CompanyTypes { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<CustomerType> CustomerTypes { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<EmployeeNote> EmployeeNotes { get; set; }

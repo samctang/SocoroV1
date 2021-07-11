@@ -2,6 +2,7 @@
 using Socoro.Application.Features.OperationTypes.Queries.GetAllOperationTypes;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 
 namespace Socoro.Api.Controllers
 {
@@ -9,6 +10,7 @@ namespace Socoro.Api.Controllers
     [ApiController]
     public class OperationTypeController : BaseApiController<OperationTypeController>
     {
+        [EnableCors("GET")]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {

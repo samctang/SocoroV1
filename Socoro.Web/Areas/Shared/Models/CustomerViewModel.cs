@@ -5,6 +5,7 @@ namespace Socoro.Web.Areas.Shared.Models
 {
     public class CustomerViewModel
     {
+        public int Id { get; set; }
         public int TypeId { get; set; }
         public string Email { get; set; }
         [Required, Display(Name = "Company Name")]

@@ -4,6 +4,7 @@ namespace Socoro.Domain.Entities
 {
     public class Customer : AuditableEntity
     {
+        public string CompanyId { get; set; }
         public int TypeId { get; set; }
         public string Email { get; set; }
         public string CompanyName { get; set; }

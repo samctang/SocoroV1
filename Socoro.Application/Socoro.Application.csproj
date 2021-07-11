@@ -21,4 +21,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Socoro.Domain\Socoro.Domain.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Features\Customers\Commands\Delete\" />
+    <Folder Include="Features\Customers\Commands\Update\" />
+  </ItemGroup>
 </Project>

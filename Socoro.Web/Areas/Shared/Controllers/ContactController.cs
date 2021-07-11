@@ -5,20 +5,22 @@ using System.Linq;
 using System.Threading.Tasks;
 using Socoro.Web.Controllers;
 using Socoro.Web.Areas.Shared.Models;
+using Socoro.Application.Features.Customers.Commands.Create;
+using Socoro.Application.Features.Customers.Queries.GetAllCached;
 
 namespace Socoro.Web.Areas.Shared.Controllers
 {
     [Area("Shared")]
     public class ContactController : BaseController<ContactController>
     {
-        //private readonly CustomerModel objCustomerModel;
         public IActionResult Index()
         {
             return View();
         }
         public IActionResult AddCustomer(int typeId)
         {
-            ViewBag.TypeId = typeId;
+            CustomerViewModel customer = new CustomerViewModel();
+            customer.TypeId = typeId;
             switch (typeId)
             {
                 case 1:
@@ -38,9 +40,7 @@ namespace Socoro.Web.Areas.Shared.Controllers
                     ViewBag.Customer = "Customer";
                     break;
             }
-
-           // objCustomerViewModel.TypeId = typeId;
-            return View();
+            return View(customer);
         }
         public IActionResult AddCarrier()
         {

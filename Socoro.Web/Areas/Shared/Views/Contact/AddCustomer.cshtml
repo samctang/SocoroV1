@@ -1,6 +1,5 @@
 ﻿@model Socoro.Web.Areas.Shared.Models.CustomerViewModel
-
-<!--begin::Content-->
+    <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Entry-->
     <div class="d-flex flex-column-fluid">
@@ -9,108 +8,119 @@
             <!--begin::Card-->
             <div class="card card-custom card-transparent">
                 <div class="card-body p-0">
-                    <!--begin::Wizard-->
-                    <div class="wizard wizard-4" id="kt_wizard" data-wizard-state="step-first" data-wizard-clickable="true">
-                        <!--begin::Card-->
-                        <div class="card card-custom card-shadowless rounded-top-0">
-                            <!--begin::Body-->
-                            <div class="card-body p-0">
-                                <div class="row justify-content-center py-8 px-8 py-lg-15 px-lg-10">
-                                    <div class="col-xl-12 col-xxl-10">
-                                        <!--begin::Wizard Form-->
-                                        <form class="form" id="kt_form">
-                                            <div class="row justify-content-center">
-                                                <div class="col-xl-9">
-                                                    <!--begin::Wizard Step 1-->
-                                                    <div class="my-5 step" data-wizard-type="step-content" data-wizard-state="current">
-                                                        <h5 class="text-dark font-weight-bold mb-10">@ViewBag.Customer's Details:</h5>
-                                                        <!--begin::Group-->
-                                                        <div class="form-group row">
-                                                            <label class="col-xl-3 col-lg-3 col-form-label">
-                                                                Email:
-                                                                @if (ViewBag.TypeId != 3)
-                                                                {
-                                                                    <span style="color:red">*</span>
-                                                                }
-                                                            </label>
-                                                            @Html.TextBoxFor(model => model.Email, new { @class = "col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" })
-                                                        </div>
-                                                        <!--end::Group-->
-                                                        <!--begin::Group-->
-                                                        <div class="form-group row">
-                                                            <label class="col-xl-3 col-lg-3 col-form-label">
-                                                                Company Name:
+                    <!--begin::Card-->
+                    <div class="card card-custom card-shadowless rounded-top-0">
+                        <!--begin::Body-->
+                        <div class="card-body p-0">
+                            <div class="row justify-content-center py-8 px-8 py-lg-15 px-lg-10">
+                                <div class="col-xl-12 col-xxl-10">
+                                    <!--begin::Wizard Form-->
+                                    <form class="form" id="kt_form">
+                                        <div class="row justify-content-center">
+                                            <div class="col-xl-9">
+                                                <!--begin::Wizard Step 1-->
+                                                <div class="my-5 step" data-wizard-type="step-content" data-wizard-state="current">
+                                                    <h5 class="text-dark font-weight-bold mb-10">@ViewBag.Customer's Details:</h5>
+                                                    <!--begin::Group-->
+                                                    <div class="form-group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">
+                                                            Email:
+                                                            @if (ViewBag.TypeId != 3)
+                                                            {
                                                                 <span style="color:red">*</span>
-                                                            </label>
-                                                            @Html.TextBoxFor(model => model.CompanyName, new { @class = "col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" })
-                                                        </div>
-                                                        <!--end::Group-->
-                                                        <div class="form-group row">
-                                                            <label class="col-xl-3 col-lg-3 col-form-label">
-                                                                Phone:
-                                                                <span style="color:red">*</span>
-                                                            </label>
-                                                            @Html.TextBoxFor(model => model.ContactPhone, new { @class = "col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" })
-                                                        </div>
-                                                        @if (ViewBag.TypeId == 1)
-                                                        {
-                                                        <div class="form-group row">
-                                                            <label class="col-xl-3 col-lg-3 col-form-label">Documental Email:
-                                                                <span style="color:red">*</span>
-                                                            </label>
-                                                            @Html.TextBoxFor(model => model.DocumentalEmail, new { @class = "col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" })
-                                                        </div>
-                                                        }
-                                                        <div class="form-group row">
-                                                            <label class="col-xl-3 col-lg-3 col-form-label">Last Name:</label>
-                                                            @Html.TextBoxFor(model => model.LastName, new { @class = "col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" })
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-xl-3 col-lg-3 col-form-label">First Name:</label>
-                                                            @Html.TextBoxFor(model => model.FirstName, new { @class = "col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" })
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-xl-3 col-lg-3 col-form-label">Middle Name:</label>
-                                                            @Html.TextBoxFor(model => model.MiddleName, new { @class = "col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" })
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-xl-3 col-lg-3 col-form-label">Address Line 1:</label>
-                                                            @Html.TextBoxFor(model => model.PhyAddr1, new { @class = "col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" })
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-xl-3 col-lg-3 col-form-label">Address Line 2:</label>
-                                                            @Html.TextBoxFor(model => model.PhyAddr2, new { @class = "col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" })
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-xl-3 col-lg-3 col-form-label">City:</label>
-                                                            @Html.TextBoxFor(model => model.PhyCity, new { @class = "col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" })
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-xl-3 col-lg-3 col-form-label">State</label>
-                                                            @Html.TextBoxFor(model => model.PhyState, new { @class = "col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" })
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-xl-3 col-lg-3 col-form-label">Zip Code</label>
-                                                            @Html.TextBoxFor(model => model.PhyZip, new { @class = "col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" })
-                                                        </div>
+                                                            }
+                                                        </label>
+                                                        <input type="text" asp-for="Email" name="Email" class="col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" />
+                                                        <span asp-validation-for="Email" class="text-danger"></span>
                                                     </div>
-                                                    <!--end::Wizard Step 1-->
-                                                    <div class="modal-footer">
-                                                        <input type="button" class="btn btn-light-primary font-weight-bold" value="Cancel" onclick="location.href='@Url.Action("Index","Home", new { area = "KAM"})'" />
-                                                        <button type="button" class="btn btn-primary font-weight-bold">Submit</button>
+                                                    <!--end::Group-->
+                                                    <!--begin::Group-->
+                                                    <div class="form-group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">
+                                                            Company Name:
+                                                            <span style="color:red">*</span>
+                                                        </label>
+                                                        <input type="text" asp-for="CompanyName" name="CompanyName" class="col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" />
+                                                        <span asp-validation-for="CompanyName" class="text-danger"></span>
+                                                    </div>
+                                                    <!--end::Group-->
+                                                    <div class="form-group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">
+                                                            Phone:
+                                                            <span style="color:red">*</span>
+                                                        </label>
+                                                        <input type="text" asp-for="ContactPhone" name="ContactPhone" class="col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" />
+                                                        <span asp-validation-for="ContactPhone" class="text-danger"></span>
+                                                    </div>
+                                                    @if (ViewBag.TypeId == 1)
+                                                    {
+                                                        <div class="form-group row">
+                                                            <label class="col-xl-3 col-lg-3 col-form-label">
+                                                                Documental Email:
+                                                                <span style="color:red">*</span>
+                                                            </label>
+                                                            <input type="text" asp-for="DocumentalEmail" name="DocumentalEmail" class="col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" />
+                                                            <span asp-validation-for="DocumentalEmail" class="text-danger"></span>
+                                                        </div>
+                                                    }
+                                                    <div class="form-group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Last Name:</label>
+                                                        <input type="text" asp-for="LastName" name="LastName" class="col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" />
+                                                        <span asp-validation-for="LastName" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">First Name:</label>
+                                                        <input type="text" asp-for="FirstName" name="FirstName" class="col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" />
+                                                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Middle Name:</label>
+                                                        <input type="text" asp-for="MiddleName" name="MiddleName" class="col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" />
+                                                        <span asp-validation-for="MiddleName" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Address Line 1:</label>
+                                                        <input type="text" asp-for="PhyAddr1" name="PhyAddr1" class="col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" />
+                                                        <span asp-validation-for="PhyAddr1" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Address Line 2:</label>
+                                                        <input type="text" asp-for="PhyAddr2" name="PhyAddr2" class="col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" />
+                                                        <span asp-validation-for="PhyAddr2" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">City:</label>
+                                                        <input type="text" asp-for="PhyCity" name="PhyCity" class="col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" />
+                                                        <span asp-validation-for="PhyCity" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">State</label>
+                                                        <input type="text" asp-for="PhyState" name="PhyState" class="col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" />
+                                                        <span asp-validation-for="PhyState" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-xl-3 col-lg-3 col-form-label">Zip Code</label>
+                                                        <input type="text" asp-for="PhyZip" name="PhyZip" class="col-lg-9 col-xl-9 form-control form-control-solid form-control-lg" />
+                                                        <span asp-validation-for="PhyZip" class="text-danger"></span>
                                                     </div>
                                                 </div>
+                                                <!--end::Wizard Step 1-->
+                                                <div class="modal-footer">
+                                                    <a asp-area="KAM" asp-controller="Operation" asp-action="Index">
+                                                        <input type="button" class="btn btn-light-primary font-weight-bold" value="Cancel" />
+                                                    </a>
+                                                    <input type="submit" class="btn btn-primary font-weight-bold" value="Submit" />
+                                                </div>
                                             </div>
-                                        </form>
-                                        <!--end::Wizard Form-->
-                                    </div>
+                                        </div>
+                                    </form>
+                                    <!--end::Wizard Form-->
                                 </div>
                             </div>
-                            <!--end::Body-->
                         </div>
-                        <!--end::Card-->
+                        <!--end::Body-->
                     </div>
-                    <!--end::Wizard-->
+                    <!--end::Card-->
                 </div>
             </div>
             <!--end::Card-->

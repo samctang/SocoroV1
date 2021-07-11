@@ -1,323 +1,353 @@
 ﻿@model Socoro.Web.Areas.KAM.Models.OperationViewModel
 <script language="JavaScript" type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
-@using (Html.BeginForm("AddOperation", "Home", FormMethod.Post, new { enctype = "multipart/form-data"}))
-{
-    <form class="form">
-        <div class="card-body">
-            <div class="form-group">
-                @Html.LabelFor(model => model.TypeId, new { @class = "col-form-label" }):
-                <span style="color:red">*</span>
-                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The Operation Type sets the entire application's parameters in order to guide you through the movement or operation selected.">
-                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <rect x="0" y="0" width="24" height="24" />
-                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                        </g>
-                    </svg><!--end::Svg Icon-->
-                </span>
-                <select id="type" class="selectpicker form-control" data-ng-style="select-with-transition" name="OperationViewModel.TypeId"></select>
-
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Agent, new { @class = "col-form-label" }):
-                <span style="color:red">*</span>
-                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The company specialized in international business, hired by the customer or the cargo owner (consignee).
+<form class="form">
+    <div class="card-body">
+        <div class="form-group">
+            <label asp-for="TypeId" class="col-form-label"></label>:
+            <span style="color:red">*</span>
+            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The Operation Type sets the entire application's parameters in order to guide you through the movement or operation selected.">
+                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect x="0" y="0" width="24" height="24" />
+                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                        <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                    </g>
+                </svg><!--end::Svg Icon-->
+            </span>
+            <select asp-for="TypeId" name="TypeId" class="selectpicker form-control" data-ng-style="select-with-transition"></select>
+            <script>
+                $.ajax({
+                    url: "https://localhost:44377/api/OperationType",
+                    data: {},
+                    dataType: 'json',
+                    traditional: true,
+                    success: function (result) {
+                        $.each(result.data, function (index, val) {
+                            $('[name=TypeId]').append($("<option></option>").attr("value", val.id).text(val.description));
+                        });
+                        $('[name=TypeId]').selectpicker('refresh');
+                    }
+                });
+            </script>
+        </div>
+        <div class="form-group">
+            <label asp-for="Agent" class="col-form-label"></label>:
+            <span style="color:red">*</span>
+            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The company specialized in international business, hired by the customer or the cargo owner (consignee).
 Their job is to manage the cargo transportation from the country of origin to the destination place, with the objective of delivering it to the consignee or final customer. In order to complete this objective they must contact a forwarding agent specialized in exportations at the origin place.">
-                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <rect x="0" y="0" width="24" height="24" />
-                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                        </g>
-                    </svg><!--end::Svg Icon-->
-                </span>
-                <select id="agent" class="selectpicker form-control" data-ng-style="select-with-transition" name="OperationViewModel.Agent"></select>
-                <script>
+                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect x="0" y="0" width="24" height="24" />
+                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                        <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                    </g>
+                </svg><!--end::Svg Icon-->
+            </span>
+            <select asp-for="Agent" name="Agent" class="selectpicker form-control" data-ng-style="select-with-transition"></select>
+            <script>
 
-                </script>
-                <br />
-                <input type="button" class="btn btn-primary font-weight-bold" value="Add New Agent" onclick="location.href='@Url.Action("AddCustomer","Contact", new { area = "Shared", TypeId = 1})'" />
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Shipper, new { @class = "col-form-label" }):
-                <span style="color:red">*</span>
-                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The company that sells the cargo related to the movement, they must provide the cargo documentation (invoice, packing list, shipper's letter of instruction, certificates, hazmat documentation, etc ...)">
-                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <rect x="0" y="0" width="24" height="24" />
-                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                        </g>
-                    </svg><!--end::Svg Icon-->
-                </span>
-                <select id="shipper" class="selectpicker form-control" data-ng-style="select-with-transition" name="OperationViewModel.Shipper"></select>
-                <script>
+            </script>
+            <a asp-area="Shared" asp-controller="Contact" asp-action="AddCustomer" asp-route-id="1">
+                <input type="button" class="btn btn-primary font-weight-bold" value="Add New Agent" />
+            </a>
+        </div>
+        <div class="form-group">
+            <label asp-for="Shipper" class="col-form-label"></label>:
+            <span style="color:red">*</span>
+            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The company that sells the cargo related to the movement, they must provide the cargo documentation (invoice, packing list, shipper's letter of instruction, certificates, hazmat documentation, etc ...)">
+                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect x="0" y="0" width="24" height="24" />
+                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                        <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                    </g>
+                </svg><!--end::Svg Icon-->
+            </span>
+            <select asp-for="Shipper" name="Shipper" class="selectpicker form-control" data-ng-style="select-with-transition"></select>
+            <script>
 
-                </script>
-                <br />
-                <input type="button" class="btn btn-primary font-weight-bold" value="Add New Shipper" onclick="location.href='@Url.Action("AddCustomer","Contact", new { area = "Shared", TypeId = 2})'" />
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Consignee, new { @class = "col-form-label" }):
-                <span style="color:red">*</span>
-                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The shipper's customer, the company that buys the cargo from the provider or shipper and to whom the cargo is finally delivered.">
-                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <rect x="0" y="0" width="24" height="24" />
-                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                        </g>
-                    </svg><!--end::Svg Icon-->
-                </span>
-                <select id="consignee" class="selectpicker form-control" data-ng-style="select-with-transition" name="OperationViewModel.Consignee"></select>
-                <script>
+            </script>
+            <a asp-area="Shared" asp-controller="Contact" asp-action="AddCustomer" asp-route-id="2">
+                <input type="button" class="btn btn-primary font-weight-bold" value="Add New Shipper" />
+            </a>
+        </div>
+        <div class="form-group">
+            <label asp-for="Consignee" class="col-form-label"></label>:
+            <span style="color:red">*</span>
+            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The shipper's customer, the company that buys the cargo from the provider or shipper and to whom the cargo is finally delivered.">
+                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect x="0" y="0" width="24" height="24" />
+                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                        <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                    </g>
+                </svg><!--end::Svg Icon-->
+            </span>
+            <select asp-for="Consignee" name="Consignee" class="selectpicker form-control" data-ng-style="select-with-transition"></select>
+            <script>
 
-                </script>
-                <br />
-                <input type="button" class="btn btn-primary font-weight-bold" value="Add New Consignee" onclick="location.href='@Url.Action("AddCustomer","Contact", new { area = "Shared", TypeId = 3})'" />
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.AgentRefNo, new { @class = "col-form-label" }):
-                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The Agent Reference Number is the number or code that your cargo or destination agent uses for tracking or internal purposes within their company.
+            </script>
+            <a asp-area="Shared" asp-controller="Contact" asp-action="AddCustomer" asp-route-id="3">
+                <input type="button" class="btn btn-primary font-weight-bold" value="Add New Consignee" />
+            </a>
+        </div>
+        <div class="form-group">
+            <label asp-for="AgentRefNo" class="col-form-label"></label>:
+            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The Agent Reference Number is the number or code that your cargo or destination agent uses for tracking or internal purposes within their company.
 It is especially useful when you communicate with your agent so you both are sure about what specific process or movement is being discussed.">
-                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <rect x="0" y="0" width="24" height="24" />
-                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                        </g>
-                    </svg><!--end::Svg Icon-->
-                </span>
-                @Html.TextBoxFor(model => model.AgentRefNo, new { @class = "form-control" })
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.ShipperRefNo, new { @class = "col-form-label" }):
-                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The Shipper Reference Number is the number or code that your shipper or provider uses for tracking or internal purposes within their company.
+                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect x="0" y="0" width="24" height="24" />
+                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                        <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                    </g>
+                </svg><!--end::Svg Icon-->
+            </span>
+            <input type="text" asp-for="AgentRefNo" name="AgentRefNo" class="form-control" />
+            <span asp-validation-for="AgentRefNo" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ShipperRefNo" class="col-form-label"></label>:
+            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The Shipper Reference Number is the number or code that your shipper or provider uses for tracking or internal purposes within their company.
 It is especially useful when you communicate with your shipper so you both are sure about what specific process or movement is being discussed.">
-                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <rect x="0" y="0" width="24" height="24" />
-                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                        </g>
-                    </svg><!--end::Svg Icon-->
-                </span>
-                @Html.TextBoxFor(model => model.ShipperRefNo, new { @class = "form-control" })
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.ConsigneeRefNo, new { @class = "col-form-label" }):
-                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The Consignee Reference Number is the number or code that your consignee or final customer uses for tracking or internal purposes within their company.
+                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect x="0" y="0" width="24" height="24" />
+                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                        <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                    </g>
+                </svg><!--end::Svg Icon-->
+            </span>
+            <input type="text" asp-for="ShipperRefNo" name="ShipperRefNo" class="form-control" />
+            <span asp-validation-for="ShipperRefNo" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ConsigneeRefNo" class="col-form-label"></label>:
+            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The Consignee Reference Number is the number or code that your consignee or final customer uses for tracking or internal purposes within their company.
 It is especially useful when you communicate with your consignee so you both are sure about what specific process or movement is being discussed.">
-                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <rect x="0" y="0" width="24" height="24" />
-                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                        </g>
-                    </svg><!--end::Svg Icon-->
-                </span>
-                @Html.TextBoxFor(model => model.ConsigneeRefNo, new { @class = "form-control" })
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.PoL, new { @class = "col-form-label" }):
-                <span style="color:red">*</span>
-                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Place where shipments are loaded and secured aboard a vessel.
+                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect x="0" y="0" width="24" height="24" />
+                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                        <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                    </g>
+                </svg><!--end::Svg Icon-->
+            </span>
+            <input type="text" asp-for="ConsigneeRefNo" name="ConsigneeRefNo" class="form-control" />
+            <span asp-validation-for="ConsigneeRefNo" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PoL" class="col-form-label"></label>:
+            <span style="color:red">*</span>
+            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Place where shipments are loaded and secured aboard a vessel.
 It may or may not be the same as the point of origin.">
-                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <rect x="0" y="0" width="24" height="24" />
-                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                        </g>
-                    </svg><!--end::Svg Icon-->
-                </span>
-                @Html.TextBoxFor(model => model.PoL, new { @class = "form-control" })
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.PoD, new { @class = "col-form-label" }):
-                <span style="color:red">*</span>
-                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Place where a vessel is off-loaded and the shipments are dispersed to their respective consignees. It may or may not be the final destination. Also called the port of unloading.">
-                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <rect x="0" y="0" width="24" height="24" />
-                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                        </g>
-                    </svg><!--end::Svg Icon-->
-                </span>
-                @Html.TextBoxFor(model => model.PoD, new { @class = "form-control" })
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.OriginAddr1, new { @class = "col-form-label" }):
-                <span style="color:red">*</span>
-                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Address of the physical location in which the cargo is going to be picked up or loaded into the container, this information is provided by the shipper.
+                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect x="0" y="0" width="24" height="24" />
+                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                        <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                    </g>
+                </svg><!--end::Svg Icon-->
+            </span>
+            <input type="text" asp-for="PoL" name="PoL" class="form-control" />
+            <span asp-validation-for="PoL" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="PoD" class="col-form-label"></label>:
+            <span style="color:red">*</span>
+            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Place where a vessel is off-loaded and the shipments are dispersed to their respective consignees. It may or may not be the final destination. Also called the port of unloading.">
+                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect x="0" y="0" width="24" height="24" />
+                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                        <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                    </g>
+                </svg><!--end::Svg Icon-->
+            </span>
+            <input type="text" asp-for="PoD" name="PoD" class="form-control" />
+            <span asp-validation-for="PoD" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="OriginAddr1" class="col-form-label"></label>:
+            <span style="color:red">*</span>
+            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Address of the physical location in which the cargo is going to be picked up or loaded into the container, this information is provided by the shipper.
 Do not confuse it with the port of loading.">
-                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <rect x="0" y="0" width="24" height="24" />
-                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                        </g>
-                    </svg><!--end::Svg Icon-->
-                </span>
-                @Html.TextBoxFor(model => model.OriginAddr1, new { @class = "form-control" })
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.OriginAddr2, new { @class = "col-form-label" }):
-                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Address of the physical location in which the cargo is going to be picked up or loaded into the container, this information is provided by the shipper.
+                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect x="0" y="0" width="24" height="24" />
+                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                        <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                    </g>
+                </svg><!--end::Svg Icon-->
+            </span>
+            <input type="text" asp-for="OriginAddr1" name="OriginAddr1" class="form-control" />
+            <span asp-validation-for="OriginAddr1" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="OriginAddr2" class="col-form-label"></label>:
+            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Address of the physical location in which the cargo is going to be picked up or loaded into the container, this information is provided by the shipper.
 Do not confuse it with the port of loading.">
-                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <rect x="0" y="0" width="24" height="24" />
-                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                        </g>
-                    </svg><!--end::Svg Icon-->
-                </span>
-                @Html.TextBoxFor(model => model.OriginAddr2, new { @class = "form-control" })
-            </div>
+                <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <rect x="0" y="0" width="24" height="24" />
+                        <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                        <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                    </g>
+                </svg><!--end::Svg Icon-->
+            </span>
+            <input type="text" asp-for="OriginAddr2" name="OriginAddr2" class="form-control" />
+            <span asp-validation-for="OriginAddr2" class="text-danger"></span>
+        </div>
+        <div class="form-group">
             <div class="form-group">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.OriginCity, new { @class = "col-form-label" }):
-                    <span style="color:red">*</span>
-                    <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="City of the physical location in which the cargo is going to be picked up, this information is provided by the shipper.
+                <label asp-for="OriginCity" class="col-form-label"></label>:
+                <span style="color:red">*</span>
+                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="City of the physical location in which the cargo is going to be picked up, this information is provided by the shipper.
 It may or may not be the same city in which the port of loading is located.">
-                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <rect x="0" y="0" width="24" height="24" />
-                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                            </g>
-                        </svg><!--end::Svg Icon-->
-                    </span>
-                    @Html.TextBoxFor(model => model.OriginCity, new { @class = "form-control" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.OriginState, new { @class = "col-form-label" }):
-                    <span style="color:red">*</span>
-                    <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="State of the city in which the cargo is going to be picked up, this information is provided by the shipper.
+                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24" />
+                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                        </g>
+                    </svg><!--end::Svg Icon-->
+                </span>
+                <input type="text" asp-for="OriginCity" name="OriginCity" class="form-control" />
+                <span asp-validation-for="OriginCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OriginState" class="col-form-label"></label>:
+                <span style="color:red">*</span>
+                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="State of the city in which the cargo is going to be picked up, this information is provided by the shipper.
 It may or may not be the same state in which the port of loading is located.">
-                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <rect x="0" y="0" width="24" height="24" />
-                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                            </g>
-                        </svg><!--end::Svg Icon-->
-                    </span>
-                    @Html.TextBoxFor(model => model.OriginState, new { @class = "form-control" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.OriginZip, new { @class = "col-form-label" }):
-                    <span style="color:red">*</span>
-                    <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Zip code of the location in which the cargo is going to be picked up, this information is provided by the shipper.
+                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24" />
+                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                        </g>
+                    </svg><!--end::Svg Icon-->
+                </span>
+                <input type="text" asp-for="OriginState" name="OriginState" class="form-control" />
+                <span asp-validation-for="OriginState" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OriginZip" class="col-form-label"></label>:
+                <span style="color:red">*</span>
+                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Zip code of the location in which the cargo is going to be picked up, this information is provided by the shipper.
 ZIP Codes in the United States make sortation of letters down to a specific street address or apartment a lot easier. This also reduces transit time and makes delivery far more efficient, as this mail gets sorted in the sequence that delivery is made by the carrier on his route.">
-                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <rect x="0" y="0" width="24" height="24" />
-                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                            </g>
-                        </svg><!--end::Svg Icon-->
-                    </span>
-                    @Html.TextBoxFor(model => model.OriginZip, new { @class = "form-control" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.OriginCountry, new { @class = "col-form-label" }):
-                    <span style="color:red">*</span>
-                    <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Country in which the cargo is going to be picked up, this information is provided by the shipper.
+                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24" />
+                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                        </g>
+                    </svg><!--end::Svg Icon-->
+                </span>
+                <input type="text" asp-for="OriginZip" name="OriginZip" class="form-control" />
+                <span asp-validation-for="OriginZip" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OriginCountry" class="col-form-label"></label>:
+                <span style="color:red">*</span>
+                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Country in which the cargo is going to be picked up, this information is provided by the shipper.
 It may or may not be the same country in which the port of loading is located.">
-                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <rect x="0" y="0" width="24" height="24" />
-                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                            </g>
-                        </svg><!--end::Svg Icon-->
-                    </span>
-                    @Html.TextBoxFor(model => model.OriginCountry, new { @class = "form-control" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.DestinationAddr1, new { @class = "col-form-label" }):
-                    <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Final address in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
-                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <rect x="0" y="0" width="24" height="24" />
-                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                            </g>
-                        </svg><!--end::Svg Icon-->
-                    </span>
-                    @Html.TextBoxFor(model => model.DestinationAddr1, new { @class = "form-control" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.DestinationAddr2, new { @class = "col-form-label" }):
-                    <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Final address in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
-                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <rect x="0" y="0" width="24" height="24" />
-                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                            </g>
-                        </svg><!--end::Svg Icon-->
-                    </span>
-                    @Html.TextBoxFor(model => model.DestinationAddr2, new { @class = "form-control" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.DestinationCity, new { @class = "col-form-label" }):
-                    <span style="color:red">*</span>
-                    <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Final city in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
-                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <rect x="0" y="0" width="24" height="24" />
-                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                            </g>
-                        </svg><!--end::Svg Icon-->
-                    </span>
-                    @Html.TextBoxFor(model => model.DestinationCity, new { @class = "form-control" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.DestinationState, new { @class = "col-form-label" }):
-                    <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Final state in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
-                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <rect x="0" y="0" width="24" height="24" />
-                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                            </g>
-                        </svg><!--end::Svg Icon-->
-                    </span>
-                    @Html.TextBoxFor(model => model.DestinationState, new { @class = "form-control" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.DestinationZip, new { @class = "col-form-label" }):
-                    <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Final zip code in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
-                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <rect x="0" y="0" width="24" height="24" />
-                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                            </g>
-                        </svg><!--end::Svg Icon-->
-                    </span>
-                    @Html.TextBoxFor(model => model.DestinationZip, new { @class = "form-control" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.DestinationCountry, new { @class = "col-form-label" }):
-                    <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Final country in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
-                        <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <rect x="0" y="0" width="24" height="24" />
-                                <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                                <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                            </g>
-                        </svg><!--end::Svg Icon-->
-                    </span>
-                    @Html.TextBoxFor(model => model.DestinationCountry, new { @class = "form-control" })
-                </div>
+                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24" />
+                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                        </g>
+                    </svg><!--end::Svg Icon-->
+                </span>
+                <input type="text" asp-for="OriginCountry" name="OriginCountry" class="form-control" />
+                <span asp-validation-for="OriginCountry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DestinationAddr1" class="col-form-label"></label>:
+                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Final address in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
+                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24" />
+                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                        </g>
+                    </svg><!--end::Svg Icon-->
+                </span>
+                <input type="text" asp-for="DestinationAddr1" name="DestinationAddr1" class="form-control" />
+                <span asp-validation-for="DestinationAddr1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DestinationAddr2" class="col-form-label"></label>:
+                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Final address in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
+                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24" />
+                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                        </g>
+                    </svg><!--end::Svg Icon-->
+                </span>
+                <input type="text" asp-for="DestinationAddr2" name="DestinationAddr2" class="form-control" />
+                <span asp-validation-for="DestinationAddr2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DestinationCity" class="col-form-label"></label>:
+                <span style="color:red">*</span>
+                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Final city in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
+                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24" />
+                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                        </g>
+                    </svg><!--end::Svg Icon-->
+                </span>
+                <input type="text" asp-for="DestinationCity" name="DestinationCity" class="form-control" />
+                <span asp-validation-for="DestinationCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DestinationState" class="col-form-label"></label>:
+                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Final state in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
+                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24" />
+                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                        </g>
+                    </svg><!--end::Svg Icon-->
+                </span>
+                <input type="text" asp-for="DestinationState" name="DestinationState" class="form-control" />
+                <span asp-validation-for="DestinationState" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DestinationZip" class="col-form-label"></label>:
+                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Final zip code in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
+                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24" />
+                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                        </g>
+                    </svg><!--end::Svg Icon-->
+                </span>
+                <input type="text" asp-for="DestinationZip" name="DestinationZip" class="form-control" />
+                <span asp-validation-for="DestinationZip" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DestinationCountry" class="col-form-label"></label>:
+                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Final country in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
+                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24" />
+                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                        </g>
+                    </svg><!--end::Svg Icon-->
+                </span>
+                <input type="text" asp-for="DestinationCountry" name="DestinationCountry" class="form-control" />
+                <span asp-validation-for="DestinationCountry" class="text-danger"></span>
             </div>
         </div>
-    </form>
-}
+    </div>
+</form>

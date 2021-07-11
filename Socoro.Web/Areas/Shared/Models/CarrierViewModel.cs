@@ -5,6 +5,7 @@ namespace Socoro.Web.Areas.Shared.Models
 {
     public class CarrierViewModel
     {
+        public int Id { get; set; }
         [Required, Display(Name = "Carrier Type")]
         public int TypeId { get; set; }
         [Required, Display(Name = "Carrier Name")]

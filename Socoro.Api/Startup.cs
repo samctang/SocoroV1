@@ -30,6 +30,11 @@ namespace Socoro.Api
             services.AddRepositories();
             services.AddSharedInfrastructure(_configuration);
             services.AddEssentials();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("GET",
+                    builder => builder.WithOrigins("https://localhost:44312").WithMethods("GET").AllowAnyHeader());
+            });
             services.AddControllers();
             /*services.AddMvc(o =>
             {
@@ -52,10 +57,9 @@ namespace Socoro.Api
             app.UseMiddleware<ErrorHandlerMiddleware>();
             app.UseRouting();
 
-            app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
-
+            app.UseCors("GET");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
