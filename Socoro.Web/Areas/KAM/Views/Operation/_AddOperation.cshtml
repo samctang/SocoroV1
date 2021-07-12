@@ -17,7 +17,7 @@
             <select asp-for="TypeId" name="TypeId" class="selectpicker form-control" data-ng-style="select-with-transition"></select>
             <script>
                 $.ajax({
-                    url: "https://localhost:44377/api/OperationType",
+                    url: "@Environment.GetEnvironmentVariable("ApiEndpoint")"+"/OperationType",
                     data: {},
                     dataType: 'json',
                     traditional: true,
@@ -352,7 +352,7 @@ It may or may not be the same country in which the port of loading is located.">
 
 <script>
     $.ajax({
-        url: "https://localhost:44377/api/Customer?companyId="+@Model.CompanyId,
+        url: "@Environment.GetEnvironmentVariable("ApiEndpoint")"+"/Customer?companyId="+@Model.CompanyId,
         data: {},
         dataType: 'json',
         traditional: true,

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace Socoro.Api
 {
@@ -33,7 +34,9 @@ namespace Socoro.Api
             services.AddCors(options =>
             {
                 options.AddPolicy("GET",
-                    builder => builder.WithOrigins("https://localhost:44312").WithMethods("GET").AllowAnyHeader());
+                    builder => builder.WithOrigins(Environment.GetEnvironmentVariable("Origin")).WithMethods("GET").AllowAnyHeader());
+                options.AddPolicy("POST",
+                    builder => builder.WithOrigins(Environment.GetEnvironmentVariable("Origin")).WithMethods("POST").AllowAnyHeader());
             });
             services.AddControllers();
             /*services.AddMvc(o =>
@@ -60,6 +63,7 @@ namespace Socoro.Api
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseCors("GET");
+            app.UseCors("POST");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

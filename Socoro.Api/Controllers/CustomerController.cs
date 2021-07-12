@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Cors;
 using Socoro.Application.Features.Customers.Queries.GetByCompanyId;
+using Socoro.Application.Features.Customers.Commands.Create;
 
 namespace Socoro.Api.Controllers
 {
@@ -17,6 +18,11 @@ namespace Socoro.Api.Controllers
             var customerList = await _mediator.Send(new GetCustomersByCompanyIdQuery() { CompanyId = companyId });
             return Ok(customerList);
         }
-
+        [EnableCors("POST")]
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody]CreateCustomerCommand command)
+        {
+            return Ok(await _mediator.Send(command));
+        }
     }
 }
