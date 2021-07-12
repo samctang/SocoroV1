@@ -9,5 +9,6 @@ namespace Socoro.Application.Interfaces.CacheRepositories
         Task<List<Customer>> GetCachedListAsync();
 
         Task<Customer> GetByIdAsync(int customerId);
+        Task<List<Customer>> GetByCompanyIdAsync(int companyId);
     }
 }

@@ -26,6 +26,7 @@ namespace Socoro.Infrastructure.Repositories
             await _repository.DeleteAsync(customer);
             await _distributedCache.RemoveAsync(CacheKeys.CustomerCacheKeys.ListKey);
             await _distributedCache.RemoveAsync(CacheKeys.CustomerCacheKeys.GetKey(customer.Id));
+            await _distributedCache.RemoveAsync(CacheKeys.CustomerCacheKeys.CompanyListKey);
         }
 
         public async Task<Customer> GetByIdAsync(int customerId)
@@ -42,6 +43,7 @@ namespace Socoro.Infrastructure.Repositories
         {
             await _repository.AddAsync(customer);
             await _distributedCache.RemoveAsync(CacheKeys.CustomerCacheKeys.ListKey);
+            await _distributedCache.RemoveAsync(CacheKeys.CustomerCacheKeys.CompanyListKey);
             return customer.Id;
         }
 
@@ -50,6 +52,11 @@ namespace Socoro.Infrastructure.Repositories
             await _repository.UpdateAsync(customer);
             await _distributedCache.RemoveAsync(CacheKeys.CustomerCacheKeys.ListKey);
             await _distributedCache.RemoveAsync(CacheKeys.CustomerCacheKeys.GetKey(customer.Id));
+            await _distributedCache.RemoveAsync(CacheKeys.CustomerCacheKeys.CompanyListKey);
+        }
+        public async Task<List<Customer>> GetByCompanyIdAsync(int companyId)
+        {
+            return await _repository.Entities.Where(p => p.CompanyId == companyId).ToListAsync();
         }
     }
 }

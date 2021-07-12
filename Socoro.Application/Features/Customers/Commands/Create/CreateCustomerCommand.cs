@@ -5,13 +5,12 @@ using AutoMapper;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using System;
 
 namespace Socoro.Application.Features.Customers.Commands.Create
 {
     public partial class CreateCustomerCommand : IRequest<Result<int>>
     {
-        public string CompanyId { get; set; }
+        public int CompanyId { get; set; }
         public int TypeId { get; set; }
         public string Email { get; set; }
         public string CompanyName { get; set; }

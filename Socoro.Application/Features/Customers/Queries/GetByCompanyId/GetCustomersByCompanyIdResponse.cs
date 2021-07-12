@@ -1,9 +1,9 @@
-﻿namespace Socoro.Application.Features.Customers.Queries.GetAllCached
+﻿namespace Socoro.Application.Features.Customers.Queries.GetByCompanyId
 {
-    public class GetAllCustomersCachedResponse
+    public class GetCustomersByCompanyIdResponse
     {
         public int Id { get; set; }
-        public string CompanyId { get; set; }
+        public int CompanyId { get; set; }
         public int TypeId { get; set; }
         public string Email { get; set; }
         public string CompanyName { get; set; }

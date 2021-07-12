@@ -18,5 +18,6 @@ namespace Socoro.Application.Interfaces.Repositories
         Task UpdateAsync(Customer customer);
 
         Task DeleteAsync(Customer customer);
+        Task<List<Customer>> GetByCompanyIdAsync(int companyId);
     }
 }

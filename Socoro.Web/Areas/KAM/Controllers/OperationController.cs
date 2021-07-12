@@ -15,11 +15,18 @@ namespace Socoro.Web.Areas.KAM.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            OperationViewModel operationViewModel = new OperationViewModel();
+            operationViewModel.CompanyId = 0;
+            return View(operationViewModel);
         }
         public IActionResult ViewOperation()
         {
             return View();
+        }
+        public IActionResult AddOperation(OperationViewModel operationViewModel)
+        {
+            operationViewModel.CompanyId = 0;
+            return PartialView("_AddOperation");
         }
     }
 }
