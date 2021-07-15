@@ -1,5 +1,6 @@
 C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\appsettings.Development.json
 C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\appsettings.json
+C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\libman.json
 C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\Socoro.Api.StaticWebAssets.xml
 C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\Socoro.Api.exe
 C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\Socoro.Api.deps.json
@@ -109,4 +110,3 @@ C:\git\Socoro\Socoro.Api\obj\Debug\net5.0\Socoro.Api.dll
 C:\git\Socoro\Socoro.Api\obj\Debug\net5.0\ref\Socoro.Api.dll
 C:\git\Socoro\Socoro.Api\obj\Debug\net5.0\Socoro.Api.pdb
 C:\git\Socoro\Socoro.Api\obj\Debug\net5.0\Socoro.Api.genruntimeconfig.cache
-C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\libman.json

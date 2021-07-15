@@ -31,5 +31,6 @@ namespace Socoro.Web.Areas.Shared.Models
         public string PhyZip { get; set; }
         [Required, Display(Name = "Direct Connection")]
         public int DirectConnection { get; set; }
+        public int CompanyId { get; set; }
     }
 }

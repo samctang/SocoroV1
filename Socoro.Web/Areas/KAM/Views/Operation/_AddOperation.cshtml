@@ -1,6 +1,6 @@
 ﻿@model Socoro.Web.Areas.KAM.Models.OperationViewModel
 <script language="JavaScript" type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
-<form class="form">
+<form class="form" method="post" enctype="multipart/form-data" asp-area="KAM" asp-controller="Operation" asp-action="Index">
     <div class="card-body">
         <div class="form-group">
             <label asp-for="TypeId" class="col-form-label"></label>:
@@ -348,7 +348,12 @@ It may or may not be the same country in which the port of loading is located.">
             </div>
         </div>
     </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary font-weight-bold" value="Submit" />
+    </div>
 </form>
+
 
 <script>
     $.ajax({

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Socoro.Web.Controllers;
 using Socoro.Web.Areas.Shared.Models;
-using Socoro.Application.Features.Customers.Commands.Create;
+using Socoro.Application.Features.Customers.Commands;
 using System.Net.Http;
 using System;
 using Newtonsoft.Json;
@@ -21,6 +21,7 @@ namespace Socoro.Web.Areas.Shared.Controllers
         public IActionResult AddCustomer(int id)
         {
             CustomerViewModel customerViewModel = new CustomerViewModel();
+            //Add default values
             ViewBag.TypeId = id;
             switch (id)
             {
@@ -41,15 +42,17 @@ namespace Socoro.Web.Areas.Shared.Controllers
                     ViewBag.Customer = "Customer";
                     break;
             }
-            return View("AddCustomer", customerViewModel);
+            return View(customerViewModel);
         }
         [HttpPost]
         public async Task<IActionResult> AddCustomerAsync(int id, CustomerViewModel customerViewModel)
         {
-            customerViewModel.TypeId = id;
-            var createCustomerCommand = _mapper.Map<CreateCustomerCommand>(customerViewModel);
-            using(var client = new HttpClient())
+            if (ModelState.IsValid)
             {
+                customerViewModel.CompanyId = 1;
+                customerViewModel.TypeId = id;
+                var createCustomerCommand = _mapper.Map<CreateCustomer>(customerViewModel);
+                using var client = new HttpClient();
                 string requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/customer";
                 var stringContent = new StringContent(JsonConvert.SerializeObject(createCustomerCommand), Encoding.UTF8, "application/json");
                 var response = await client.PostAsync(requestUri, stringContent);
@@ -58,8 +61,9 @@ namespace Socoro.Web.Areas.Shared.Controllers
                     return RedirectToAction("Index", "Operation", new { area = "KAM" });
                 }
             }
-            ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
-            return View("AddCustomer", customerViewModel);
+            else
+                ModelState.AddModelError("Add_Customer", "Server error");
+            return View(customerViewModel);
         }
     }
 }

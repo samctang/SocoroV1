@@ -1,7 +1,8 @@
-﻿using Socoro.Infrastructure.Identity.Models;
+﻿
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Socoro.Infrastructure.Identity.Models;
 
 namespace Socoro.Infrastructure.DbContexts
 {
@@ -10,8 +11,6 @@ namespace Socoro.Infrastructure.DbContexts
         public IdentityContext(DbContextOptions<IdentityContext> options) : base(options)
         {
         }
-        public DbSet<CompanyType> CompanyTypes { get; set; }
-        public DbSet<Department> Departments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -20,7 +19,6 @@ namespace Socoro.Infrastructure.DbContexts
             builder.Entity<ApplicationUser>(entity =>
             {
                 entity.ToTable(name: "Users");
-                entity.HasOne(t => t.Employee).WithOne(u => u.ApplicationUser).HasForeignKey<Employee>(x => x.Id);
             });
 
             builder.Entity<IdentityRole>(entity =>

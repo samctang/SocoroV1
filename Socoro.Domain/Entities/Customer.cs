@@ -1,10 +1,10 @@
 ﻿using AspNetCoreHero.Abstractions.Domain;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Socoro.Domain.Entities
 {
     public class Customer : AuditableEntity
     {
-        public int CompanyId { get; set; }
         public int TypeId { get; set; }
         public string Email { get; set; }
         public string CompanyName { get; set; }
@@ -18,5 +18,7 @@ namespace Socoro.Domain.Entities
         public string PhyState { get; set; }
         public string PhyZip { get; set; }
         public string DocumentalEmail { get; set; }
+        public int? CompanyId { get; set; }
+        public Company Company { get; set; }
     }
 }

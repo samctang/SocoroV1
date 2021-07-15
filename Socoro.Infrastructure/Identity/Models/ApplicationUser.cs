@@ -9,6 +9,5 @@ namespace Socoro.Infrastructure.Identity.Models
         public string LastName { get; set; }
         public byte[] ProfilePicture { get; set; }
         public bool IsActive { get; set; } = false;
-        public virtual Employee Employee { get; set; }
     }
 }

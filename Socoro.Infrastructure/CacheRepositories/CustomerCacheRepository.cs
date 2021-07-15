@@ -21,18 +21,6 @@ namespace Socoro.Infrastructure.CacheRepositories
             _customerRepository = customerRepository;
         }
 
-        public async Task<List<Customer>> GetByCompanyIdAsync(int companyId)
-        {
-            string cacheKey = CustomerCacheKeys.CompanyListKey;
-            var customerList = await _distributedCache.GetAsync<List<Customer>>(cacheKey);
-            if (customerList == null)
-            {
-                customerList = await _customerRepository.GetByCompanyIdAsync(companyId);
-                await _distributedCache.SetAsync(cacheKey, customerList);
-            }
-            return customerList;
-        }
-
         public async Task<Customer> GetByIdAsync(int customerId)
         {
             string cacheKey = CustomerCacheKeys.GetKey(customerId);

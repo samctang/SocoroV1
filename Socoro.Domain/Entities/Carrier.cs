@@ -1,10 +1,10 @@
 ﻿using AspNetCoreHero.Abstractions.Domain;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Socoro.Domain.Entities
 {
     public class Carrier : AuditableEntity
     {
-        public string CompanyId { get; set; }
         public int TypeId { get; set; }
         public string CarrierName { get; set; }
         public string Phone { get; set; }
@@ -18,5 +18,7 @@ namespace Socoro.Domain.Entities
         public string PhyState { get; set; }
         public string PhyZip { get; set; }
         public int DirectConnection { get; set; }
+        public int? CompanyId { get; set; }
+        public Company Company { get; set; }
     }
 }

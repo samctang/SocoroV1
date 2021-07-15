@@ -56,7 +56,7 @@ namespace Socoro.Infrastructure.Repositories
         }
         public async Task<List<Customer>> GetByCompanyIdAsync(int companyId)
         {
-            return await _repository.Entities.Where(p => p.CompanyId == companyId).ToListAsync();
+            return await _repository.Entities.Where(p => p.Company.Id == companyId).ToListAsync();
         }
     }
 }

@@ -18,5 +18,6 @@ namespace Socoro.Application.Interfaces.Repositories
         Task UpdateAsync(Operation operation);
 
         Task DeleteAsync(Operation operation);
+        Task<Operation> GetLastOperationByIdAsync(int id);
     }
 }

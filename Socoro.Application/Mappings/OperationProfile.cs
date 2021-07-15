@@ -1,7 +1,5 @@
-﻿using Socoro.Application.Features.Operations.Commands.Create;
-using Socoro.Application.Features.Operations.Queries.GetAllCached;
-using Socoro.Application.Features.Operations.Queries.GetAllPaged;
-using Socoro.Application.Features.Operations.Queries.GetById;
+﻿using Socoro.Application.Features.Operations.Commands;
+using Socoro.Application.DTOs.Operation;
 using Socoro.Domain.Entities;
 using AutoMapper;
 
@@ -11,10 +9,10 @@ namespace Socoro.Application.Mappings
     {
         public OperationProfile()
         {
-            CreateMap<CreateOperationCommand, Operation>().ReverseMap();
-            CreateMap<GetOperationByIdResponse, Operation>().ReverseMap();
-            CreateMap<GetAllOperationsCachedResponse, Operation>().ReverseMap();
-            CreateMap<GetAllOperationsResponse, Operation>().ReverseMap();
+            CreateMap<CreateOperation, Operation>().ReverseMap();
+            CreateMap<UpdateOperation, Operation>().ReverseMap();
+            CreateMap<DeleteOperation, Operation>().ReverseMap();
+            CreateMap<OperationResponse, Operation>().ReverseMap();
         }
     }
 }

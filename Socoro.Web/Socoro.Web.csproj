@@ -26,8 +26,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Dashboard\Data\" />
-    <Folder Include="Areas\Dashboard\Models\" />
     <Folder Include="Areas\KAM\Data\" />
     <Folder Include="Areas\Settings\Data\" />
     <Folder Include="Areas\Settings\Models\" />

@@ -1,4 +1,4 @@
-using Socoro.Infrastructure.Identity.Models;
+using Socoro.Domain.Entities;
 using AspNetCoreHero.Extensions.Logging;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
+using Socoro.Infrastructure.Identity.Models;
 
 namespace Socoro.Web
 {

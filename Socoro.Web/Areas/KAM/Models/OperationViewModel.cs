@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Socoro.Web.Areas.KAM.Models
@@ -6,8 +7,7 @@ namespace Socoro.Web.Areas.KAM.Models
     public class OperationViewModel
     {
         public int Id { get; set; }
-        public int CompanyId { get; set; }
-        public int EmployeeId { get; set; }
+        [HiddenInput]
         public string OperationNo { get; set; }
         [Required, Display(Name = "Operation Type")]
         public int TypeId { get; set; }
@@ -51,7 +51,10 @@ namespace Socoro.Web.Areas.KAM.Models
         public string DestinationZip { get; set; }
         [Display(Name = "Destination Country")]
         public string DestinationCountry { get; set; }
+        public int Progress { get; set; }
+        public string Status { get; set; }
         public DateTime? SubmittedDate { get; set; }
-        public DateTime? CompletionDate { get; set; }
+        public DateTime? CompletedDate { get; set; }
+        public int CompanyId { get; set; }
     }
 }

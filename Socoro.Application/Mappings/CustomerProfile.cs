@@ -1,5 +1,5 @@
-﻿using Socoro.Application.Features.Customers.Commands.Create;
-using Socoro.Application.Features.Customers.Queries.GetByCompanyId;
+﻿using Socoro.Application.Features.Customers.Commands;
+using Socoro.Application.DTOs.Customer;
 using AutoMapper;
 using Socoro.Domain.Entities;
 
@@ -9,8 +9,8 @@ namespace Socoro.Application.Mappings
     {
         public CustomerProfile()
         {
-            CreateMap<CreateCustomerCommand, Customer>().ReverseMap();
-            CreateMap<GetCustomersByCompanyIdResponse, Customer>().ReverseMap();
+            CreateMap<CreateCustomer, Customer>().ReverseMap();
+            CreateMap<CustomerResponse, Customer>().ReverseMap();
         }
     }
 }

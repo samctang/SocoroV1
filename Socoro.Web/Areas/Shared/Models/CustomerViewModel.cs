@@ -6,7 +6,6 @@ namespace Socoro.Web.Areas.Shared.Models
     public class CustomerViewModel
     {
         public int Id { get; set; }
-        public int CompanyId { get; set; }
         public int TypeId { get; set; }
         public string Email { get; set; }
         [Required, Display(Name = "Company Name")]
@@ -31,5 +30,6 @@ namespace Socoro.Web.Areas.Shared.Models
         public string PhyZip { get; set; }
         [Display(Name = "Documental Email")]
         public string DocumentalEmail { get; set; }
+        public int CompanyId { get; set; }
     }
 }

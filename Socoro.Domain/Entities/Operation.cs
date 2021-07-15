@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using AspNetCoreHero.Abstractions.Domain;
 namespace Socoro.Domain.Entities
 {
     public class Operation : AuditableEntity
     {
-        public int CompanyId { get; set; }
-        public int EmployeeId { get; set; }
         public string OperationNo { get; set; }
         public int TypeId { get; set; }
         public string Agent { get; set; }
@@ -28,7 +28,14 @@ namespace Socoro.Domain.Entities
         public string DestinationState { get; set; }
         public string DestinationZip { get; set; }
         public string DestinationCountry { get; set; }
+        public List<OperationProcess> OperationProcesses { get; set; }
+        public int Progress { get; set; }
+        public string Status { get; set; }
         public DateTime? SubmittedDate { get; set; }
-        public DateTime? CompletionDate { get; set; }
+        public DateTime? CompletedDate { get; set; }
+        public int? CompanyId { get; set; }
+        public Company Company { get; set; }
+        public int? EmployeeId { get; set; }
+        public Employee Employee { get; set; }
     }
 }

@@ -2361,7 +2361,8 @@
       },
       "Socoro.Domain/1.0.0": {
         "dependencies": {
-          "AspNetCoreHero.Abstractions": "1.0.0"
+          "AspNetCoreHero.Abstractions": "1.0.0",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.1"
         },
         "runtime": {
           "Socoro.Domain.dll": {}

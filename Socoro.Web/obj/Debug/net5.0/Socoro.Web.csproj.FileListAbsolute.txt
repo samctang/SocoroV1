@@ -480,7 +480,6 @@ C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Admin\Views\UserRole\Index
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Admin\Views\User\Index.cshtml.g.cs
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Admin\Views\User\_Create.cshtml.g.cs
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Admin\Views\User\_ViewAll.cshtml.g.cs
-C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Dashboard\Views\Home\Index.cshtml.g.cs
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\AccessDenied.cshtml.g.cs
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\AuditLog.cshtml.g.cs
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\ConfirmEmail.cshtml.g.cs
@@ -527,6 +526,8 @@ C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\KAM\Views\Operation\Index.cshtml.g.cs
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\KAM\Views\Operation\ViewOperation.cshtml.g.cs
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\KAM\Views\Operation\_AddOperation.cshtml.g.cs
+C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Shared\Views\Carrier\AddCarrier.cshtml.g.cs
+C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Shared\Views\Customer\AddCustomer.cshtml.g.cs
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\_ViewImports.cshtml.g.cs
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\_ViewStart.cshtml.g.cs
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Views\Shared\Components\Culture\Default.cshtml.g.cs
@@ -553,5 +554,3 @@ C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Socoro.Web.dll
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\ref\Socoro.Web.dll
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Socoro.Web.pdb
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Socoro.Web.genruntimeconfig.cache
-C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Shared\Views\Carrier\AddCarrier.cshtml.g.cs
-C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Shared\Views\Customer\AddCustomer.cshtml.g.cs

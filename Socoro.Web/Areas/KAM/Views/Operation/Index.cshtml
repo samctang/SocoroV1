@@ -1,12 +1,6 @@
-﻿@{ 
+﻿@{
     ViewData["Title"] = "Operations";
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Index</title>
-</head>
 <body>
     <div class="card card-custom">
         <div class="card-header flex-wrap border-0 pt-6 pb-0">
@@ -105,10 +99,6 @@
                             <div class="modal-body">
                                 <partial name="_AddOperation" />
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary font-weight-bold">Submit</button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -133,25 +123,19 @@
                                 <div class="d-flex align-items-center">
                                     <label class="mr-3 mb-0 d-none d-md-block">Status:</label>
                                     <select class="form-control" id="kt_datatable_search_status">
-                                        <option value="">All</option>
-                                        <option value="1">In Progress</option>
-                                        <option value="2">Completed</option>
+                                        <option value=""></option>
+                                        <option value="In Progress">In Progress</option>
+                                        <option value="Completed">Completed</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-4 my-2 my-md-0">
                                 <div class="d-flex align-items-center">
                                     <label class="mr-3 mb-0 d-none d-md-block">Type:</label>
-                                    <select class="form-control" id="kt_datatable_search_type">
-                                        <option value="">All</option>
-                                        <option value="1">FCL-FOB</option>
-                                    </select>
+                                    <select class="form-control" id="kt_datatable_search_type" name="TypeId"></select>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-xl-4 mt-5 mt-lg-0">
-                        <a href="#" class="btn btn-light-primary px-6 font-weight-bold">Search</a>
                     </div>
                 </div>
             </div>
@@ -163,4 +147,164 @@
     </div>
     <!--end::Card-->
 </body>
-</html>
+<script>
+    var initDataTable = function () {
+        var datatable = $('#kt_datatable').KTDatatable({
+            // datasource definition
+            data: {
+                type: 'remote',
+                source: {
+                    read: {
+                        url: '@Environment.GetEnvironmentVariable("ApiEndpoint")' + '/operation/1/10',
+                        method: 'GET'
+                    },
+                },
+                pageSize: 10,
+            },
+
+            // layout definition
+            layout: {
+                scroll: true, // enable/disable datatable scroll both horizontal and vertical when needed.
+                footer: false // display/hide footer
+            },
+
+            // column sorting
+            sortable: true,
+
+            pagination: true,
+
+            search: {
+                input: $('#kt_datatable_search_query'),
+                key: 'generalSearch'
+            },
+
+            rows: {
+                autoHide: false
+            },
+
+            columns: [{
+                field: 'operationNo',
+                title: 'Follow Up #'
+            }, {
+                field: 'typeId',
+                title: 'Type',
+                template: function (row) {
+                    var result = "";
+                    $.ajax({
+                        url: "@Environment.GetEnvironmentVariable("ApiEndpoint")"+"/OperationType/"+ row.typeId,
+                        data: {},
+                        dataType: 'json',
+                        traditional: true,
+                        async: false,
+                        success: function (data) {
+                            result = data;
+                        }
+                    });
+                    return result.data.description;
+                }
+            }, {
+                field: 'progress',
+                title: 'Progress',
+                template: function (row) {
+                    var range = row.progress / 25;
+                    var divClass = '';
+                        switch (range) {
+                            case 0:
+                                divClass = 'bg-danger';
+                                break;
+                            case 1:
+                                divClass = 'bg-danger';
+                                break;
+                            case 2:
+                                divClass = 'bg-primary';
+                                break;
+                            case 3:
+                                divClass = 'bg-primary';
+                                break;
+                            case 4:
+                                divClass = 'bg-success';
+                                break;
+                        }
+                    return '\
+                        <span class="text-muted mr-2 font-size-sm font-weight-bold">'+row.progress+'%</span >\
+                        <span class="text-muted font-size-sm font-weight-bold">Progress</span>\
+                        <div class="progress progress-xs w-100">\
+                            <div class="progress-bar '+ divClass + '" role="progressbar" style="width: ' + row.progress + '%;" aria-valuenow="'+row.progress+'" aria-valuemin="0" aria-valuemax="100">\
+                            </div >\
+                        </div >';
+                }
+            }, {
+                field: 'status',
+                title: 'Status',
+                template: function (row) {
+                    var spanClass = '';
+                    switch (row.status) {
+                        case 'In Progress':
+                            spanClass = 'label-light-primary';
+                            break;
+                        case 'Completed':
+                            spanClass = 'label-light-success';
+                            break;
+                    }
+                    return '<span class="label font-weight-bold label-lg label-inline '+spanClass+'"> ' + row.status + '</span >';
+                    }
+            }, {
+                field: 'agent',
+                title: 'Agent',
+                template: function (row) {
+                    var result = "";
+                    $.ajax({
+                        url: "@Environment.GetEnvironmentVariable("ApiEndpoint")"+"/Customer/"+ row.agent,
+                        data: {},
+                        dataType: 'json',
+                        traditional: true,
+                        async: false,
+                        success: function (data) {
+                            result = data;
+                        }
+                    });
+                    return result.data.companyName;
+                }
+            }, {
+                field: 'shipper',
+                title: 'Shipper',
+                template: function (row) {
+                    var result = "";
+                    $.ajax({
+                        url: "@Environment.GetEnvironmentVariable("ApiEndpoint")"+"/Customer/"+ row.shipper,
+                        data: {},
+                        dataType: 'json',
+                        traditional: true,
+                        async: false,
+                        success: function (data) {
+                            result = data;
+                        }
+                    });
+                    return result.data.companyName;
+                }
+            }, {
+                field: 'submittedDate',
+                title: 'Created Date',
+                template: function (row) {
+                    return row.submittedDate.substring(0, 10);
+                    },
+            }]
+        });
+        datatable.sort('submittedDate', 'desc');
+        $('#kt_datatable_search_status').on('change', function () {
+                datatable.search($(this).val(), 'status');
+        });
+
+        $('#kt_datatable_search_type').on('change', function () {
+                datatable.search($(this).val(), 'typeId');
+        });
+
+        $('#kt_datatable_search_status, #kt_datatable_search_type').selectpicker();
+    };
+
+
+    $(document).ready(function () {
+        initDataTable();
+    });
+
+</script>

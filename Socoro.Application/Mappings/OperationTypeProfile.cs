@@ -1,4 +1,4 @@
-﻿using Socoro.Application.Features.OperationTypes.Queries.GetAllOperationTypes;
+﻿using Socoro.Application.DTOs.Operation;
 using Socoro.Domain.Entities;
 using AutoMapper;
 
@@ -8,7 +8,7 @@ namespace Socoro.Application.Mappings
     {
         public OperationTypeProfile()
         {
-            CreateMap<GetAllOperationTypesCachedResponse, OperationType>().ReverseMap();
+            CreateMap<OperationTypeResponse, OperationType>().ReverseMap();
         }
     }
 }
