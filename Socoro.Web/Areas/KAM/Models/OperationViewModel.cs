@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Socoro.Domain.Entities;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Socoro.Web.Areas.KAM.Models
@@ -51,10 +53,13 @@ namespace Socoro.Web.Areas.KAM.Models
         public string DestinationZip { get; set; }
         [Display(Name = "Destination Country")]
         public string DestinationCountry { get; set; }
+        public List<OperationProcess> OperationProcesses { get; set; }
         public int Progress { get; set; }
         public string Status { get; set; }
         public DateTime? SubmittedDate { get; set; }
         public DateTime? CompletedDate { get; set; }
         public int CompanyId { get; set; }
+        public int EmployeeId { get; set; }
+
     }
 }

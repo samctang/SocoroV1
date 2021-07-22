@@ -7,6 +7,7 @@ using Socoro.Application.Features.Operations.Commands;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Text;
+using Socoro.Web.Extensions;
 
 namespace Socoro.Web.Areas.KAM.Controllers
 {
@@ -14,6 +15,12 @@ namespace Socoro.Web.Areas.KAM.Controllers
     public class OperationController : BaseController<OperationController>
     {
         HttpClient client = new HttpClient();
+        string requestUri = String.Empty;
+        StringContent stringContent = new StringContent("");
+        string responseBody = String.Empty;
+        HttpResponseMessage response = new HttpResponseMessage();
+        dynamic json= new Object();
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -21,10 +28,6 @@ namespace Socoro.Web.Areas.KAM.Controllers
             operationViewModel.CompanyId = 1;
             //Add other default values
             return View(operationViewModel);
-        }
-        public IActionResult ViewOperation()
-        {
-            return View();
         }
         [HttpPost]
         public async Task<IActionResult> IndexAsync(OperationViewModel operationViewModel)
@@ -35,11 +38,18 @@ namespace Socoro.Web.Areas.KAM.Controllers
                 operationViewModel.Progress = 0;
                 operationViewModel.Status = "In Progress";
                 operationViewModel.SubmittedDate = DateTime.Now;
-                await SetOperationNoAsync(operationViewModel);
+                await SetOperationNumberAsync(operationViewModel);
+
+                requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/operationProcessType/" + operationViewModel.TypeId;
+                response = await client.GetAsync(requestUri);
+                responseBody = await response.Content.ReadAsStringAsync();
+                json = JsonConvert.DeserializeObject(responseBody);
+                //insert into operationprocesses
+
                 var createOperationCommand = _mapper.Map<CreateOperation>(operationViewModel);
-                string requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/operation";
-                var stringContent = new StringContent(JsonConvert.SerializeObject(createOperationCommand), Encoding.UTF8, "application/json");
-                var response = await client.PostAsync(requestUri, stringContent);
+                requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/operation";
+                stringContent = new StringContent(JsonConvert.SerializeObject(createOperationCommand), Encoding.UTF8, "application/json");
+                response = await client.PostAsync(requestUri, stringContent);
                 if (response.IsSuccessStatusCode)
                 {
                     return RedirectToAction("Index", "Operation", new { area = "KAM" });
@@ -49,15 +59,31 @@ namespace Socoro.Web.Areas.KAM.Controllers
                 ModelState.AddModelError("Add_Operation", "Server error");
             return View(operationViewModel);
         }
-        private async Task SetOperationNoAsync(OperationViewModel operationViewModel)
+        [HttpGet]
+        public IActionResult OperationProcess()
+        {
+            OperationProcessViewModel operationProcess = new OperationProcessViewModel();
+            OperationViewModel operationObj = TempData.Get<OperationViewModel>("Operation");
+            return View(operationObj);
+        }
+        [HttpPost]
+        public IActionResult GetOperationDetails([FromBody] OperationViewModel operationViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                TempData.Put("Operation", operationViewModel);
+            }
+            return Json("success");
+        }
+        private async Task SetOperationNumberAsync(OperationViewModel operationViewModel)
         {
             string operationString = String.Empty;
             string operationNum = "00000000";
 
-            string requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/operationType/" + operationViewModel.TypeId;
-            var response = await client.GetAsync(requestUri);
-            string responseBody = await response.Content.ReadAsStringAsync();
-            dynamic json = JsonConvert.DeserializeObject(responseBody);
+            requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/operationType/" + operationViewModel.TypeId;
+            response = await client.GetAsync(requestUri);
+            responseBody = await response.Content.ReadAsStringAsync();
+            json = JsonConvert.DeserializeObject(responseBody);
             string freight = json.data.freight;
             switch (freight)
             {

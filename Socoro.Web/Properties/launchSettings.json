@@ -12,6 +12,7 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
+        "Host": "https://localhost:44312",
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ApiEndpoint": "https://localhost:44377/api",
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"

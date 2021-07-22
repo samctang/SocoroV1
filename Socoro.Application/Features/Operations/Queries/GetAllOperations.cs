@@ -24,11 +24,11 @@ namespace Socoro.Application.Features.Operations.Queries
         }
     }
 
-    public class GGetAllOperationsHandler : IRequestHandler<GetAllOperations, PaginatedResult<OperationResponse>>
+    public class GetAllOperationsHandler : IRequestHandler<GetAllOperations, PaginatedResult<OperationResponse>>
     {
         private readonly IOperationRepository _repository;
 
-        public GGetAllOperationsHandler(IOperationRepository repository)
+        public GetAllOperationsHandler(IOperationRepository repository)
         {
             _repository = repository;
         }

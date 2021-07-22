@@ -1,10 +1,11 @@
-﻿<div class="col-lg-12">
+﻿@model Socoro.Web.Areas.KAM.Models.OperationViewModel;
+<div class="col-lg-12">
     <!--begin::Advance Table Widget 1-->
     <div class="card card-custom card-stretch gutter-b">
         <!--begin::Header-->
         <div class="card-header border-0 py-5">
             <h3 class="card-title align-items-start flex-column">
-                <span class="card-label font-weight-bolder text-dark">Viewing Operation #0000000</span>
+                <span class="card-label font-weight-bolder text-dark">Viewing Operation #@Model.OperationNo</span>
             </h3>
         </div>
         <!--end::Header-->
@@ -54,7 +55,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <partial name="_AddOperation" />
+   
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>

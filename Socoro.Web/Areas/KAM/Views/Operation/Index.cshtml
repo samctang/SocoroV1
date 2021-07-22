@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Operations";
 }
+@using Socoro.Web.Areas.KAM.Models; 
 <body>
     <div class="card card-custom">
         <div class="card-header flex-wrap border-0 pt-6 pb-0">
@@ -179,7 +180,20 @@
             },
 
             rows: {
-                autoHide: false
+                autoHide: false,
+                afterTemplate: function(row, data, index) {
+                    datatable.row(row).on('click', function () {
+                        $.ajax({
+                            url: "/KAM/Operation/GetOperationDetails/",
+                            type: 'POST',
+                            data: JSON.stringify(data),
+                            contentType: 'application/json; charset=utf-8',
+                            processData: true,
+                        }).done(function (result) {
+                            location.href = "/KAM/Operation/OperationProcess/";
+                        });
+                    });
+                }
             },
 
             columns: [{
@@ -290,7 +304,9 @@
                     },
             }]
         });
+
         datatable.sort('submittedDate', 'desc');
+
         $('#kt_datatable_search_status').on('change', function () {
                 datatable.search($(this).val(), 'status');
         });
@@ -300,8 +316,8 @@
         });
 
         $('#kt_datatable_search_status, #kt_datatable_search_type').selectpicker();
-    };
 
+    };
 
     $(document).ready(function () {
         initDataTable();

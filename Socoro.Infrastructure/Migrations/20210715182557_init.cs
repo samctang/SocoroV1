@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Socoro.Infrastructure.Migrations
 {
-    public partial class initial : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -135,6 +135,7 @@ namespace Socoro.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TypeId = table.Column<int>(type: "int", nullable: false),
+                    Process = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -280,6 +281,30 @@ namespace Socoro.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "EmployeeNotes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmployeeId = table.Column<int>(type: "int", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmployeeNotes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EmployeeNotes_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Operations",
                 columns: table => new
                 {
@@ -312,6 +337,7 @@ namespace Socoro.Infrastructure.Migrations
                     SubmittedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CompletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CompanyId = table.Column<int>(type: "int", nullable: true),
+                    EmployeeId = table.Column<int>(type: "int", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -326,26 +352,8 @@ namespace Socoro.Infrastructure.Migrations
                         principalTable: "Companies",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EmployeeNotes",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EmployeeId = table.Column<int>(type: "int", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EmployeeNotes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_EmployeeNotes_Employees_EmployeeId",
+                        name: "FK_Operations_Employees_EmployeeId",
                         column: x => x.EmployeeId,
                         principalTable: "Employees",
                         principalColumn: "Id",
@@ -406,6 +414,11 @@ namespace Socoro.Infrastructure.Migrations
                 name: "IX_Operations_CompanyId",
                 table: "Operations",
                 column: "CompanyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Operations_EmployeeId",
+                table: "Operations",
+                column: "EmployeeId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -444,10 +457,10 @@ namespace Socoro.Infrastructure.Migrations
                 name: "OperationTypes");
 
             migrationBuilder.DropTable(
-                name: "Employees");
+                name: "Operations");
 
             migrationBuilder.DropTable(
-                name: "Operations");
+                name: "Employees");
 
             migrationBuilder.DropTable(
                 name: "Companies");

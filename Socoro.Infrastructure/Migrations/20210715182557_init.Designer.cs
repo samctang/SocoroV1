@@ -10,8 +10,8 @@ using Socoro.Infrastructure.DbContexts;
 namespace Socoro.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210713193033_initial")]
-    partial class initial
+    [Migration("20210715182557_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -547,6 +547,9 @@ namespace Socoro.Infrastructure.Migrations
                     b.Property<string>("DestinationZip")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("EmployeeId")
+                        .HasColumnType("int");
+
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -601,6 +604,8 @@ namespace Socoro.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CompanyId");
+
+                    b.HasIndex("EmployeeId");
 
                     b.ToTable("Operations");
                 });
@@ -661,6 +666,9 @@ namespace Socoro.Infrastructure.Migrations
 
                     b.Property<DateTime?>("LastModifiedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Process")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TypeId")
                         .HasColumnType("int");
@@ -742,7 +750,13 @@ namespace Socoro.Infrastructure.Migrations
                         .WithMany("Operations")
                         .HasForeignKey("CompanyId");
 
+                    b.HasOne("Socoro.Domain.Entities.Employee", "Employee")
+                        .WithMany("Operations")
+                        .HasForeignKey("EmployeeId");
+
                     b.Navigation("Company");
+
+                    b.Navigation("Employee");
                 });
 
             modelBuilder.Entity("Socoro.Domain.Entities.OperationProcess", b =>
@@ -768,6 +782,8 @@ namespace Socoro.Infrastructure.Migrations
             modelBuilder.Entity("Socoro.Domain.Entities.Employee", b =>
                 {
                     b.Navigation("EmployeeNotes");
+
+                    b.Navigation("Operations");
                 });
 
             modelBuilder.Entity("Socoro.Domain.Entities.Operation", b =>

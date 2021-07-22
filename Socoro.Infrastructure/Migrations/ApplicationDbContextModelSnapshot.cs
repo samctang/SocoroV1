@@ -665,6 +665,9 @@ namespace Socoro.Infrastructure.Migrations
                     b.Property<DateTime?>("LastModifiedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Process")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("TypeId")
                         .HasColumnType("int");
 

@@ -524,7 +524,7 @@ C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_Validation
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\KAM\Views\Operation\Index.cshtml.g.cs
-C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\KAM\Views\Operation\ViewOperation.cshtml.g.cs
+C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\KAM\Views\Operation\OperationProcess.cshtml.g.cs
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\KAM\Views\Operation\_AddOperation.cshtml.g.cs
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Shared\Views\Carrier\AddCarrier.cshtml.g.cs
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Shared\Views\Customer\AddCustomer.cshtml.g.cs

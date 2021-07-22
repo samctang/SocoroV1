@@ -30,6 +30,9 @@ namespace Socoro.Infrastructure.Extensions
             services.AddTransient<IOperationCacheRepository, OperationCacheRepository>();
             services.AddTransient<IOperationTypeRepository, OperationTypeRepository>();
             services.AddTransient<IOperationTypeCacheRepository, OperationTypeCacheRepository>();
+            services.AddTransient<IOperationProcessRepository, OperationProcessRepository>();
+            services.AddTransient<IOperationProcessTypeRepository, OperationProcessTypeRepository>();
+            services.AddTransient<IOperationProcessTypeCacheRepository, OperationProcessTypeCacheRepository>();
             services.AddTransient<ILogRepository, LogRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
 
