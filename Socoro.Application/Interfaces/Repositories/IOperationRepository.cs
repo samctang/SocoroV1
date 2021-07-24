@@ -11,6 +11,7 @@ namespace Socoro.Application.Interfaces.Repositories
 
         Task<List<Operation>> GetListAsync();
 
+        Task<Operation> GetByOperationNoAsync(string operationNo);
         Task<Operation> GetByIdAsync(int operationId);
 
         Task<int> InsertAsync(Operation operation);
@@ -18,6 +19,6 @@ namespace Socoro.Application.Interfaces.Repositories
         Task UpdateAsync(Operation operation);
 
         Task DeleteAsync(Operation operation);
-        Task<Operation> GetLastOperationByIdAsync(int id);
+        Task<Operation> GetLastOperationByTypeIdAsync(int typeId);
     }
 }

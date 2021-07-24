@@ -10,5 +10,6 @@ namespace Socoro.Application.Interfaces.Repositories
         IQueryable<OperationProcessType> OperationProcessTypes { get; }
 
         Task<List<OperationProcessType>> GetByTypeIdAsync(int operationTypeId);
+        Task<OperationProcessType> GetByIdAsync(int operationProcessTypeId);
     }
 }

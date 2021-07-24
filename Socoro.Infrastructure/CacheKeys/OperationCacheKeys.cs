@@ -6,8 +6,6 @@
 
         public static string SelectListKey => "OperationSelectList";
 
-        public static string GetKey(int operationId) => $"Operation-{operationId}";
-
-        public static string GetDetailsKey(int operationId) => $"OperationDetails-{operationId}";
+        public static string GetKey(int operationId) => $"OperationId-{operationId}";
     }
 }

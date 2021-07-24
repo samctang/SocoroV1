@@ -8,6 +8,6 @@ namespace Socoro.Infrastructure.CacheKeys
 
         public static string CompanyListKey => "CompanyList";
 
-        public static string GetKey(int customerId) => $"Customer-{customerId}";
+        public static string GetKey(int customerId) => $"CustomerId-{customerId}";
     }
 }

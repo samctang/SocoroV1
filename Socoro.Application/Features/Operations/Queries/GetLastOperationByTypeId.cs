@@ -9,24 +9,24 @@ using Socoro.Application.DTOs.Operation;
 
 namespace Socoro.Application.Features.Operations.Queries
 {
-    public class GetLastOperationById : IRequest<Result<OperationResponse>>
+    public class GetLastOperationByTypeId : IRequest<Result<OperationResponse>>
     {
-        public int Id { get; set; }
+        public int TypeId { get; set; }
     }
-    public class GetLastOperationByIdHandler : IRequestHandler<GetLastOperationById, Result<OperationResponse>>
+    public class GetLastOperationByTypeIdHandler : IRequestHandler<GetLastOperationByTypeId, Result<OperationResponse>>
     {
         private readonly IOperationRepository _operationRepository;
         private readonly IMapper _mapper;
 
-        public GetLastOperationByIdHandler(IOperationRepository operationRepository, IMapper mapper)
+        public GetLastOperationByTypeIdHandler(IOperationRepository operationRepository, IMapper mapper)
         {
             _operationRepository = operationRepository;
             _mapper = mapper;
         }
 
-        public async Task<Result<OperationResponse>> Handle(GetLastOperationById query, CancellationToken cancellationToken)
+        public async Task<Result<OperationResponse>> Handle(GetLastOperationByTypeId query, CancellationToken cancellationToken)
         {
-            var operation = await _operationRepository.GetLastOperationByIdAsync(query.Id);
+            var operation = await _operationRepository.GetLastOperationByTypeIdAsync(query.TypeId);
             var mappedOperation = _mapper.Map<OperationResponse>(operation);
             return Result<OperationResponse>.Success(mappedOperation);
         }

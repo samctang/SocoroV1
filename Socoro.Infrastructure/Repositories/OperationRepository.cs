@@ -32,10 +32,14 @@ namespace Socoro.Infrastructure.Repositories
         {
             return await _repository.Entities.Where(p => p.Id == operationId).FirstOrDefaultAsync();
         }
-
-        public async Task<Operation> GetLastOperationByIdAsync(int id)
+        public async Task<Operation> GetByOperationNoAsync(string operationNo)
         {
-            return await _repository.Entities.Where(i => i.Id == id).OrderBy(x => x.Id).LastOrDefaultAsync();
+            return await _repository.Entities.Where(p => p.OperationNo == operationNo).FirstOrDefaultAsync();
+        }
+
+        public async Task<Operation> GetLastOperationByTypeIdAsync(int typeId)
+        {
+            return await _repository.Entities.Where(i => i.TypeId == typeId).OrderBy(x => x.Id).LastOrDefaultAsync();
         }
 
         public async Task<List<Operation>> GetListAsync()

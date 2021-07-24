@@ -21,16 +21,28 @@ namespace Socoro.Infrastructure.Repositories
             _operationProcessTypeRepository = operationProcessTypeRepository;
         }
 
-        public async Task<List<OperationProcessType>> GetByTypeIdAsync(int operationProcessTypeId)
+        public async Task<List<OperationProcessType>> GetByTypeIdAsync(int operationTypeId)
         {
             string cacheKey = OperationProcessTypeCacheKeys.SelectListKey;
             var operationProcessTypeList = await _distributedCache.GetAsync<List<OperationProcessType>>(cacheKey);
             if (operationProcessTypeList == null)
             {
-                operationProcessTypeList = await _operationProcessTypeRepository.GetByTypeIdAsync(operationProcessTypeId);
+                operationProcessTypeList = await _operationProcessTypeRepository.GetByTypeIdAsync(operationTypeId);
                 await _distributedCache.SetAsync(cacheKey, operationProcessTypeList);
             }
             return operationProcessTypeList;
+        }
+
+        public async Task<OperationProcessType> GetByIdAsync(int operationProcessTypeId)
+        {
+            string cacheKey = OperationProcessTypeCacheKeys.GetKey(operationProcessTypeId);
+            var operationProcessType = await _distributedCache.GetAsync<OperationProcessType>(cacheKey);
+            if (operationProcessType == null)
+            {
+                operationProcessType = await _operationProcessTypeRepository.GetByIdAsync(operationProcessTypeId);
+                await _distributedCache.SetAsync(cacheKey, operationProcessType);
+            }
+            return operationProcessType;
         }
     }
 }

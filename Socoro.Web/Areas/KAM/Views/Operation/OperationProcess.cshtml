@@ -1,70 +1,186 @@
 ﻿@model Socoro.Web.Areas.KAM.Models.OperationViewModel;
-<div class="col-lg-12">
-    <!--begin::Advance Table Widget 1-->
-    <div class="card card-custom card-stretch gutter-b">
-        <!--begin::Header-->
-        <div class="card-header border-0 py-5">
-            <h3 class="card-title align-items-start flex-column">
-                <span class="card-label font-weight-bolder text-dark">Viewing Operation #@Model.OperationNo</span>
-            </h3>
-        </div>
-        <!--end::Header-->
-        <!--begin::Body-->
-        <div class="card-body py-0">
-            <!--begin::Table-->
-            <div class="table-responsive">
-                <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_1">
-                    <thead>
-                        <tr class="text-left">
-                            <th style="min-width: 150px">Step-by-Step</th>
-                            <th style="min-width: 150px">Goal</th>
-                            <th style="width: 50px">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="pr-0">
-                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">Create New Operation</span>
-                            </td>
-                            <td class="pl-0">
-                                <button type="button" class="btn" data-toggle="modal" data-target="#modal">
-                                    <span class="text-dark-75 font-weight-bolder d-block font-size-lg">Create New Operation</span>
-                                </button>
-                            </td>
-                            <td class="pl-0">
-                                <label class="checkbox checkbox-lg checkbox-inline">
-                                    <input type="checkbox" value="1" />
-                                    <span></span>
-                                </label>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+<script language="JavaScript" type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
+<!--begin::Subheader-->
+<div class="subheader py-2 py-lg-6 subheader-transparent" id="kt_subheader">
+    <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+        <!--begin::Info-->
+        <div class="d-flex align-items-center flex-wrap">
+            <!--begin::Page Title-->
+            <div class="dropdown mt-2 mb-2 mr-3 ml-5">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Actions
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">View Info</a>
+                    <a class="dropdown-item" href="#">Input SLI</a>
+                    <a class="dropdown-item" href="#">Request SLI</a>
+                    <a class="dropdown-item" href="#">Input Invoice</a>
+                    <a class="dropdown-item" href="#">Request Invoice</a>
+                    <a class="dropdown-item" href="#">Input Insurance</a>
+                    <a class="dropdown-item" href="#">Edit Operation</a>
+                    <a class="dropdown-item" href="#">Send All Documentation</a>
+                </div>
             </div>
-            <!--end::Table-->
+            <div class="dropdown mt-2 mb-2">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    View Files
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">SLI</a>
+                    <a class="dropdown-item" href="#">Booking Sheet</a>
+                    <a class="dropdown-item" href="#">Insurance</a>
+                </div>
+            </div>
+            <!--end::Page Title-->
         </div>
-        <!--end::Body-->
-        <!--begin::Modals-->
-        <div class="modal fade" id="modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">New Operation</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <i aria-hidden="true" class="ki ki-close"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-   
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary font-weight-bold">Submit</button>
-                    </div>
+        <!--end::Info-->
+        <!--begin::Toolbar-->
+        <div class="d-flex align-items-center flex-wrap">
+            <div class="dropdown mt-2 mb-2 mr-5">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Difficulty
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Easy</a>
+                    <a class="dropdown-item" href="#">Medium</a>
+                    <a class="dropdown-item" href="#">Hard</a>
                 </div>
             </div>
         </div>
-        <!--end::Modals-->
+        <!--end::Toolbar-->
     </div>
-    <!--end::Advance Table Widget 1-->
 </div>
+<!--end::Subheader-->
+<!--begin::Entry-->
+<div class="d-flex flex-column-fluid">
+    <div class="container">
+        <!--end::Content-->
+        <div class="col-lg-12">
+            <!--begin::Advance Table Widget 1-->
+            <div class="card card-custom card-stretch gutter-b">
+                <!--begin::Header-->
+                <div class="card-header border-0 py-5">
+                    <h3 class="card-title align-items-start flex-column">
+                        <span class="card-label font-weight-bolder text-dark">Viewing Operation #@Model.OperationNo</span>
+                    </h3>
+                </div>
+                <!--end::Header-->
+                <div class="card-body">
+                    <!--begin: Datatable-->
+                    <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
+                    <!--end: Datatable-->
+                </div>
+                <!--end::Body-->
+                <!--begin::Modals-->
+                <div class="modal fade" id="modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">New Operation</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <i aria-hidden="true" class="ki ki-close"></i>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary font-weight-bold">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end::Modals-->
+            </div>
+            <!--end::Advance Table Widget 1-->
+        </div>
+    </div>
+    <!--end::Entry-->
+</div>
+
+<script>
+    var initDataTable = function () {
+        var datatable = $('#kt_datatable').KTDatatable({
+            // datasource definition
+            data: {
+                type: 'remote',
+                source: {
+                    read: {
+                        url: '@Environment.GetEnvironmentVariable("ApiEndpoint")' + '/OperationProcess/' + @Model.Id,
+                        method: 'GET'
+                    },
+                },
+                pageSize: 10,
+            },
+
+            // layout definition
+            layout: {
+                scroll: true, // enable/disable datatable scroll both horizontal and vertical when needed.
+                footer: false // display/hide footer
+            },
+
+            // column sorting
+            sortable: false,
+
+            pagination: false,
+
+            search: {
+                input: $('#kt_datatable_search_query'),
+                key: 'generalSearch'
+            },
+
+            rows: {
+                autoHide: false
+            },
+
+            columns: [{
+                field: 'process',
+                title: 'Step',
+                template: function (row) {
+                    var result = "";
+                    $.ajax({
+                        url: "@Environment.GetEnvironmentVariable("ApiEndpoint")"+"/OperationProcessType/0/"+ row.typeId,
+                        data: {},
+                        dataType: 'json',
+                        traditional: true,
+                        async: false,
+                        success: function (data) {
+                            result = data;
+                        }
+                    });
+                    return result.data.process;
+                }
+            }, {
+                field: 'description',
+                title: 'Objective',
+                template: function (row) {
+                    var result = "";
+                    $.ajax({
+                        url: "@Environment.GetEnvironmentVariable("ApiEndpoint")"+"/OperationProcessType/0/"+ row.typeId,
+                        data: {},
+                        dataType: 'json',
+                        traditional: true,
+                        async: false,
+                        success: function (data) {
+                            result = data;
+                        }
+                    });
+                    return result.data.description;
+                }
+            }, {
+                field: 'status',
+                title: 'Status',
+            }]
+        });
+
+        $(datatable.table).on('click', 'tbody tr', function () {
+            console.log($(this).data('row'));
+            $('#modal').modal('show');
+        });
+    };
+
+    $(document).ready(function () {
+        initDataTable();
+    });
+</script>

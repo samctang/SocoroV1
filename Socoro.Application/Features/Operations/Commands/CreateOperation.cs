@@ -38,6 +38,7 @@ namespace Socoro.Application.Features.Operations.Commands
         public int Progress { get; set; }
         public string Status { get; set; }
         public int CompanyId { get; set; }
+        public int EmployeeId { get; set; }
     }
 
     public class CreateOperationHandler : IRequestHandler<CreateOperation, Result<int>>

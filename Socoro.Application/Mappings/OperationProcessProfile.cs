@@ -2,6 +2,7 @@
 using Socoro.Application.DTOs.Operation;
 using Socoro.Domain.Entities;
 using AutoMapper;
+using Socoro.Application.Features.OperationProcesses.Queries;
 
 namespace Socoro.Application.Mappings
 {
@@ -10,7 +11,8 @@ namespace Socoro.Application.Mappings
         public OperationProcessProfile()
         {
             CreateMap<CreateOperationProcess, OperationProcess>().ReverseMap();
-            CreateMap<OperationResponse, OperationProcess>().ReverseMap();
+            CreateMap<GetOperationProcessByOperationId, OperationProcess>().ReverseMap();
+            CreateMap<OperationProcessResponse, OperationProcess>().ReverseMap();
         }
 
     }

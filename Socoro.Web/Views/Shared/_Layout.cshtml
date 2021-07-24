@@ -171,36 +171,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!--end::Header-->
                 <!--begin::Content-->
                 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-                    <!--begin::Subheader-->
-                    <div class="subheader py-2 py-lg-6 subheader-transparent" id="kt_subheader">
-                        <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-                            <!--begin::Info-->
-                            <div class="d-flex align-items-center flex-wrap mr-2">
-                                <!--begin::Page Title-->
-                                <h5 class="text-dark font-weight-bold mt-2 mb-2 mr-5">@ViewData["Title"]</h5>
-                                <!--end::Page Title-->
-                            </div>
-                            <!--end::Info-->
-                            <!--begin::Toolbar-->
-                            <div class="d-flex align-items-center flex-wrap">
-                                <!--begin::Daterange-->
-                                <a href="#" class="btn btn-bg-white font-weight-bold mr-3 my-2 my-lg-0" id="kt_dashboard_daterangepicker" data-toggle="tooltip" title="Select dashboard daterange" data-placement="left">
-                                    <span class="text-muted font-weight-bold mr-2" id="kt_dashboard_daterangepicker_title">Today</span>
-                                    <span class="text-primary font-weight-bolder" id="kt_dashboard_daterangepicker_date"></span>
-                                </a>
-                                <!--end::Daterange-->
-                            </div>
-                            <!--end::Toolbar-->
-                        </div>
-                    </div>
-                    <!--end::Subheader-->
-                    <!--begin::Entry-->
-                    <div class="d-flex flex-column-fluid">
-                        <div class="container">
-                            @RenderBody()
-                        </div>
-                        <!--end::Entry-->
-                    </div>
+                    @RenderBody()
                     <!--end::Content-->
                     <!--begin::Footer-->
                     <div class="footer bg-white py-4 d-flex flex-lg-column" id="kt_footer">

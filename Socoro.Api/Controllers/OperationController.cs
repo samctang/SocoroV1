@@ -12,24 +12,31 @@ namespace Socoro.Api.Controllers
     public class OperationController : BaseApiController<OperationController>
     {
         [EnableCors("GET")]
-        [HttpGet("{pageNumber}/{pageSize}")]
+        [HttpGet("0/{pageNumber}/{pageSize}")]
         public async Task<IActionResult> GetAll(int pageNumber, int pageSize)
         {
             var operations = await _mediator.Send(new GetAllOperations(pageNumber, pageSize));
             return Ok(operations);
         }
         [EnableCors("GET")]
-        [HttpGet("{id}")]
+        [HttpGet("1/{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             var operation = await _mediator.Send(new GetOperationById() { Id = id });
             return Ok(operation);
         }
         [EnableCors("GET")]
-        [HttpGet]
-        public async Task<IActionResult> GetLastOperationById(int id)
+        [HttpGet("2/{operationNo}")]
+        public async Task<IActionResult> GetByOperationNo(string operationNo)
         {
-            var operation = await _mediator.Send(new GetLastOperationById() { Id = id });
+            var operation = await _mediator.Send(new GetOperationByOperationNo() { OperationNo = operationNo });
+            return Ok(operation);
+        }
+        [EnableCors("GET")]
+        [HttpGet]
+        public async Task<IActionResult> GetLastOperationByTypeId(int typeId)
+        {
+            var operation = await _mediator.Send(new GetLastOperationByTypeId() { TypeId = typeId });
             return Ok(operation);
         }
         // POST api/<controller>

@@ -6,7 +6,7 @@ namespace Socoro.Application.Interfaces.CacheRepositories
 {
     public interface IOperationProcessTypeCacheRepository
     {
-
         Task<List<OperationProcessType>> GetByTypeIdAsync(int operationTypeId);
+        Task<OperationProcessType> GetByIdAsync(int operationProcessTypeId);
     }
 }

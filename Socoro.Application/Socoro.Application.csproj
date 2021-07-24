@@ -21,7 +21,4 @@
   <ItemGroup>
     <ProjectReference Include="..\Socoro.Domain\Socoro.Domain.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Features\OperationProcesses\Queries\" />
-  </ItemGroup>
 </Project>

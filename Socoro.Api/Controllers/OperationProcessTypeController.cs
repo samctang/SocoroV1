@@ -11,10 +11,17 @@ namespace Socoro.Api.Controllers
     public class OperationProcessTypeController : BaseApiController<OperationProcessTypeController>
     {
         [EnableCors("GET")]
-        [HttpGet]
+        [HttpGet("0/{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var operation = await _mediator.Send(new GetOperationProcessTypeById() { Id = id });
+            return Ok(operation);
+        }
+        [EnableCors("GET")]
+        [HttpGet("1/{typeId}")]
         public async Task<IActionResult> GetByTypeId(int typeId)
         {
-            var operation = await _mediator.Send(new GetOperationProcessByTypeId() { TypeId = typeId });
+            var operation = await _mediator.Send(new GetOperationProcessTypeByTypeId() { TypeId = typeId });
             return Ok(operation);
         }
     }

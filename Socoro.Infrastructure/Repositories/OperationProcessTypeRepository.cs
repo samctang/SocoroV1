@@ -20,9 +20,14 @@ namespace Socoro.Infrastructure.Repositories
 
         public IQueryable<OperationProcessType> OperationProcessTypes => _repository.Entities;
 
-        public async Task<List<OperationProcessType>> GetByTypeIdAsync(int operationProcessTypeId)
+        public async Task<List<OperationProcessType>> GetByTypeIdAsync(int operationTypeId)
         {
-            return await _repository.Entities.Where(p => p.TypeId == operationProcessTypeId).ToListAsync();
+            return await _repository.Entities.Where(p => p.TypeId == operationTypeId).ToListAsync();
         }
+        public async Task<OperationProcessType> GetByIdAsync(int operationProcessTypeId)
+        {
+            return await _repository.Entities.Where(p => p.Id == operationProcessTypeId).FirstOrDefaultAsync();
+        }
+
     }
 }

@@ -9,26 +9,26 @@ using System.Collections.Generic;
 
 namespace Socoro.Application.Features.OperationProcessTypes.Queries
 {
-    public class GetOperationProcessByTypeId : IRequest<Result<List<OperationProcessTypeResponse>>>
+    public class GetOperationProcessTypeByTypeId : IRequest<Result<List<OperationProcessTypeResponse>>>
     {
         public int TypeId { get; set; }
     }
-    public class GetOperationProcessByTypeIdHandler : IRequestHandler<GetOperationProcessByTypeId, Result<List<OperationProcessTypeResponse>>>
+    public class GetOperationProcessTypeByTypeIdHandler : IRequestHandler<GetOperationProcessTypeByTypeId, Result<List<OperationProcessTypeResponse>>>
     {
         private readonly IOperationProcessTypeCacheRepository _operationProcessTypeCache;
         private readonly IMapper _mapper;
 
-        public GetOperationProcessByTypeIdHandler(IOperationProcessTypeCacheRepository operationProcessTypeCache, IMapper mapper)
+        public GetOperationProcessTypeByTypeIdHandler(IOperationProcessTypeCacheRepository operationProcessTypeCache, IMapper mapper)
         {
             _operationProcessTypeCache = operationProcessTypeCache;
             _mapper = mapper;
         }
 
-        public async Task<Result<List<OperationProcessTypeResponse>>> Handle(GetOperationProcessByTypeId query, CancellationToken cancellationToken)
+        public async Task<Result<List<OperationProcessTypeResponse>>> Handle(GetOperationProcessTypeByTypeId query, CancellationToken cancellationToken)
         {
             var operationProcessTypeList = await _operationProcessTypeCache.GetByTypeIdAsync(query.TypeId);
-            var mappedOperationProcessTypes = _mapper.Map<List<OperationProcessTypeResponse>>(operationProcessTypeList);
-            return Result<List<OperationProcessTypeResponse>>.Success(mappedOperationProcessTypes);
+            var mappedOperationProcessType = _mapper.Map<List<OperationProcessTypeResponse>>(operationProcessTypeList);
+            return Result<List<OperationProcessTypeResponse>>.Success(mappedOperationProcessType);
         }
     }
 }

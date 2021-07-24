@@ -10,7 +10,7 @@ using Socoro.Infrastructure.DbContexts;
 namespace Socoro.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210715182557_init")]
+    [Migration("20210722181213_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
