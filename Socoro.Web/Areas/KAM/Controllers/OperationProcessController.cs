@@ -27,12 +27,11 @@ namespace Socoro.Web.Areas.KAM.Controllers
             OperationProcessViewModel operationProcessObj = new OperationProcessViewModel();
 
             string currentOperationNo = (string)TempData["OperationNo"];
-            TempData.Remove("OperationNo");
 
             requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/Operation/2/" + currentOperationNo;
             response = await client.GetAsync(requestUri);
             responseBody = await response.Content.ReadAsStringAsync();
-            Wrapper wrapper = JsonConvert.DeserializeObject<Wrapper>(responseBody);
+            JsonOperationWrapper wrapper = JsonConvert.DeserializeObject<JsonOperationWrapper>(responseBody);
             operationObj = wrapper.data;
 
             requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/OperationProcess/" + operationObj.Id;
@@ -62,5 +61,12 @@ namespace Socoro.Web.Areas.KAM.Controllers
             TempData["OperationNo"] = currentOperationNo;
             return View(operationObj);
         }
+    }
+    internal class JsonOperationWrapper
+    {
+        public OperationViewModel data { get; set; }
+        public string message { get; set; }
+        public bool failed { get; set; }
+        public bool succeeded { get; set; }
     }
 }

@@ -7,7 +7,6 @@ using Socoro.Application.Features.Operations.Commands;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Text;
-using Socoro.Application.Features.OperationProcesses.Commands;
 
 namespace Socoro.Web.Areas.KAM.Controllers
 {
@@ -55,51 +54,9 @@ namespace Socoro.Web.Areas.KAM.Controllers
                 ModelState.AddModelError("Add_Operation", "Server error");
             return View(operationViewModel);
         }
-        [HttpGet]
-        public async Task<IActionResult> OperationProcessAsync()
-        {
-            OperationViewModel operationObj = new OperationViewModel();
-            OperationProcessViewModel operationProcessObj = new OperationProcessViewModel();
-
-            string currentOperationNo = (string)TempData["OperationNo"];
-
-            requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/Operation/2/" + currentOperationNo;
-            response = await client.GetAsync(requestUri);
-            responseBody = await response.Content.ReadAsStringAsync();
-            Wrapper wrapper = JsonConvert.DeserializeObject<Wrapper>(responseBody);
-            operationObj = wrapper.data;
-
-            requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/OperationProcess/" + operationObj.Id;
-            response = await client.GetAsync(requestUri);
-            responseBody = await response.Content.ReadAsStringAsync();
-            json = JsonConvert.DeserializeObject(responseBody);
-            if (json.data.Count == 0)
-            {
-                requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/operationProcessType/1/" + operationObj.TypeId;
-                response = await client.GetAsync(requestUri);
-                responseBody = await response.Content.ReadAsStringAsync();
-                json = JsonConvert.DeserializeObject(responseBody);
-                foreach (var item in json.data)
-                {
-                    operationProcessObj.TypeId = item.id;
-                    operationProcessObj.Status = "In Progress";
-                    operationProcessObj.OperationId = operationObj.Id;
-
-                    operationObj.OperationProcesses.Add(operationProcessObj);
-
-                    var createOperationProcessCommand = _mapper.Map<CreateOperationProcess>(operationProcessObj);
-                    requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/operationProcess";
-                    stringContent = new StringContent(JsonConvert.SerializeObject(createOperationProcessCommand), Encoding.UTF8, "application/json");
-                    response = await client.PostAsync(requestUri, stringContent);
-                }
-            }
-            return View(operationObj);
-
-        }
         [HttpPost]
         public IActionResult GetOperationDetails([FromBody] string operationNo)
         {
-            TempData.Remove("OperationNo");
             TempData["OperationNo"] = operationNo;
             return Json("success");
         }
@@ -138,16 +95,5 @@ namespace Socoro.Web.Areas.KAM.Controllers
             operationString += operationViewModel.TypeId.ToString("00") + operationNum;
             operationViewModel.OperationNo = operationString;
         }
-    }
-    public class Wrapper
-    {
-        public Data data { get; set; }
-        public string message { get; set; }
-        public bool failed { get; set; }
-        public bool succeeded { get; set; }
-    }
-    public class Data : OperationViewModel
-    {
-        
     }
 }
