@@ -33,7 +33,7 @@ namespace Socoro.Api.Controllers
             return Ok(operation);
         }
         [EnableCors("GET")]
-        [HttpGet]
+        [HttpGet("3/{typeId}")]
         public async Task<IActionResult> GetLastOperationByTypeId(int typeId)
         {
             var operation = await _mediator.Send(new GetLastOperationByTypeId() { TypeId = typeId });

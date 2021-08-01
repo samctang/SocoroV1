@@ -34,6 +34,11 @@ namespace Socoro.Infrastructure.DbContexts
         public DbSet<OperationType> OperationTypes { get; set; }
         public DbSet<OperationProcess> OperationProcesses { get; set; }
         public DbSet<OperationProcessType> OperationProcessTypes { get; set; }
+        public DbSet<Container> Containers { get; set; }
+        public DbSet<OperationBooking> OperationBookings { get; set; }
+        public DbSet<OperationBookingMessage> OperationBookingMessages { get; set; }
+        public DbSet<OperationCargo> OperationCargos { get; set; }
+        public DbSet<OperationQuote> OperationQuotes { get; set; }
 
         public IDbConnection Connection => Database.GetDbConnection();
 

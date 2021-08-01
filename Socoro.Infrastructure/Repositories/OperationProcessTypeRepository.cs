@@ -22,7 +22,7 @@ namespace Socoro.Infrastructure.Repositories
 
         public async Task<List<OperationProcessType>> GetByTypeIdAsync(int operationTypeId)
         {
-            return await _repository.Entities.Where(p => p.TypeId == operationTypeId).ToListAsync();
+            return await _repository.Entities.Where(p => p.OperationTypeId == operationTypeId).ToListAsync();
         }
         public async Task<OperationProcessType> GetByIdAsync(int operationProcessTypeId)
         {

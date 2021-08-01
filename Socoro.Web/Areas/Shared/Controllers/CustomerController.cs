@@ -13,12 +13,8 @@ namespace Socoro.Web.Areas.Shared.Controllers
     [Area("Shared")]
     public class CustomerController : BaseController<CustomerController>
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
         [HttpGet]
-        public IActionResult AddCustomer(int id)
+        public IActionResult Index(int id)
         {
             CustomerViewModel customerViewModel = new CustomerViewModel();
             //Add default values

@@ -28,7 +28,4 @@
     <ProjectReference Include="..\Socoro.Application\Socoro.Application.csproj" />
     <ProjectReference Include="..\Socoro.Domain\Socoro.Domain.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
 </Project>

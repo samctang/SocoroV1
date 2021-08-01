@@ -252,6 +252,62 @@ namespace Socoro.Infrastructure.Migrations
                     b.ToTable("CompanyTypes");
                 });
 
+            modelBuilder.Entity("Socoro.Domain.Entities.Container", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("CommercialDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContainerNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("GrossWeight")
+                        .HasColumnType("int");
+
+                    b.Property<string>("HazardClass")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Hazardous")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("OperationCargoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SealNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TareWeight")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UNCode")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OperationCargoId");
+
+                    b.ToTable("Containers");
+                });
+
             modelBuilder.Entity("Socoro.Domain.Entities.Customer", b =>
                 {
                     b.Property<int>("Id")
@@ -503,11 +559,14 @@ namespace Socoro.Infrastructure.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("Agent")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Agent")
+                        .HasColumnType("int");
 
                     b.Property<string>("AgentRefNo")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Carrier")
+                        .HasColumnType("int");
 
                     b.Property<int?>("CompanyId")
                         .HasColumnType("int");
@@ -515,8 +574,8 @@ namespace Socoro.Infrastructure.Migrations
                     b.Property<DateTime?>("CompletedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Consignee")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Consignee")
+                        .HasColumnType("int");
 
                     b.Property<string>("ConsigneeRefNo")
                         .HasColumnType("nvarchar(max)");
@@ -584,8 +643,8 @@ namespace Socoro.Infrastructure.Migrations
                     b.Property<int>("Progress")
                         .HasColumnType("int");
 
-                    b.Property<string>("Shipper")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Shipper")
+                        .HasColumnType("int");
 
                     b.Property<string>("ShipperRefNo")
                         .HasColumnType("nvarchar(max)");
@@ -606,6 +665,167 @@ namespace Socoro.Infrastructure.Migrations
                     b.HasIndex("EmployeeId");
 
                     b.ToTable("Operations");
+                });
+
+            modelBuilder.Entity("Socoro.Domain.Entities.OperationBooking", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("ArrivalDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("BookingNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CargoDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<TimeSpan>("CargoTime")
+                        .HasColumnType("time");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DepartureDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DocumentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<TimeSpan>("DocumentTime")
+                        .HasColumnType("time");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("OperationCargoId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Ramp")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("RampDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("VGMDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Vessel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Voyage")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OperationCargoId");
+
+                    b.ToTable("OperationBookings");
+                });
+
+            modelBuilder.Entity("Socoro.Domain.Entities.OperationBookingMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int?>("CarrierId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CarrierId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("OperationBookingMessages");
+                });
+
+            modelBuilder.Entity("Socoro.Domain.Entities.OperationCargo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<bool>("Bonded")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ContactEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContactPhone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("EIN")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LoadingAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LoadingDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<TimeSpan>("LoadingTime")
+                        .HasColumnType("time");
+
+                    b.Property<int>("NoContainers")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OperationId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Propelled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Reference")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OperationId");
+
+                    b.ToTable("OperationCargos");
                 });
 
             modelBuilder.Entity("Socoro.Domain.Entities.OperationProcess", b =>
@@ -665,15 +885,65 @@ namespace Socoro.Infrastructure.Migrations
                     b.Property<DateTime?>("LastModifiedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("OperationTypeId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Process")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TypeId")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.ToTable("OperationProcessTypes");
+                });
+
+            modelBuilder.Entity("Socoro.Domain.Entities.OperationQuote", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Documentation")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Explanation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FF")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Inland")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("OperationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Others")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Profit")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VGM")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OperationId");
+
+                    b.ToTable("OperationQuotes");
                 });
 
             modelBuilder.Entity("Socoro.Domain.Entities.OperationType", b =>
@@ -713,6 +983,13 @@ namespace Socoro.Infrastructure.Migrations
                         .HasForeignKey("CompanyId");
 
                     b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("Socoro.Domain.Entities.Container", b =>
+                {
+                    b.HasOne("Socoro.Domain.Entities.OperationCargo", null)
+                        .WithMany("Containers")
+                        .HasForeignKey("OperationCargoId");
                 });
 
             modelBuilder.Entity("Socoro.Domain.Entities.Customer", b =>
@@ -757,10 +1034,52 @@ namespace Socoro.Infrastructure.Migrations
                     b.Navigation("Employee");
                 });
 
+            modelBuilder.Entity("Socoro.Domain.Entities.OperationBooking", b =>
+                {
+                    b.HasOne("Socoro.Domain.Entities.OperationCargo", "OperationCargo")
+                        .WithMany()
+                        .HasForeignKey("OperationCargoId");
+
+                    b.Navigation("OperationCargo");
+                });
+
+            modelBuilder.Entity("Socoro.Domain.Entities.OperationBookingMessage", b =>
+                {
+                    b.HasOne("Socoro.Domain.Entities.Carrier", "Carrier")
+                        .WithMany()
+                        .HasForeignKey("CarrierId");
+
+                    b.HasOne("Socoro.Domain.Entities.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId");
+
+                    b.Navigation("Carrier");
+
+                    b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("Socoro.Domain.Entities.OperationCargo", b =>
+                {
+                    b.HasOne("Socoro.Domain.Entities.Operation", "Operation")
+                        .WithMany()
+                        .HasForeignKey("OperationId");
+
+                    b.Navigation("Operation");
+                });
+
             modelBuilder.Entity("Socoro.Domain.Entities.OperationProcess", b =>
                 {
                     b.HasOne("Socoro.Domain.Entities.Operation", "Operation")
                         .WithMany("OperationProcesses")
+                        .HasForeignKey("OperationId");
+
+                    b.Navigation("Operation");
+                });
+
+            modelBuilder.Entity("Socoro.Domain.Entities.OperationQuote", b =>
+                {
+                    b.HasOne("Socoro.Domain.Entities.Operation", "Operation")
+                        .WithMany()
                         .HasForeignKey("OperationId");
 
                     b.Navigation("Operation");
@@ -787,6 +1106,11 @@ namespace Socoro.Infrastructure.Migrations
             modelBuilder.Entity("Socoro.Domain.Entities.Operation", b =>
                 {
                     b.Navigation("OperationProcesses");
+                });
+
+            modelBuilder.Entity("Socoro.Domain.Entities.OperationCargo", b =>
+                {
+                    b.Navigation("Containers");
                 });
 #pragma warning restore 612, 618
         }

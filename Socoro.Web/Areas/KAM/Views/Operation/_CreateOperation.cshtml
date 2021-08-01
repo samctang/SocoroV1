@@ -1,7 +1,12 @@
 ﻿@model Socoro.Web.Areas.KAM.Models.OperationViewModel
+
 <script language="JavaScript" type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
-<form class="form" method="post" enctype="multipart/form-data" asp-area="KAM" asp-controller="Operation" asp-action="Index">
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+<form class="form" id="operationForm" method="post" enctype="multipart/form-data" asp-area="KAM" asp-controller="Operation" asp-action="Create">
     <div class="card-body">
+        <div asp-validation-summary="All"></div>
         <div class="form-group">
             <label asp-for="TypeId" class="col-form-label"></label>:
             <span style="color:red">*</span>
@@ -15,6 +20,7 @@
                 </svg><!--end::Svg Icon-->
             </span>
             <select asp-for="TypeId" name="TypeId" class="selectpicker form-control" data-ng-style="select-with-transition"></select>
+            <span asp-validation-for="TypeId" class="text-danger"></span>
             <script>
                 $.ajax({
                     url: "@Environment.GetEnvironmentVariable("ApiEndpoint")"+"/OperationType",
@@ -45,7 +51,9 @@ Their job is to manage the cargo transportation from the country of origin to th
                 </svg><!--end::Svg Icon-->
             </span>
             <select asp-for="Agent" name="Agent" class="selectpicker form-control" data-ng-style="select-with-transition"></select>
-            <a asp-area="Shared" asp-controller="Customer" asp-action="AddCustomer" asp-route-id="1">
+            <span asp-validation-for="Agent" class="text-danger"></span>
+            <br />
+            <a asp-area="Shared" asp-controller="Customer" asp-action="Index" asp-route-id="1">
                 <input type="button" class="btn btn-primary font-weight-bold" value="Add New Agent" />
             </a>
         </div>
@@ -62,10 +70,9 @@ Their job is to manage the cargo transportation from the country of origin to th
                 </svg><!--end::Svg Icon-->
             </span>
             <select asp-for="Shipper" name="Shipper" class="selectpicker form-control" data-ng-style="select-with-transition"></select>
-            <script>
-
-            </script>
-            <a asp-area="Shared" asp-controller="Customer" asp-action="AddCustomer" asp-route-id="2">
+            <span asp-validation-for="Shipper" class="text-danger"></span>
+            <br />
+            <a asp-area="Shared" asp-controller="Customer" asp-action="Index" asp-route-id="2">
                 <input type="button" class="btn btn-primary font-weight-bold" value="Add New Shipper" />
             </a>
         </div>
@@ -82,10 +89,9 @@ Their job is to manage the cargo transportation from the country of origin to th
                 </svg><!--end::Svg Icon-->
             </span>
             <select asp-for="Consignee" name="Consignee" class="selectpicker form-control" data-ng-style="select-with-transition"></select>
-            <script>
-
-            </script>
-            <a asp-area="Shared" asp-controller="Customer" asp-action="AddCustomer" asp-route-id="3">
+            <span asp-validation-for="Consignee" class="text-danger"></span>
+            <br />
+            <a asp-area="Shared" asp-controller="Customer" asp-action="Index" asp-route-id="3">
                 <input type="button" class="btn btn-primary font-weight-bold" value="Add New Consignee" />
             </a>
         </div>
@@ -385,4 +391,5 @@ It may or may not be the same country in which the port of loading is located.">
             $('[name=Consignee]').selectpicker('refresh');
         }
     });
+
 </script>

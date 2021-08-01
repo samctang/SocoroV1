@@ -1,0 +1,406 @@
+﻿@model Socoro.Web.Areas.KAM.Models.OperationIntViewModel;
+
+<script language="JavaScript" type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
+
+<!--begin::Modals-->
+<div class="modal fade" id="operationProcessType_Id_1" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Step 1: FCL - FOB</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>You have initiated a new process for:</p>
+                <br />
+                <p><strong>Agent</strong>: <span class="AgentCompany"></span></p>
+                <p><strong>Shipper</strong>: <span class="ShipperCompany"></span></p>
+                <p><strong>Consignee</strong>: <span class="ConsigneeCompany"></span></p>
+                <br />
+                <p>The shipper will be notified that you will be in charge of their operation in the next step.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="operationProcessType_Id_2" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Step 2: Cargo Info Request</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>By Completing this step, an email will be automatically sent to your shipper (<strong><span class="ShipperCompany"></span></strong>) requesting him to provide the following information:</p>
+                <br />
+                <ul>
+                    <li>Loading Address</li>
+                    <li>Container Information</li>
+                    <li>Contact Information</li>
+                    <li>Loading Date & Dock Hours</li>
+                    <li>EIN</li>
+                    <li>PickUp Reference</li>
+                    <li>Bonded</li>
+                    <li>Self Propelled</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-light-primary font-weight-bold" value="Send Request" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="operationProcessType_Id_3" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Step 3: Quote</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Please confirm that your agent (<strong><span class="AgentCompany"></span></strong>) has succesfully issued a quotation and has provided the documents that support the net and sell prices.</p>
+                <br />
+                <p>If the quotation hasn't been issued by our <strong>pricing department</strong> click the "ISSUE" in order to notify your agent (<strong><span class="AgentCompany"></span></strong>) and our <strong>pricing department</strong>.</p>
+                <br />
+                <input type="file" name="QuotationFile" />
+                <br />
+                <br />
+                <p><span style="color:red">*</span>Please upload a PDF document supporting the quotation issued by our pricing department (including <strong>net</strong> and <strong>sell</strong> prices).</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info font-weight-bold mr-auto">Tasks</button>
+                <button type="button" class="btn btn-light-primary font-weight-bold">Issue</button>
+                <button type="button" class="btn btn-success font-weight-bold">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="operationProcessType_Id_4" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Step 4: Confirm Freight Data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Please confirm that you have received the cargo information from your destination agent <strong><span class="AgentCompany"></span></strong> and the shipper <strong><span class="ShipperCompany"></span></strong>.</p>
+                <br />
+                <div class="card card-custom">
+                    <div class="card-header" style="background-color: lightyellow">
+                        <div class="card-title">
+                            <span class="card-icon">
+                                <i class="flaticon2-bell-alarm-symbol"></i>
+                            </span>
+                            <h3 class="card-label">
+                                Warning
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="card-body"><p>We will send you reminders about this step via <strong>email</strong> every <strong>24 hours</strong> until you confirm that you have received the cargo information.</p></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info font-weight-bold mr-auto">Tasks</button>
+                <button type="button" class="btn btn-success font-weight-bold">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="operationProcessType_Id_5" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Step 5: Confirm Quote</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <form class="form" id="operationQuote" method="post" enctype="multipart/form-data" asp-area="" asp-controller="" asp-action="">
+                <div class="modal-body">
+                    <p>Please confirm the prices that you negotiated with your shipper <strong><span class="ShipperCompany"></span></strong>.</p>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="OperationQuoteViewModel.Profit" class="col-form-label"></label>:
+                        <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Please upload a PDF document supporting the quotation issued by our pricing department (including net and sell prices).">
+                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                    <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                                </g>
+                            </svg><!--end::Svg Icon-->
+                        </span>
+                        <input type="number" asp-for="OperationQuoteViewModel.Profit" name="Profit" class="form-control" step="1" min="0" />
+                        <span asp-validation-for="OperationQuoteViewModel.Profit" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="OperationQuoteViewModel.Documentation" class="col-form-label"></label>:
+                        <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Please upload a PDF document supporting the quotation issued by our pricing department (including net and sell prices).">
+                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                    <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                                </g>
+                            </svg><!--end::Svg Icon-->
+                        </span>
+                        <input type="number" asp-for="OperationQuoteViewModel.Documentation" name="Documentation" class="form-control" step="1" min="0" />
+                        <span asp-validation-for="OperationQuoteViewModel.Documentation" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="OperationQuoteViewModel.FF" class="col-form-label"></label>:
+                        <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Please upload a PDF document supporting the quotation issued by our pricing department (including net and sell prices).">
+                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                    <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                                </g>
+                            </svg><!--end::Svg Icon-->
+                        </span>
+                        <input type="number" asp-for="OperationQuoteViewModel.FF" name="FF" class="form-control" step="1" min="0" />
+                        <span asp-validation-for="OperationQuoteViewModel.FF" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="OperationQuoteViewModel.VGM" class="col-form-label"></label>:
+                        <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Please upload a PDF document supporting the quotation issued by our pricing department (including net and sell prices).">
+                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                    <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                                </g>
+                            </svg><!--end::Svg Icon-->
+                        </span>
+                        <input type="number" asp-for="OperationQuoteViewModel.VGM" name="VGM" class="form-control" step="1" min="0" />
+                        <span asp-validation-for="OperationQuoteViewModel.VGM" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="OperationQuoteViewModel.Inland" class="col-form-label"></label>:
+                        <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Please upload a PDF document supporting the quotation issued by our pricing department (including net and sell prices).">
+                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                    <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                                </g>
+                            </svg><!--end::Svg Icon-->
+                        </span>
+                        <input type="number" asp-for="OperationQuoteViewModel.Inland" name="Inland" class="form-control" step="1" min="0" />
+                        <span asp-validation-for="OperationQuoteViewModel.Inland" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="OperationQuoteViewModel.Others" class="col-form-label"></label>:
+                        <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Please upload a PDF document supporting the quotation issued by our pricing department (including net and sell prices).">
+                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                    <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                                </g>
+                            </svg><!--end::Svg Icon-->
+                        </span>
+                        <input type="number" asp-for="OperationQuoteViewModel.Others" name="Others" class="form-control" step="1" min="0" />
+                        <span asp-validation-for="OperationQuoteViewModel.Others" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="OperationQuoteViewModel.Explanation" class="col-form-label"></label>:
+                        <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Please upload a PDF document supporting the quotation issued by our pricing department (including net and sell prices).">
+                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect x="0" y="0" width="24" height="24" />
+                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                    <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                                </g>
+                            </svg><!--end::Svg Icon-->
+                        </span>
+                        <textarea type="text" asp-for="OperationQuoteViewModel.Explanation" name="Explanation" class="form-control"></textarea>
+                        <span asp-validation-for="OperationQuoteViewModel.Explanation" class="text-danger"></span>
+                    </div>
+                    <input type="file" name="SupportingDocuments" />
+                    <br />
+                    <br />
+                    <p><span style="color:red">*</span>Please upload a PDF document supporting the quotation issued by our pricing department (including <strong>net</strong> and <strong>sell</strong> prices).</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info font-weight-bold mr-auto">Tasks</button>
+                    <button type="button" class="btn btn-light-primary font-weight-bold">Request</button>
+                    <button type="button" class="btn btn-success font-weight-bold">Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="operationProcessType_Id_6" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Step 6: Input Freight Data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Please load to the system the information that your shipper (<strong><span class="ShipperCompany"></span></strong>) confirmed regarding the cargo issued by the agent (<strong><span class="AgentCompany"></span></strong>).</p>
+                <br />
+                <div class="card card-custom">
+                    <div class="card-header" style="background-color: lightyellow">
+                        <div class="card-title">
+                            <span class="card-icon">
+                                <i class="flaticon2-bell-alarm-symbol"></i>
+                            </span>
+                            <h3 class="card-label">
+                                Warning
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>This information will be used to generate a new Booking Order.</li>
+                            <li>The information provided here can be edited at any moment.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info font-weight-bold mr-auto">Tasks</button>
+                <a asp-area="KAM" asp-controller="OperationCargo" asp-action="Index">
+                    <input type="button" class="btn btn-success font-weight-bold" value="Fill In Info" />
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="operationProcessType_Id_7" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Step 7: Request Booking</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <form class="form" id="requestBooking" method="post" enctype="multipart/form-data" asp-area="" asp-controller="" asp-action="">
+                <div class="modal-body">
+                    <p>A booking order generated with the previous information will be sent to your <strong>selected carrier</strong>, please be aware of their confirmation.</p>
+                    <br />
+                    <label asp-for="OperationViewModel.Carrier" class="col-form-label"></label>:
+                    <select asp-for="OperationViewModel.Carrier" name="Carrier" class="selectpicker form-control" data-ng-style="select-with-transition"></select>
+                    <span asp-validation-for="OperationViewModel.Carrier" class="text-danger"></span>
+                    <script>
+                $.ajax({
+                    url: "@Environment.GetEnvironmentVariable("ApiEndpoint")"+"/OperationType",
+                    data: {},
+                    dataType: 'json',
+                    traditional: true,
+                    success: function (result) {
+                        $('[name=TypeId]').append($("<option></option>").attr("value", "").text(""));
+                        $.each(result.data, function (index, val) {
+                            $('[name=TypeId]').append($("<option></option>").attr("value", val.id).text(val.description));
+                        });
+                        $('[name=TypeId]').selectpicker('refresh');
+                    }
+                });
+                    </script>
+                    <br />
+                    <label>Contact: </label>
+                    <select name="CarrierEmails" class="selectpicker form-control" data-ng-style="select-with-transition"></select>
+                    <script>
+
+                    </script>
+                    <br />
+                    <label asp-for="OperationBookingMessageViewModel.Message" class="col-form-label"></label>:
+                    <textarea type="text" asp-for="OperationBookingMessageViewModel.Message" name="Message" class="form-control"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info font-weight-bold mr-auto">Tasks</button>
+                    <button type="button" class="btn btn-light-primary font-weight-bold">Notify Agent</button>
+                    <button type="button" class="btn btn-success font-weight-bold">Request Booking</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="operationProcessType_Id_8" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Step 8: Confirm Booking Data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Please load to the system the information related to the booking previously issued.</p>
+                <br />
+                <div class="card card-custom">
+                    <div class="card-header" style="background-color: lightyellow">
+                        <div class="card-title">
+                            <span class="card-icon">
+                                <i class="flaticon2-bell-alarm-symbol"></i>
+                            </span>
+                            <h3 class="card-label">
+                                Warning
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p>The information will be sent to your agent (<strong><span class="AgentCompany"></span></strong>) everytime a change is made.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info font-weight-bold mr-auto">Tasks</button>
+                <a asp-area="KAM" asp-controller="OperationBooking" asp-action="Index">
+                    <input type="button" class="btn btn-success font-weight-bold" value="Fill In Info" />
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="operationProcessType_Id_9" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Step 9: Container Loading</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>By completing this step an email will be automatically sent to your shipper (<strong><span class="ShipperCompany"></span></strong>) and agent (<strong><span class="AgentCompany"></span></strong>), confirming that the loading process of the related containers has been completed.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info font-weight-bold mr-auto">Tasks</button>
+                <button type="button" class="btn btn-success font-weight-bold">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="operationProcessType_Id_10" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Step 10: Container Delivery</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>By completing this step an email will be automatically sent to your shipper (<strong><span class="ShipperCompany"></span></strong>) and agent (<strong><span class="AgentCompany"></span></strong>), confirming that the delivery process of the related containers has been completed.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info font-weight-bold mr-auto">Tasks</button>
+                <button type="button" class="btn btn-success font-weight-bold">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Modals-->

@@ -8,9 +8,9 @@ namespace Socoro.Domain.Entities
     {
         public string OperationNo { get; set; }
         public int TypeId { get; set; }
-        public string Agent { get; set; }
-        public string Shipper { get; set; }
-        public string Consignee { get; set; }
+        public int Agent { get; set; }
+        public int Shipper { get; set; }
+        public int Consignee { get; set; }
         public string AgentRefNo { get; set; }
         public string ShipperRefNo { get; set; }
         public string ConsigneeRefNo { get; set; }
@@ -28,6 +28,7 @@ namespace Socoro.Domain.Entities
         public string DestinationState { get; set; }
         public string DestinationZip { get; set; }
         public string DestinationCountry { get; set; }
+        public int? Carrier { get; set; }
         public List<OperationProcess> OperationProcesses { get; set; }
         public int Progress { get; set; }
         public string Status { get; set; }

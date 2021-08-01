@@ -13,11 +13,11 @@ namespace Socoro.Web.Areas.KAM.Models
         [Required, Display(Name = "Operation Type")]
         public int TypeId { get; set; }
         [Required, Display(Name = "Destination Agent")]
-        public string Agent { get; set; }
+        public int Agent { get; set; }
         [Required]
-        public string Shipper { get; set; }
+        public int Shipper { get; set; }
         [Required]
-        public string Consignee { get; set; }
+        public int Consignee { get; set; }
         [Display(Name = "Agent Reference Number")]
         public string AgentRefNo { get; set; }
         [Display(Name = "Shipper Reference Number")]
@@ -52,6 +52,8 @@ namespace Socoro.Web.Areas.KAM.Models
         public string DestinationZip { get; set; }
         [Display(Name = "Destination Country")]
         public string DestinationCountry { get; set; }
+        public int Carrier { get; set; }
+
         public List<OperationProcessViewModel> OperationProcesses { get; set; } = new List<OperationProcessViewModel>();
         public int Progress { get; set; }
         public string Status { get; set; }

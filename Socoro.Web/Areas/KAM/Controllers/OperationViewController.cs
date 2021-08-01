@@ -11,7 +11,7 @@ using Socoro.Application.Features.OperationProcesses.Commands;
 namespace Socoro.Web.Areas.KAM.Controllers
 {
     [Area("KAM")]
-    public class OperationProcessController : BaseController<OperationProcessController>
+    public class OperationViewController : BaseController<OperationViewController>
     {
         HttpClient client = new HttpClient();
         string requestUri = String.Empty;
@@ -23,7 +23,7 @@ namespace Socoro.Web.Areas.KAM.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            OperationViewModel operationObj = new OperationViewModel();
+            OperationViewModel operationObj;
             OperationProcessViewModel operationProcessObj = new OperationProcessViewModel();
 
             string currentOperationNo = (string)TempData["OperationNo"];
@@ -32,7 +32,7 @@ namespace Socoro.Web.Areas.KAM.Controllers
             response = await client.GetAsync(requestUri);
             responseBody = await response.Content.ReadAsStringAsync();
             JsonOperationWrapper wrapper = JsonConvert.DeserializeObject<JsonOperationWrapper>(responseBody);
-            operationObj = wrapper.data;
+            operationObj = wrapper.Data;
 
             requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/OperationProcess/" + operationObj.Id;
             response = await client.GetAsync(requestUri);
@@ -47,7 +47,10 @@ namespace Socoro.Web.Areas.KAM.Controllers
                 foreach (var item in json.data)
                 {
                     operationProcessObj.TypeId = item.id;
-                    operationProcessObj.Status = "In Progress";
+                    if(item.id == 1)
+                        operationProcessObj.Status = "Completed";
+                    else
+                        operationProcessObj.Status = "Not Started";
                     operationProcessObj.OperationId = operationObj.Id;
 
                     operationObj.OperationProcesses.Add(operationProcessObj);
@@ -58,15 +61,17 @@ namespace Socoro.Web.Areas.KAM.Controllers
                     response = await client.PostAsync(requestUri, stringContent);
                 }
             }
+            OperationIntViewModel operationIntViewModel = new OperationIntViewModel();
+            operationIntViewModel.OperationViewModel = operationObj;
             TempData["OperationNo"] = currentOperationNo;
-            return View(operationObj);
+            return View(operationIntViewModel);
         }
     }
     internal class JsonOperationWrapper
     {
-        public OperationViewModel data { get; set; }
-        public string message { get; set; }
-        public bool failed { get; set; }
-        public bool succeeded { get; set; }
+        public OperationViewModel Data { get; set; }
+        public string Message { get; set; }
+        public bool Failed { get; set; }
+        public bool Succeeded { get; set; }
     }
 }

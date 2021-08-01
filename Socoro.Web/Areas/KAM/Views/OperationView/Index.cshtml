@@ -1,5 +1,7 @@
-﻿@model Socoro.Web.Areas.KAM.Models.OperationViewModel;
+﻿@model Socoro.Web.Areas.KAM.Models.OperationIntViewModel;
+
 <script language="JavaScript" type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
+<partial name="_ViewInfo" />
 <!--begin::Subheader-->
 <div class="subheader py-2 py-lg-6 subheader-transparent" id="kt_subheader">
     <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
@@ -11,7 +13,7 @@
                     Actions
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">View Info</a>
+                    <input type="button" class="dropdown-item" data-toggle="modal" data-target="#viewInfo" value="View Info" />
                     <a class="dropdown-item" href="#">Input SLI</a>
                     <a class="dropdown-item" href="#">Request SLI</a>
                     <a class="dropdown-item" href="#">Input Invoice</a>
@@ -61,7 +63,7 @@
                 <!--begin::Header-->
                 <div class="card-header border-0 py-5">
                     <h3 class="card-title align-items-start flex-column">
-                        <span class="card-label font-weight-bolder text-dark">Viewing Operation #@Model.OperationNo</span>
+                        <span class="card-label font-weight-bolder text-dark">Viewing Operation #@Model.OperationViewModel.OperationNo</span>
                     </h3>
                 </div>
                 <!--end::Header-->
@@ -71,27 +73,12 @@
                     <!--end: Datatable-->
                 </div>
                 <!--end::Body-->
-                <!--begin::Modals-->
-                <div class="modal fade" id="modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">New Operation</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <i aria-hidden="true" class="ki ki-close"></i>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary font-weight-bold">Submit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--end::Modals-->
+                @switch (Model.OperationViewModel.TypeId)
+                {
+                    case 1:
+                        <partial name="_OperationType1" />
+                        break;
+                }
             </div>
             <!--end::Advance Table Widget 1-->
         </div>
@@ -107,7 +94,7 @@
                 type: 'remote',
                 source: {
                     read: {
-                        url: '@Environment.GetEnvironmentVariable("ApiEndpoint")' + '/OperationProcess/' + @Model.Id,
+                        url: '@Environment.GetEnvironmentVariable("ApiEndpoint")' + '/OperationProcess/' + @Model.OperationViewModel.Id,
                         method: 'GET'
                     },
                 },
@@ -131,7 +118,10 @@
             },
 
             rows: {
-                autoHide: false
+                autoHide: false,
+                afterTemplate: function (row, data, index) {
+                    $(row).data('typeId', data.typeId);
+                }
             },
 
             columns: [{
@@ -171,16 +161,73 @@
             }, {
                 field: 'status',
                 title: 'Status',
+                template: function (row) {
+                    var spanClass = '';
+                    switch (row.status) {
+                        case 'Not Started':
+                            spanClass = 'label-light-danger';
+                            break;
+                        case 'In Progress':
+                            spanClass = 'label-light-primary';
+                            break;
+                        case 'Completed':
+                            spanClass = 'label-light-success';
+                            break;
+                    }
+                    return '<span class="label font-weight-bold label-lg label-inline '+spanClass+'"> ' + row.status + '</span >';
+                }
             }]
         });
 
         $(datatable.table).on('click', 'tbody tr', function () {
-            console.log($(this).data('row'));
-            $('#modal').modal('show');
+            var id = $(this).data('typeId');
+            $('#operationProcessType_Id_' + id).modal('show');
         });
     };
 
     $(document).ready(function () {
         initDataTable();
+    });
+</script>
+
+
+<script>
+    $.ajax({
+        url: "@Environment.GetEnvironmentVariable("ApiEndpoint")"+"/Customer/"+@Model.OperationViewModel.Agent,
+        data: {},
+        dataType: 'json',
+        traditional: true,
+        success: function (result) {
+            $('.AgentCompany').text(result.data.companyName);
+            $('.AgentEmail').text(result.data.email);
+            $('.AgentPhone').text(result.data.contactPhone);
+            $('.AgentName').text(result.data.firstName + ' ' + result.data.lastName);
+        }
+    });
+
+    $.ajax({
+        url: "@Environment.GetEnvironmentVariable("ApiEndpoint")"+"/Customer/"+@Model.OperationViewModel.Shipper,
+        data: {},
+        dataType: 'json',
+        traditional: true,
+        success: function (result) {
+            $('.ShipperCompany').text(result.data.companyName);
+            $('.ShipperEmail').text(result.data.email);
+            $('.ShipperPhone').text(result.data.contactPhone);
+            $('.ShipperName').text(result.data.firstName + ' ' + result.data.lastName);
+        }
+    });
+
+    $.ajax({
+        url: "@Environment.GetEnvironmentVariable("ApiEndpoint")"+"/Customer/"+@Model.OperationViewModel.Consignee,
+        data: {},
+        dataType: 'json',
+        traditional: true,
+        success: function (result) {
+            $('.ConsigneeCompany').text(result.data.companyName);
+            $('.ConsigneeEmail').text(result.data.email);
+            $('.ConsigneePhone').text(result.data.contactPhone);
+            $('.ConsigneeName').text(result.data.firstName + ' ' + result.data.lastName);
+        }
     });
 </script>

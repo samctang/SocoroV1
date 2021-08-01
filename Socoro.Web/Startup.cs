@@ -85,7 +85,7 @@ namespace Socoro.Web
                 endpoints.MapRazorPages();
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{area=KAM}/{controller=Operation}/{action=Index}/{id?}");
+                    pattern: "{area=KAM}/{controller=OperationCargo}/{action=Index}/{id?}");
                 endpoints.MapControllerRoute(
                   name: "areas",
                   pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");

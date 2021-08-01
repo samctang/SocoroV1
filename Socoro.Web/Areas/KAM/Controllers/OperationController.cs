@@ -29,7 +29,7 @@ namespace Socoro.Web.Areas.KAM.Controllers
             return View(operationViewModel);
         }
         [HttpPost]
-        public async Task<IActionResult> IndexAsync(OperationViewModel operationViewModel)
+        public async Task<IActionResult> Create(OperationViewModel operationViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -41,7 +41,7 @@ namespace Socoro.Web.Areas.KAM.Controllers
                 await GetOperationNumberAsync(operationViewModel);
 
                 var createOperationCommand = _mapper.Map<CreateOperation>(operationViewModel);
-                requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/operation";
+                requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/operation/";
                 stringContent = new StringContent(JsonConvert.SerializeObject(createOperationCommand), Encoding.UTF8, "application/json");
                 response = await client.PostAsync(requestUri, stringContent);
 
@@ -83,7 +83,7 @@ namespace Socoro.Web.Areas.KAM.Controllers
                     break;
             }
 
-            requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/operation?typeId=" + operationViewModel.TypeId;
+            requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/operation/3/" + operationViewModel.TypeId;
             response = await client.GetAsync(requestUri);
             responseBody = await response.Content.ReadAsStringAsync();
             json = JsonConvert.DeserializeObject(responseBody);

@@ -1,0 +1,121 @@
+﻿@model Socoro.Web.Areas.KAM.Models.OperationIntViewModel
+
+<script language="JavaScript" type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+<!--begin::Subheader-->
+<div class="subheader py-2 py-lg-6 subheader-transparent" id="kt_subheader">
+</div>
+<!--end::Subheader-->
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card card-custom card-transparent">
+                <div class="card-body p-0">
+                    <!--begin::Card-->
+                    <div class="card card-custom card-shadowless rounded-top-0">
+                        <!--begin::Body-->
+                        <div class="card-body p-0">
+                            <div asp-validation-summary="All"></div>
+                            <div class="row justify-content-center py-8 px-8 py-lg-15 px-lg-10">
+                                <div class="col-xl-12 col-xxl-10">
+                                    <!--begin::Wizard Form-->
+                                    <form class="form" id="kt_form" method="post" enctype="multipart/form-data" asp-area="KAM" asp-controller="OperationCargo" asp-action="Add Cargo">
+                                        <div class="row justify-content-center">
+                                            <div class="col-xl-9">
+                                                <!--begin::Wizard Step 1-->
+                                                <div class="my-5 step" data-wizard-type="step-content" data-wizard-state="current">
+                                                    <h5 class="text-dark font-weight-bold mb-10">FCL - FOB Cargo Information for Operation @Model.OperationViewModel.OperationNo</h5>
+                                                    <!--begin::Group-->
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationCargoViewModel.LoadingAddress"></label>:
+                                                        <input asp-for="OperationCargoViewModel.LoadingAddress" name="LoadingAddress" type="text" class="form-control" placeholder="Loading Address" />
+                                                        <span asp-validation-for="OperationCargoViewModel.LoadingAddress" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationCargoViewModel.ContactEmail"></label>:
+                                                        <input asp-for="OperationCargoViewModel.ContactEmail" name="ContactEmail" type="text" class="form-control" placeholder="Contact Email" />
+                                                        <span asp-validation-for="OperationCargoViewModel.ContactEmail" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationCargoViewModel.ContactPhone"></label>:
+                                                        <input asp-for="OperationCargoViewModel.ContactPhone" name="ContactPhone" type="text" class="form-control" placeholder="Contact Phone" />
+                                                        <span asp-validation-for="OperationCargoViewModel.ContactPhone" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationCargoViewModel.LoadingDate"></label>:
+                                                        <input asp-for="OperationCargoViewModel.LoadingDate" name="LoadingDate" type="text" class="form-control" placeholder="Loading Date" />
+                                                        <span asp-validation-for="OperationCargoViewModel.LoadingDate" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationCargoViewModel.LoadingTime"></label>:
+                                                        <input asp-for="OperationCargoViewModel.LoadingTime" name="LoadingTime" type="text" class="form-control" placeholder="Loading Time" />
+                                                        <span asp-validation-for="OperationCargoViewModel.LoadingTime" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationCargoViewModel.Reference"></label>:
+                                                        <input asp-for="OperationCargoViewModel.Reference" name="ContactPhone" type="text" class="form-control" placeholder="Reference" />
+                                                        <span asp-validation-for="OperationCargoViewModel.Reference" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationCargoViewModel.EIN"></label>:
+                                                        <input asp-for="OperationCargoViewModel.EIN" name="LoadingAddress" type="text" class="form-control" placeholder="EIN" />
+                                                        <span asp-validation-for="OperationCargoViewModel.EIN" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationCargoViewModel.Bonded"></label>:
+                                                        <select asp-for="OperationCargoViewModel.Bonded" name="Bonded" class="selectpicker form-control" data-ng-style="select-with-transition">
+                                                            <option value="0" selected>No</option>
+                                                            <option value="1">Yes</option>
+                                                        </select>
+                                                        <span asp-validation-for="OperationCargoViewModel.Bonded" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationCargoViewModel.Propelled"></label>:
+                                                        <select asp-for="OperationCargoViewModel.Propelled" name="Propelled" class="selectpicker form-control" data-ng-style="select-with-transition">
+                                                            <option value="0" selected>No</option>
+                                                            <option value="1">Yes</option>
+                                                        </select>
+                                                        <span asp-validation-for="OperationCargoViewModel.Propelled" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationCargoViewModel.NoContainers"></label>:
+                                                        <input asp-for="OperationCargoViewModel.NoContainers" name="LoadingAddress" type="text" class="form-control" placeholder="Number of Containers" />
+                                                        <span asp-validation-for="OperationCargoViewModel.NoContainers" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationCargoViewModel.Containers"></label>:
+                                                        <input asp-for="OperationCargoViewModel.Containers" name="ContactEmail" type="text" class="form-control" placeholder="" />
+                                                        <span asp-validation-for="OperationCargoViewModel.Containers" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <!--end::Wizard Step 1-->
+                                                <div class="modal-footer">
+                                                    <a asp-area="KAM" asp-controller="OperationView" asp-action="Index">
+                                                        <input type="button" class="btn btn-light-primary font-weight-bold" value="Cancel" />
+                                                    </a>
+                                                    <input type="submit" class="btn btn-primary font-weight-bold" value="Submit" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!--end::Wizard Form-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Body-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>

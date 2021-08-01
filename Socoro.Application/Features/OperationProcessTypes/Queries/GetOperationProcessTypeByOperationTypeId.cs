@@ -9,24 +9,24 @@ using System.Collections.Generic;
 
 namespace Socoro.Application.Features.OperationProcessTypes.Queries
 {
-    public class GetOperationProcessTypeByTypeId : IRequest<Result<List<OperationProcessTypeResponse>>>
+    public class GetOperationProcessTypeByOperationTypeId : IRequest<Result<List<OperationProcessTypeResponse>>>
     {
-        public int TypeId { get; set; }
+        public int OperationTypeId { get; set; }
     }
-    public class GetOperationProcessTypeByTypeIdHandler : IRequestHandler<GetOperationProcessTypeByTypeId, Result<List<OperationProcessTypeResponse>>>
+    public class GetOperationProcessTypeByOperationTypeIdHandler : IRequestHandler<GetOperationProcessTypeByOperationTypeId, Result<List<OperationProcessTypeResponse>>>
     {
         private readonly IOperationProcessTypeCacheRepository _operationProcessTypeCache;
         private readonly IMapper _mapper;
 
-        public GetOperationProcessTypeByTypeIdHandler(IOperationProcessTypeCacheRepository operationProcessTypeCache, IMapper mapper)
+        public GetOperationProcessTypeByOperationTypeIdHandler(IOperationProcessTypeCacheRepository operationProcessTypeCache, IMapper mapper)
         {
             _operationProcessTypeCache = operationProcessTypeCache;
             _mapper = mapper;
         }
 
-        public async Task<Result<List<OperationProcessTypeResponse>>> Handle(GetOperationProcessTypeByTypeId query, CancellationToken cancellationToken)
+        public async Task<Result<List<OperationProcessTypeResponse>>> Handle(GetOperationProcessTypeByOperationTypeId query, CancellationToken cancellationToken)
         {
-            var operationProcessTypeList = await _operationProcessTypeCache.GetByTypeIdAsync(query.TypeId);
+            var operationProcessTypeList = await _operationProcessTypeCache.GetByTypeIdAsync(query.OperationTypeId);
             var mappedOperationProcessType = _mapper.Map<List<OperationProcessTypeResponse>>(operationProcessTypeList);
             return Result<List<OperationProcessTypeResponse>>.Success(mappedOperationProcessType);
         }

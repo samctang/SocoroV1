@@ -94,7 +94,7 @@
                             </svg>
                             New Operation
                         </button>
-                        <div class="modal fade" id="modal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+                        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -104,7 +104,7 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <partial name="_AddOperation" />
+                                        <partial name="_CreateOperation" />
                                     </div>
                                 </div>
                             </div>
@@ -323,7 +323,7 @@
                 contentType: 'application/json; charset=utf-8',
                 processData: true,
                 success: function (result) {
-                    location.href = "/KAM/OperationProcess/";
+                    location.href = "/KAM/OperationView/";
                 }
             })
         });

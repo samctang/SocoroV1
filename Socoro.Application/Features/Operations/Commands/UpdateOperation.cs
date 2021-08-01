@@ -13,9 +13,9 @@ namespace Socoro.Application.Features.Operations.Commands
         public int Id { get; set; }
         public string OperationNo { get; set; }
         public int TypeId { get; set; }
-        public string Agent { get; set; }
-        public string Shipper { get; set; }
-        public string Consignee { get; set; }
+        public int Agent { get; set; }
+        public int Shipper { get; set; }
+        public int Consignee { get; set; }
         public string AgentRefNo { get; set; }
         public string ShipperRefNo { get; set; }
         public string ConsigneeRefNo { get; set; }
@@ -33,6 +33,7 @@ namespace Socoro.Application.Features.Operations.Commands
         public string DestinationState { get; set; }
         public string DestinationZip { get; set; }
         public string DestinationCountry { get; set; }
+        public int Carrier { get; set; }
         public int Progress { get; set; }
         public string Status { get; set; }
         public DateTime? SubmittedDate { get; set; }
@@ -62,9 +63,9 @@ namespace Socoro.Application.Features.Operations.Commands
             {
                 operation.OperationNo = command.OperationNo ?? operation.OperationNo;
                 operation.TypeId = (command.TypeId == 0) ? operation.TypeId : command.TypeId;
-                operation.Agent = command.Agent ?? operation.Agent;
-                operation.Shipper = command.Shipper ?? operation.Shipper;
-                operation.Consignee = command.Consignee ?? operation.Consignee;
+                operation.Agent = (command.Agent == 0) ? operation.Agent : command.Agent;
+                operation.Shipper = (command.Shipper == 0) ? operation.Shipper : command.Shipper;
+                operation.Consignee = (command.Consignee == 0) ? operation.Consignee : command.Consignee;
                 operation.AgentRefNo = command.AgentRefNo ?? operation.AgentRefNo;
                 operation.ShipperRefNo = command.ShipperRefNo ?? operation.ShipperRefNo;
                 operation.ConsigneeRefNo = command.ConsigneeRefNo ?? operation.ConsigneeRefNo;
