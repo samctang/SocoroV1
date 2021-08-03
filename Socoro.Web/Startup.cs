@@ -4,8 +4,6 @@ using Socoro.Web.Abstractions;
 using Socoro.Web.Extensions;
 using Socoro.Web.Permission;
 using Socoro.Web.Services;
-using AspNetCoreHero.ToastNotification;
-using AspNetCoreHero.ToastNotification.Extensions;
 using AutoMapper;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
@@ -35,12 +33,7 @@ namespace Socoro.Web
         {
             services.AddSingleton<IAuthorizationPolicyProvider, PermissionPolicyProvider>();
             services.AddScoped<IAuthorizationHandler, PermissionAuthorizationHandler>();
-            services.AddNotyf(o =>
-            {
-                o.DurationInSeconds = 10;
-                o.IsDismissable = true;
-                o.HasRippleEffect = true;
-            });
+
             services.AddApplicationLayer();
             services.AddInfrastructure(_configuration);
             services.AddPersistenceContexts(_configuration);
@@ -72,7 +65,7 @@ namespace Socoro.Web
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseNotyf();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

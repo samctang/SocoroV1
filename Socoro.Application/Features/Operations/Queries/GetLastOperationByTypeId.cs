@@ -1,8 +1,7 @@
 ﻿using Socoro.Application.Interfaces.Repositories;
-using AspNetCoreHero.Results;
+using Socoro.Application.DTOs.Results;
 using AutoMapper;
 using MediatR;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Socoro.Application.DTOs.Operation;

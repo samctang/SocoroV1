@@ -1,7 +1,4 @@
-﻿using Socoro.Domain.Entities;
-using System;
-
-namespace Socoro.Application.DTOs.Operation
+﻿namespace Socoro.Application.DTOs.Operation
 {
     public class OperationProcessResponse
     {

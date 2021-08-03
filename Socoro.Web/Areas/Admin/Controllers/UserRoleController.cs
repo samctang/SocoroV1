@@ -63,7 +63,6 @@ namespace Socoro.Web.Areas.Admin.Controllers
             var currentUser = await _userManager.GetUserAsync(User);
             await _signInManager.RefreshSignInAsync(currentUser);
             await Infrastructure.Identity.Seeds.DefaultSuperAdminUser.SeedAsync(_userManager, _roleManager);
-            _notify.Success($"Updated Roles for User '{user.Email}'");
             return RedirectToAction("Index", new { userId = id });
         }
     }

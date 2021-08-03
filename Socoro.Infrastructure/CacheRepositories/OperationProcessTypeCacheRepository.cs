@@ -2,8 +2,7 @@
 using Socoro.Application.Interfaces.Repositories;
 using Socoro.Domain.Entities;
 using Socoro.Infrastructure.CacheKeys;
-using AspNetCoreHero.Extensions.Caching;
-using AspNetCoreHero.ThrowR;
+using Socoro.Application.Extensions;
 using Microsoft.Extensions.Caching.Distributed;
 using System.Collections.Generic;
 using System.Threading.Tasks;

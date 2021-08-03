@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace Socoro.Web.Areas.KAM.Models
+﻿namespace Socoro.Web.Areas.KAM.Models
 {
     public class OperationProcessViewModel
     {

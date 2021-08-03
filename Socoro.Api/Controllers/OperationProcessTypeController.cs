@@ -18,7 +18,7 @@ namespace Socoro.Api.Controllers
             return Ok(operation);
         }
         [EnableCors("GET")]
-        [HttpGet("1/{typeId}")]
+        [HttpGet("1/{operationTypeId}")]
         public async Task<IActionResult> GetByTypeId(int operationTypeId)
         {
             var operation = await _mediator.Send(new GetOperationProcessTypeByOperationTypeId() { OperationTypeId = operationTypeId });

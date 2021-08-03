@@ -1,6 +1,4 @@
-﻿using Socoro.Domain.Entities;
-
-namespace Socoro.Application.DTOs.Customer
+﻿namespace Socoro.Application.DTOs.Customer
 {
     public class CustomerResponse
     {

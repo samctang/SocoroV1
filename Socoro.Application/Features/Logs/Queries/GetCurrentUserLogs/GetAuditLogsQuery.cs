@@ -1,6 +1,6 @@
 ﻿using Socoro.Application.DTOs;
 using Socoro.Application.Interfaces.Repositories;
-using AspNetCoreHero.Results;
+using Socoro.Application.DTOs.Results;
 using AutoMapper;
 using MediatR;
 using System.Collections.Generic;

@@ -1,5 +1,5 @@
 ﻿using Socoro.Application.Interfaces.CacheRepositories;
-using AspNetCoreHero.Results;
+using Socoro.Application.DTOs.Results;
 using AutoMapper;
 using MediatR;
 using System.Threading;

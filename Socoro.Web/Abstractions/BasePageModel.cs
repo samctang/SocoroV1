@@ -1,5 +1,4 @@
-﻿using AspNetCoreHero.ToastNotification.Abstractions;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -20,8 +19,5 @@ namespace Socoro.Web.Abstractions
         protected ILogger<T> Logger => _logger ??= HttpContext.RequestServices.GetService<ILogger<T>>();
 
         //protected IViewRenderService Renderer => _viewRenderService ??= HttpContext.RequestServices.GetService<IViewRenderService>();
-        private INotyfService notyf;
-
-        protected INotyfService _notyf => notyf ??= HttpContext.RequestServices.GetService<INotyfService>();
     }
 }

@@ -40,7 +40,6 @@ namespace Socoro.Web.Areas.Admin.Controllers
             else
             {
                 var role = await _roleManager.FindByIdAsync(id);
-                if (role == null) _notify.Error("Unexpected Error. Role not found!");
                 var roleviewModel = _mapper.Map<RoleViewModel>(role);
                 return new JsonResult(new { isValid = true, html = await _viewRenderer.RenderViewToStringAsync("_Create", roleviewModel) });
             }
@@ -54,7 +53,6 @@ namespace Socoro.Web.Areas.Admin.Controllers
                 if (string.IsNullOrEmpty(role.Id))
                 {
                     await _roleManager.CreateAsync(new IdentityRole(role.Name));
-                    _notify.Success("Role Created");
                 }
                 else
                 {
@@ -62,7 +60,6 @@ namespace Socoro.Web.Areas.Admin.Controllers
                     existingRole.Name = role.Name;
                     existingRole.NormalizedName = role.Name.ToUpper();
                     await _roleManager.UpdateAsync(existingRole);
-                    _notify.Success("Role Updated");
                 }
 
                 var roles = await _roleManager.Roles.ToListAsync();
@@ -95,17 +92,9 @@ namespace Socoro.Web.Areas.Admin.Controllers
                 if (roleIsNotUsed)
                 {
                     await _roleManager.DeleteAsync(existingRole);
-                    _notify.Success($"Role {existingRole.Name} deleted.");
-                }
-                else
-                {
-                    _notify.Error("Role is being Used by another User. Cannot Delete.");
                 }
             }
-            else
-            {
-                _notify.Error($"Not allowed to  delete {existingRole.Name} Role.");
-            }
+
             var roles = await _roleManager.Roles.ToListAsync();
             var mappedRoles = _mapper.Map<IEnumerable<RoleViewModel>>(roles);
             var html = await _viewRenderer.RenderViewToStringAsync("_ViewAll", mappedRoles);

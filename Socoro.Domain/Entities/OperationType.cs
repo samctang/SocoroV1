@@ -1,6 +1,4 @@
-﻿using AspNetCoreHero.Abstractions.Domain;
-
-namespace Socoro.Domain.Entities
+﻿namespace Socoro.Domain.Entities
 {
     public class OperationType : AuditableEntity
     {

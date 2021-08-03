@@ -1,5 +1,4 @@
-﻿using Socoro.Domain.Entities;
-using System;
+﻿using System;
 
 namespace Socoro.Application.DTOs.Operation
 {

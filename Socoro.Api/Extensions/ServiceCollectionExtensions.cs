@@ -6,7 +6,7 @@ using Socoro.Infrastructure.DbContexts;
 using Socoro.Infrastructure.Identity.Models;
 using Socoro.Infrastructure.Identity.Services;
 using Socoro.Infrastructure.Shared.Services;
-using AspNetCoreHero.Results;
+using Socoro.Application.DTOs.Results;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;

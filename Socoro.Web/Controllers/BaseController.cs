@@ -1,5 +1,4 @@
 ﻿using Socoro.Web.Abstractions;
-using AspNetCoreHero.ToastNotification.Abstractions;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -14,8 +13,6 @@ namespace Socoro.Web.Controllers
         private ILogger<T> _loggerInstance;
         private IViewRenderService _viewRenderInstance;
         private IMapper _mapperInstance;
-        private INotyfService _notifyInstance;
-        protected INotyfService _notify => _notifyInstance ??= HttpContext.RequestServices.GetService<INotyfService>();
 
         protected IMediator _mediator => _mediatorInstance ??= HttpContext.RequestServices.GetService<IMediator>();
         protected ILogger<T> _logger => _loggerInstance ??= HttpContext.RequestServices.GetService<ILogger<T>>();

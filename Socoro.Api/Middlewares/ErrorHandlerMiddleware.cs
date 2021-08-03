@@ -1,5 +1,5 @@
 ﻿using Socoro.Application.Exceptions;
-using AspNetCoreHero.Results;
+using Socoro.Application.DTOs.Results;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;

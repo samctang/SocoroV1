@@ -43,7 +43,6 @@ namespace Socoro.Web.Areas.Identity.Pages.Account
         {
             await _mediator.Send(new AddActivityLogCommand() { userId = _userService.UserId, Action = "Logged Out" });
             await _signInManager.SignOutAsync();
-            _notyf.Information("User logged out.");
             _logger.LogInformation("User logged out.");
             if (returnUrl != null)
             {

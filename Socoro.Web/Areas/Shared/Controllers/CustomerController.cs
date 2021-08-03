@@ -18,23 +18,19 @@ namespace Socoro.Web.Areas.Shared.Controllers
         {
             CustomerViewModel customerViewModel = new CustomerViewModel();
             //Add default values
-            ViewBag.TypeId = id;
+            customerViewModel.TypeId = id;
             switch (id)
             {
                 case 1:
-                    ViewBag.Title = "Add Agent";
                     ViewBag.Customer = "Agent";
                     break;
                 case 2:
-                    ViewBag.Title = "Add Shipper";
                     ViewBag.Customer = "Shipper";
                     break;
                 case 3:
-                    ViewBag.Title = "Add Consignee";
                     ViewBag.Customer = "Consignee";
                     break;
                 default:
-                    ViewBag.Title = "Add Customer";
                     ViewBag.Customer = "Customer";
                     break;
             }

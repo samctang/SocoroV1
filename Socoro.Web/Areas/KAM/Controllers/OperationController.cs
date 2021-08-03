@@ -29,7 +29,7 @@ namespace Socoro.Web.Areas.KAM.Controllers
             return View(operationViewModel);
         }
         [HttpPost]
-        public async Task<IActionResult> Create(OperationViewModel operationViewModel)
+        public async Task<IActionResult> CreateAsync(OperationViewModel operationViewModel)
         {
             if (ModelState.IsValid)
             {

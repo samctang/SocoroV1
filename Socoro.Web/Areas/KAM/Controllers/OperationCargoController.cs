@@ -1,12 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
 using Socoro.Web.Controllers;
 using Socoro.Web.Areas.KAM.Models;
-using Socoro.Application.Features.Operations.Commands;
-using System.Net.Http;
-using Newtonsoft.Json;
-using System.Text;
 
 namespace Socoro.Web.Areas.KAM.Controllers
 {

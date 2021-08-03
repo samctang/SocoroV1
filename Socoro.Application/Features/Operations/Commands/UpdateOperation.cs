@@ -1,10 +1,9 @@
 ﻿using Socoro.Application.Interfaces.Repositories;
-using AspNetCoreHero.Results;
+using Socoro.Application.DTOs.Results;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using System;
-using Socoro.Domain.Entities;
 
 namespace Socoro.Application.Features.Operations.Commands
 {

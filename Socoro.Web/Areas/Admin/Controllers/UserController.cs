@@ -71,12 +71,7 @@ namespace Socoro.Web.Areas.Admin.Controllers
                     var allUsersExceptCurrentUser = await _userManager.Users.Where(a => a.Id != currentUser.Id).ToListAsync();
                     var users = _mapper.Map<IEnumerable<UserViewModel>>(allUsersExceptCurrentUser);
                     var htmlData = await _viewRenderer.RenderViewToStringAsync("_ViewAll", users);
-                    _notify.Success($"Account for {user.Email} created.");
                     return new JsonResult(new { isValid = true, html = htmlData });
-                }
-                foreach (var error in result.Errors)
-                {
-                    _notify.Error(error.Description);
                 }
                 var html = await _viewRenderer.RenderViewToStringAsync("_Create", userModel);
                 return new JsonResult(new { isValid = false, html = html });

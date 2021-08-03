@@ -1,6 +1,4 @@
-﻿using AspNetCoreHero.Abstractions.Domain;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections.Generic;
 
 namespace Socoro.Domain.Entities
 {

@@ -1,6 +1,6 @@
 ﻿using Socoro.Application.Interfaces.Repositories;
 using Socoro.Domain.Entities;
-using AspNetCoreHero.Results;
+using Socoro.Application.DTOs.Results;
 using AutoMapper;
 using MediatR;
 using System.Threading;

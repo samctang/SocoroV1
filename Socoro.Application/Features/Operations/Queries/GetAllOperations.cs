@@ -1,7 +1,7 @@
 ﻿using Socoro.Application.Extensions;
 using Socoro.Application.Interfaces.Repositories;
 using Socoro.Domain.Entities;
-using AspNetCoreHero.Results;
+using Socoro.Application.DTOs.Results;
 using MediatR;
 using System;
 using System.Linq;

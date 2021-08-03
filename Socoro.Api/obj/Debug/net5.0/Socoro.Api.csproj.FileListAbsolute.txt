@@ -10,12 +10,6 @@ C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\Socoro.Api.dll
 C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\ref\Socoro.Api.dll
 C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\Socoro.Api.pdb
 C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\Socoro.Api.xml
-C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\AspNetCoreHero.Abstractions.dll
-C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\AspNetCoreHero.EntityFrameworkCore.AuditTrail.dll
-C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\AspNetCoreHero.Extensions.Caching.dll
-C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\AspNetCoreHero.Extensions.Logging.dll
-C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\AspNetCoreHero.Results.dll
-C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\AspNetCoreHero.ThrowR.dll
 C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\AutoMapper.dll
 C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\FluentValidation.dll

@@ -1,7 +1,4 @@
-﻿using AspNetCoreHero.Abstractions.Domain;
-using System;
-
-namespace Socoro.Domain.Entities
+﻿namespace Socoro.Domain.Entities
 {
     public class OperationProcess : AuditableEntity
     {

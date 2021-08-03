@@ -3,10 +3,8 @@ using Socoro.Application.Features.ActivityLog.Queries.GetUserLogs;
 using Socoro.Application.Interfaces.Shared;
 using Socoro.Web.Abstractions;
 using MediatR;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Socoro.Web.Areas.Identity.Pages.Account

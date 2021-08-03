@@ -98,7 +98,6 @@ namespace Socoro.Web.Areas.Identity.Pages.Account
                     }
                     else if (!user.EmailConfirmed)
                     {
-                        _notyf.Error("Email Not Confirmed.");
                         ModelState.AddModelError(string.Empty, "Email Not Confirmed.");
                         return Page();
                     }
@@ -109,7 +108,6 @@ namespace Socoro.Web.Areas.Identity.Pages.Account
                         {
                             await _mediator.Send(new AddActivityLogCommand() { userId = user.Id, Action = "Logged In" });
                             _logger.LogInformation("User logged in.");
-                            _notyf.Success($"Logged in as {userName}.");
                             return LocalRedirect(returnUrl);
                         }
                         await _mediator.Send(new AddActivityLogCommand() { userId = user.Id, Action = "Log-In Failed" });
@@ -119,13 +117,11 @@ namespace Socoro.Web.Areas.Identity.Pages.Account
                         }
                         if (result.IsLockedOut)
                         {
-                            _notyf.Warning("User account locked out.");
                             _logger.LogWarning("User account locked out.");
                             return RedirectToPage("./Lockout");
                         }
                         else
                         {
-                            _notyf.Error("Invalid login attempt.");
                             ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                             return Page();
                         }
@@ -133,7 +129,6 @@ namespace Socoro.Web.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    _notyf.Error("Email / Username Not Found.");
                     ModelState.AddModelError(string.Empty, "Email / Username Not Found.");
                 }
             }

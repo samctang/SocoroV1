@@ -1,12 +1,11 @@
 ﻿using Socoro.Application.Interfaces.Repositories;
-using AspNetCoreHero.Results;
+using Socoro.Application.DTOs.Results;
 using AutoMapper;
 using MediatR;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Socoro.Application.DTOs.Customer;
-using Socoro.Domain.Entities;
 
 namespace Socoro.Application.Features.Customers.Queries
 {

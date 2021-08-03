@@ -1,5 +1,5 @@
 ﻿using Socoro.Application.Interfaces.Repositories;
-using AspNetCoreHero.Results;
+using Socoro.Application.DTOs.Results;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;

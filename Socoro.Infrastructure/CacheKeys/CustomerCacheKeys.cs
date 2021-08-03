@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Socoro.Infrastructure.CacheKeys
+﻿namespace Socoro.Infrastructure.CacheKeys
 {
     public static class CustomerCacheKeys
     {

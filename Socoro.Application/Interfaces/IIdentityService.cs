@@ -1,5 +1,5 @@
 ﻿using Socoro.Application.DTOs.Identity;
-using AspNetCoreHero.Results;
+using Socoro.Application.DTOs.Results;
 using System.Threading.Tasks;
 
 namespace Socoro.Application.Interfaces

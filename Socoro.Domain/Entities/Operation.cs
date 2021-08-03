@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using AspNetCoreHero.Abstractions.Domain;
 namespace Socoro.Domain.Entities
 {
     public class Operation : AuditableEntity

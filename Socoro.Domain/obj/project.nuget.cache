@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "dgSpecHash": "bWm0zKIbRjpZnIve2Rw//6tMYuXYAX4TSuL1p6Wr0JnvIZagOQ93zedm9Z9w5sILOYsVS0Gz2+0ifG9epPqZmQ==",
+  "dgSpecHash": "2AmIIFSSa+43wEplqdwDn8RnnU+ii4N+vBzROMHR9JRetr/DMY/Fun3eB7D4BwNx3QutxNnraSZs05rPY/3AQg==",
   "success": true,
   "projectFilePath": "C:\\git\\Socoro\\Socoro.Domain\\Socoro.Domain.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Sam\\.nuget\\packages\\aspnetcorehero.abstractions\\1.0.0\\aspnetcorehero.abstractions.1.0.0.nupkg.sha512",
     "C:\\Users\\Sam\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.1\\microsoft.aspnetcore.cryptography.internal.5.0.1.nupkg.sha512",
     "C:\\Users\\Sam\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.1\\microsoft.aspnetcore.cryptography.keyderivation.5.0.1.nupkg.sha512",
     "C:\\Users\\Sam\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\5.0.1\\microsoft.aspnetcore.identity.entityframeworkcore.5.0.1.nupkg.sha512",

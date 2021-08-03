@@ -1,5 +1,4 @@
-using Socoro.Domain.Entities;
-using AspNetCoreHero.Extensions.Logging;
+using Socoro.Application.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;

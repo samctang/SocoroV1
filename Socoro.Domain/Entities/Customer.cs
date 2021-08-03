@@ -1,6 +1,4 @@
-﻿using AspNetCoreHero.Abstractions.Domain;
-using System.ComponentModel.DataAnnotations.Schema;
-
+﻿
 namespace Socoro.Domain.Entities
 {
     public class Customer : AuditableEntity

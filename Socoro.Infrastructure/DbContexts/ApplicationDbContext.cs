@@ -1,8 +1,7 @@
-﻿using AspNetCoreHero.Abstractions.Domain;
+﻿using Socoro.Domain.Entities;
 using Socoro.Application.Interfaces.Contexts;
 using Socoro.Application.Interfaces.Shared;
-using Socoro.Domain.Entities;
-using AspNetCoreHero.EntityFrameworkCore.AuditTrail;
+using Socoro.Infrastructure.Contexts;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using System.Linq;

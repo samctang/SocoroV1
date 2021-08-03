@@ -1,7 +1,7 @@
 ﻿using Socoro.Application.DTOs;
 using Socoro.Application.Interfaces.Repositories;
 using Socoro.Application.Interfaces.Shared;
-using AspNetCoreHero.EntityFrameworkCore.AuditTrail.Models;
+using Socoro.Application.Models;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;

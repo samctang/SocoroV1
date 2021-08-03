@@ -1,9 +1,9 @@
-﻿using AspNetCoreHero.Results;
-using AspNetCoreHero.ThrowR;
+﻿using Socoro.Application.DTOs.Results;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Socoro.Application.Interfaces;
 
 namespace Socoro.Application.Extensions
 {

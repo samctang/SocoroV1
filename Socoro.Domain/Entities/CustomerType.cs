@@ -1,4 +1,4 @@
-﻿using AspNetCoreHero.Abstractions.Domain;
+﻿
 
 namespace Socoro.Domain.Entities
 {
