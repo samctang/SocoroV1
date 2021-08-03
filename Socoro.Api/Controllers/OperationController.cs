@@ -48,7 +48,7 @@ namespace Socoro.Api.Controllers
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{id}")]
+        /*[HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, UpdateOperation command)
         {
             if (id != command.Id)
@@ -63,6 +63,6 @@ namespace Socoro.Api.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             return Ok(await _mediator.Send(new DeleteOperation { Id = id }));
-        }
+        }*/
     }
 }

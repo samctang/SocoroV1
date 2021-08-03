@@ -33,6 +33,12 @@ namespace Socoro.Infrastructure.Extensions
             services.AddTransient<IOperationProcessRepository, OperationProcessRepository>();
             services.AddTransient<IOperationProcessTypeRepository, OperationProcessTypeRepository>();
             services.AddTransient<IOperationProcessTypeCacheRepository, OperationProcessTypeCacheRepository>();
+            services.AddTransient<IOperationCargoRepository, OperationCargoRepository>();
+            services.AddTransient<IOperationCargoCacheRepository, OperationCargoCacheRepository>();
+            services.AddTransient<IOperationBookingRepository, OperationBookingRepository>();
+            services.AddTransient<IOperationBookingCacheRepository, OperationBookingCacheRepository>();
+            services.AddTransient<IOperationQuoteRepository, OperationQuoteRepository>();
+            services.AddTransient<IOperationQuoteCacheRepository, OperationQuoteCacheRepository>();
             services.AddTransient<ILogRepository, LogRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
 
