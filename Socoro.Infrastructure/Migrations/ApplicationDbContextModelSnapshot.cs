@@ -19,7 +19,7 @@ namespace Socoro.Infrastructure.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.1");
 
-            modelBuilder.Entity("AspNetCoreHero.EntityFrameworkCore.AuditTrail.Models.Audit", b =>
+            modelBuilder.Entity("Socoro.Application.Models.Audit", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -250,62 +250,6 @@ namespace Socoro.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CompanyTypes");
-                });
-
-            modelBuilder.Entity("Socoro.Domain.Entities.Container", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("CommercialDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ContainerNo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("GrossWeight")
-                        .HasColumnType("int");
-
-                    b.Property<string>("HazardClass")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Hazardous")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("LastModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("OperationCargoId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SealNo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TareWeight")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TypeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UNCode")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OperationCargoId");
-
-                    b.ToTable("Containers");
                 });
 
             modelBuilder.Entity("Socoro.Domain.Entities.Customer", b =>
@@ -828,6 +772,62 @@ namespace Socoro.Infrastructure.Migrations
                     b.ToTable("OperationCargos");
                 });
 
+            modelBuilder.Entity("Socoro.Domain.Entities.OperationContainer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("CommercialDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContainerNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("GrossWeight")
+                        .HasColumnType("int");
+
+                    b.Property<string>("HazardClass")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Hazardous")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("OperationCargoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SealNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TareWeight")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UNCode")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OperationCargoId");
+
+                    b.ToTable("OperationContainers");
+                });
+
             modelBuilder.Entity("Socoro.Domain.Entities.OperationProcess", b =>
                 {
                     b.Property<int>("Id")
@@ -985,13 +985,6 @@ namespace Socoro.Infrastructure.Migrations
                     b.Navigation("Company");
                 });
 
-            modelBuilder.Entity("Socoro.Domain.Entities.Container", b =>
-                {
-                    b.HasOne("Socoro.Domain.Entities.OperationCargo", null)
-                        .WithMany("Containers")
-                        .HasForeignKey("OperationCargoId");
-                });
-
             modelBuilder.Entity("Socoro.Domain.Entities.Customer", b =>
                 {
                     b.HasOne("Socoro.Domain.Entities.Company", "Company")
@@ -1065,6 +1058,13 @@ namespace Socoro.Infrastructure.Migrations
                         .HasForeignKey("OperationId");
 
                     b.Navigation("Operation");
+                });
+
+            modelBuilder.Entity("Socoro.Domain.Entities.OperationContainer", b =>
+                {
+                    b.HasOne("Socoro.Domain.Entities.OperationCargo", null)
+                        .WithMany("Containers")
+                        .HasForeignKey("OperationCargoId");
                 });
 
             modelBuilder.Entity("Socoro.Domain.Entities.OperationProcess", b =>

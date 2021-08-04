@@ -1,8 +1,10 @@
-﻿
-namespace Socoro.Domain.Entities
+﻿using System;
+
+namespace Socoro.Application.DTOs.Operation
 {
-    public class Container : AuditableEntity
+    public class OperationContainerResponse
     {
+        public int Id { get; set; }
         public int TypeId { get; set; }
         public int GrossWeight { get; set; }
         public string CommercialDescription { get; set; }

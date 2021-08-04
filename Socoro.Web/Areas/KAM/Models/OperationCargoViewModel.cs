@@ -28,6 +28,7 @@ namespace Socoro.Web.Areas.KAM.Models
         [Required, Display(Name = "Number of Containers")]
         public int NoContainers { get; set; }
         [Required]
-        public List<ContainerViewModel> Containers { get; set; }
+        public List<OperationContainerViewModel> Containers { get; set; }
+        public int OperationId { get; set; }
     }
 }

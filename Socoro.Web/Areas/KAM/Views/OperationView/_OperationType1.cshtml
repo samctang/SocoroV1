@@ -271,7 +271,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info font-weight-bold mr-auto">Tasks</button>
-                <a asp-area="KAM" asp-controller="OperationCargo" asp-action="Index">
+                <a asp-area="KAM" asp-controller="OperationCargo" asp-action="Index" asp-route-id="@Model.OperationViewModel.Id">
                     <input type="button" class="btn btn-success font-weight-bold" value="Fill In Info" />
                 </a>
             </div>

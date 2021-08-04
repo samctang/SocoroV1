@@ -515,7 +515,14 @@ C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Profile.csh
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\KAM\Views\OperationCargo\Index.cshtml.g.cs
+C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\KAM\Views\OperationView\Index.cshtml.g.cs
+C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\KAM\Views\OperationView\_OperationType1.cshtml.g.cs
+C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\KAM\Views\OperationView\_ViewInfo.cshtml.g.cs
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\KAM\Views\Operation\Index.cshtml.g.cs
+C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\KAM\Views\Operation\_CreateOperation.cshtml.g.cs
+C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Shared\Views\Carrier\Index.cshtml.g.cs
+C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Shared\Views\Customer\Index.cshtml.g.cs
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\_ViewImports.cshtml.g.cs
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\_ViewStart.cshtml.g.cs
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Views\Shared\Components\Culture\Default.cshtml.g.cs
@@ -542,10 +549,3 @@ C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Socoro.Web.dll
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\ref\Socoro.Web.dll
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Socoro.Web.pdb
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Socoro.Web.genruntimeconfig.cache
-C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\KAM\Views\Operation\_CreateOperation.cshtml.g.cs
-C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Shared\Views\Carrier\Index.cshtml.g.cs
-C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\Shared\Views\Customer\Index.cshtml.g.cs
-C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\KAM\Views\OperationView\Index.cshtml.g.cs
-C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\KAM\Views\OperationView\_OperationType1.cshtml.g.cs
-C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\KAM\Views\OperationView\_ViewInfo.cshtml.g.cs
-C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Razor\Areas\KAM\Views\OperationCargo\Index.cshtml.g.cs

@@ -1,6 +1,6 @@
 ﻿namespace Socoro.Web.Areas.KAM.Models
 {
-    public class ContainerViewModel
+    public class OperationContainerViewModel
     {
         public int Id { get; set; }
         public int TypeId { get; set; }

@@ -7,7 +7,6 @@
 <div class="subheader py-2 py-lg-6 subheader-transparent" id="kt_subheader">
 </div>
 <!--end::Subheader-->
-
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Entry-->
@@ -21,16 +20,16 @@
                     <div class="card card-custom card-shadowless rounded-top-0">
                         <!--begin::Body-->
                         <div class="card-body p-0">
-                            <div asp-validation-summary="All"></div>
-                            <div class="row justify-content-center py-8 px-8 py-lg-15 px-lg-10">
-                                <div class="col-xl-12 col-xxl-10">
+                            <div class="row justify-content-center py-8 px-8 py-lg-10 px-lg-10">
+                                <div class="col-xl-10 col-xxl-9">
                                     <!--begin::Wizard Form-->
-                                    <form class="form" id="kt_form" method="post" enctype="multipart/form-data" asp-area="KAM" asp-controller="OperationCargo" asp-action="Add Cargo">
+                                    <form class="form" id="kt_form" method="post" enctype="multipart/form-data" asp-area="KAM" asp-controller="OperationCargo" asp-action="AddCargo" asp-route-id="@Model.OperationViewModel.Id">
                                         <div class="row justify-content-center">
                                             <div class="col-xl-9">
                                                 <!--begin::Wizard Step 1-->
                                                 <div class="my-5 step" data-wizard-type="step-content" data-wizard-state="current">
-                                                    <h5 class="text-dark font-weight-bold mb-10">FCL - FOB Cargo Information for Operation @Model.OperationViewModel.OperationNo</h5>
+                                                    <h5 class="text-dark font-weight-bold mb-10">FCL - FOB Cargo Information for Operation #@Model.OperationViewModel.OperationNo </h5>
+                                                    <div asp-validation-summary="All" class="text-danger"></div>
                                                     <!--begin::Group-->
                                                     <div class="form-group">
                                                         <label class="col-form-label" asp-for="OperationCargoViewModel.LoadingAddress"></label>:
@@ -39,58 +38,58 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-form-label" asp-for="OperationCargoViewModel.ContactEmail"></label>:
-                                                        <input asp-for="OperationCargoViewModel.ContactEmail" name="ContactEmail" type="text" class="form-control" placeholder="Contact Email" />
+                                                        <input asp-for="OperationCargoViewModel.ContactEmail" name="ContactEmail" type="email" class="form-control" placeholder="Contact Email" />
                                                         <span asp-validation-for="OperationCargoViewModel.ContactEmail" class="text-danger"></span>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-form-label" asp-for="OperationCargoViewModel.ContactPhone"></label>:
-                                                        <input asp-for="OperationCargoViewModel.ContactPhone" name="ContactPhone" type="text" class="form-control" placeholder="Contact Phone" />
+                                                        <input asp-for="OperationCargoViewModel.ContactPhone" name="ContactPhone" type="tel" class="form-control" placeholder="Contact Phone" />
                                                         <span asp-validation-for="OperationCargoViewModel.ContactPhone" class="text-danger"></span>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-form-label" asp-for="OperationCargoViewModel.LoadingDate"></label>:
-                                                        <input asp-for="OperationCargoViewModel.LoadingDate" name="LoadingDate" type="text" class="form-control" placeholder="Loading Date" />
+                                                        <input asp-for="OperationCargoViewModel.LoadingDate" name="LoadingDate" type="date" class="form-control" placeholder="Loading Date" />
                                                         <span asp-validation-for="OperationCargoViewModel.LoadingDate" class="text-danger"></span>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-form-label" asp-for="OperationCargoViewModel.LoadingTime"></label>:
-                                                        <input asp-for="OperationCargoViewModel.LoadingTime" name="LoadingTime" type="text" class="form-control" placeholder="Loading Time" />
+                                                        <input asp-for="OperationCargoViewModel.LoadingTime" name="LoadingTime" type="time" class="form-control" placeholder="12:00 AM" />
                                                         <span asp-validation-for="OperationCargoViewModel.LoadingTime" class="text-danger"></span>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-form-label" asp-for="OperationCargoViewModel.Reference"></label>:
-                                                        <input asp-for="OperationCargoViewModel.Reference" name="ContactPhone" type="text" class="form-control" placeholder="Reference" />
+                                                        <input asp-for="OperationCargoViewModel.Reference" name="Reference" type="text" class="form-control" placeholder="Reference" />
                                                         <span asp-validation-for="OperationCargoViewModel.Reference" class="text-danger"></span>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-form-label" asp-for="OperationCargoViewModel.EIN"></label>:
-                                                        <input asp-for="OperationCargoViewModel.EIN" name="LoadingAddress" type="text" class="form-control" placeholder="EIN" />
+                                                        <input asp-for="OperationCargoViewModel.EIN" name="EIN" type="text" class="form-control" placeholder="EIN" />
                                                         <span asp-validation-for="OperationCargoViewModel.EIN" class="text-danger"></span>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-form-label" asp-for="OperationCargoViewModel.Bonded"></label>:
                                                         <select asp-for="OperationCargoViewModel.Bonded" name="Bonded" class="selectpicker form-control" data-ng-style="select-with-transition">
-                                                            <option value="0" selected>No</option>
-                                                            <option value="1">Yes</option>
+                                                            <option value="false" selected>No</option>
+                                                            <option value="true">Yes</option>
                                                         </select>
                                                         <span asp-validation-for="OperationCargoViewModel.Bonded" class="text-danger"></span>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-form-label" asp-for="OperationCargoViewModel.Propelled"></label>:
                                                         <select asp-for="OperationCargoViewModel.Propelled" name="Propelled" class="selectpicker form-control" data-ng-style="select-with-transition">
-                                                            <option value="0" selected>No</option>
-                                                            <option value="1">Yes</option>
+                                                            <option value="false" selected>No</option>
+                                                            <option value="true">Yes</option>
                                                         </select>
                                                         <span asp-validation-for="OperationCargoViewModel.Propelled" class="text-danger"></span>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-form-label" asp-for="OperationCargoViewModel.NoContainers"></label>:
-                                                        <input asp-for="OperationCargoViewModel.NoContainers" name="LoadingAddress" type="text" class="form-control" placeholder="Number of Containers" />
+                                                        <input asp-for="OperationCargoViewModel.NoContainers" name="NoContainers" type="number" class="form-control" placeholder="Number of Containers" />
                                                         <span asp-validation-for="OperationCargoViewModel.NoContainers" class="text-danger"></span>
                                                     </div>
                                                     <div class="form-group">
                                                         <label class="col-form-label" asp-for="OperationCargoViewModel.Containers"></label>:
-                                                        <input asp-for="OperationCargoViewModel.Containers" name="ContactEmail" type="text" class="form-control" placeholder="" />
+                                                        <input asp-for="OperationCargoViewModel.Containers" name="Containers" type="text" class="form-control" placeholder="" />
                                                         <span asp-validation-for="OperationCargoViewModel.Containers" class="text-danger"></span>
                                                     </div>
                                                 </div>

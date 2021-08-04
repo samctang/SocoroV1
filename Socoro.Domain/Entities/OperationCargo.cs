@@ -15,7 +15,7 @@ namespace Socoro.Domain.Entities
         public bool Bonded { get; set; }
         public bool Propelled { get; set; }
         public int NoContainers { get; set; }
-        public List<Container> Containers { get; set; }
+        public List<OperationContainer> Containers { get; set; }
         public int? OperationId { get; set; }
         public Operation Operation { get; set; }
     }

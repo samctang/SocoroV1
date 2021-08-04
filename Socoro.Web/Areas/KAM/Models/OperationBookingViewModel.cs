@@ -19,6 +19,6 @@ namespace Socoro.Web.Areas.KAM.Models
         public bool Ramp { get; set; }
         public DateTime RampDate { get; set; }
         public int NoContainers { get; set; }
-        public List<ContainerViewModel> Containers { get; set; }
+        public List<OperationContainerViewModel> Containers { get; set; }
     }
 }
