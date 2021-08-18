@@ -10,46 +10,39 @@
             <!--begin::Page Title-->
             <div class="dropdown mt-2 mb-2 mr-3 ml-5">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Actions
+                    View Files
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <input type="button" class="dropdown-item" data-toggle="modal" data-target="#viewInfo" value="View Info" />
-                    <a class="dropdown-item" href="#">Input SLI</a>
-                    <a class="dropdown-item" href="#">Request SLI</a>
-                    <a class="dropdown-item" href="#">Input Invoice</a>
-                    <a class="dropdown-item" href="#">Request Invoice</a>
-                    <a class="dropdown-item" href="#">Input Insurance</a>
-                    <a class="dropdown-item" href="#">Edit Operation</a>
+                    <a class="dropdown-item" href="#">View SLI</a>
+                    <a class="dropdown-item" href="#">View Invoice</a>
+                    <a class="dropdown-item" href="#">View Insurance</a>
+                    <a class="dropdown-item" href="#">View Booking Sheet</a>
                     <a class="dropdown-item" href="#">Send All Documentation</a>
+                </div>
+            </div>
+            <div class="dropdown mt-2 mb-2 mr-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Input Data
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Input SLI</a>
+                    <a class="dropdown-item" href="#">Input Invoice</a>
+                    <a class="dropdown-item" href="#">Input Insurance</a>
                 </div>
             </div>
             <div class="dropdown mt-2 mb-2">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    View Files
+                    Request Data
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">SLI</a>
-                    <a class="dropdown-item" href="#">Booking Sheet</a>
-                    <a class="dropdown-item" href="#">Insurance</a>
+                    <a class="dropdown-item" href="#">Request SLI</a>
+                    <a class="dropdown-item" href="#">Request Invoice</a>
                 </div>
             </div>
             <!--end::Page Title-->
         </div>
         <!--end::Info-->
-        <!--begin::Toolbar-->
-        <div class="d-flex align-items-center flex-wrap">
-            <div class="dropdown mt-2 mb-2 mr-5">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Difficulty
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Easy</a>
-                    <a class="dropdown-item" href="#">Medium</a>
-                    <a class="dropdown-item" href="#">Hard</a>
-                </div>
-            </div>
-        </div>
-        <!--end::Toolbar-->
     </div>
 </div>
 <!--end::Subheader-->
@@ -65,6 +58,23 @@
                     <h3 class="card-title align-items-start flex-column">
                         <span class="card-label font-weight-bolder text-dark">Viewing Operation #@Model.OperationViewModel.OperationNo</span>
                     </h3>
+                    <div class="d-flex align-items-center flex-wrap">
+                        <div class="dropdown mt-2 mb-2">
+                            <button class="btn btn-info" type="button" id="editOperation">
+                                Edit Operation
+                            </button>
+                        </div>
+                        <div class="dropdown mt-2 mb-2 ml-3">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Difficulty
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Easy</a>
+                                <a class="dropdown-item" href="#">Medium</a>
+                                <a class="dropdown-item" href="#">Hard</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!--end::Header-->
                 <div class="card-body">

@@ -12,5 +12,7 @@ namespace Socoro.Domain.Entities
         public string ContainerNo { get; set; }
         public string SealNo { get; set; }
         public int TareWeight { get; set; }
+        public string Commodities { get; set; }
+        public string Marks { get; set; }
     }
 }
