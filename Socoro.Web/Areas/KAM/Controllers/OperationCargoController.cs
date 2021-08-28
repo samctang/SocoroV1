@@ -14,6 +14,8 @@ namespace Socoro.Web.Areas.KAM.Controllers
     [Area("KAM")]
     public class OperationCargoController : BaseController<OperationCargoController>
     {
+        OperationIntViewModel operationIntViewModel = new OperationIntViewModel();
+
         HttpClient client = new HttpClient();
         string requestUri = String.Empty;
         StringContent stringContent = new StringContent("");
@@ -25,7 +27,7 @@ namespace Socoro.Web.Areas.KAM.Controllers
         public IActionResult Index(int id)
         {
             string currentOperationNo = (string)TempData["OperationNo"];
-            OperationIntViewModel operationIntViewModel = new OperationIntViewModel();
+
             OperationViewModel operationViewModel = new OperationViewModel();
             operationViewModel.Id = id;
             operationViewModel.OperationNo = currentOperationNo;
@@ -35,13 +37,13 @@ namespace Socoro.Web.Areas.KAM.Controllers
             return View(operationIntViewModel);
         }
         [HttpPost]
-        public async Task<IActionResult> AddCargoAsync(int id, OperationCargoViewModel operationCargoViewModel, List<OperationContainerViewModel> operationContainerList)
+        public async Task<IActionResult> AddCargoAsync(int id, OperationIntViewModel operationIntViewModel)
         {
             if (ModelState.IsValid)
             {
-                operationCargoViewModel.OperationId = id;
+                operationIntViewModel.OperationCargoViewModel.OperationId = id;
 
-                var createCustomerCommand = _mapper.Map<CreateOperationCargo>(operationCargoViewModel);
+                var createCustomerCommand = _mapper.Map<CreateOperationCargo>(operationIntViewModel.OperationCargoViewModel);
                 requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/OperationCargo/";
                 stringContent = new StringContent(JsonConvert.SerializeObject(createCustomerCommand), Encoding.UTF8, "application/json");
                 response = await client.PostAsync(requestUri, stringContent);
@@ -52,7 +54,7 @@ namespace Socoro.Web.Areas.KAM.Controllers
             }
             else
                 ModelState.AddModelError("Add_Customer", "Server error");
-            return View(operationCargoViewModel);
+            return View(operationIntViewModel);
         }
     }
 }
