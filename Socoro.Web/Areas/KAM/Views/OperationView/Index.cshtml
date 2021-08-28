@@ -3,47 +3,8 @@
 <script language="JavaScript" type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
 <partial name="_ViewInfo" />
 <!--begin::Subheader-->
-<div class="subheader py-2 py-lg-6 subheader-transparent" id="kt_subheader">
-    <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-        <!--begin::Info-->
-        <div class="d-flex align-items-center flex-wrap">
-            <!--begin::Page Title-->
-            <div class="dropdown mt-2 mb-2 mr-3 ml-5">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    View Files
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <input type="button" class="dropdown-item" data-toggle="modal" data-target="#viewInfo" value="View Info" />
-                    <a class="dropdown-item" href="#">View SLI</a>
-                    <a class="dropdown-item" href="#">View Invoice</a>
-                    <a class="dropdown-item" href="#">View Insurance</a>
-                    <a class="dropdown-item" href="#">View Booking Sheet</a>
-                    <a class="dropdown-item" href="#">Send All Documentation</a>
-                </div>
-            </div>
-            <div class="dropdown mt-2 mb-2 mr-3">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Input Data
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Input SLI</a>
-                    <a class="dropdown-item" href="#">Input Invoice</a>
-                    <a class="dropdown-item" href="#">Input Insurance</a>
-                </div>
-            </div>
-            <div class="dropdown mt-2 mb-2">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Request Data
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Request SLI</a>
-                    <a class="dropdown-item" href="#">Request Invoice</a>
-                </div>
-            </div>
-            <!--end::Page Title-->
-        </div>
-        <!--end::Info-->
-    </div>
+<div class="subheader py-2 subheader-transparent" id="kt_subheader">
+   
 </div>
 <!--end::Subheader-->
 <!--begin::Entry-->
@@ -54,25 +15,57 @@
             <!--begin::Advance Table Widget 1-->
             <div class="card card-custom card-stretch gutter-b">
                 <!--begin::Header-->
-                <div class="card-header border-0 py-5">
+                <div class="card-header border-0 pt-5">
                     <h3 class="card-title align-items-start flex-column">
                         <span class="card-label font-weight-bolder text-dark">Viewing Operation #@Model.OperationViewModel.OperationNo</span>
                     </h3>
                     <div class="d-flex align-items-center flex-wrap">
-                        <div class="dropdown mt-2 mb-2">
-                            <button class="btn btn-info" type="button" id="editOperation">
-                                Edit Operation
+                        <div class="dropdown mt-2 mb-2 mr-3 ml-5">
+                            <button class="btn btn-light-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                View Files
                             </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <input type="button" class="dropdown-item" data-toggle="modal" data-target="#viewInfo" value="View Info" />
+                                <a class="dropdown-item" href="#">View SLI</a>
+                                <a class="dropdown-item" href="#">View Invoice</a>
+                                <a class="dropdown-item" href="#">View Insurance</a>
+                                <a class="dropdown-item" href="#">View Booking Sheet</a>
+                                <a class="dropdown-item" href="#">Send All Documentation</a>
+                            </div>
                         </div>
-                        <div class="dropdown mt-2 mb-2 ml-3">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Difficulty
+                        <div class="dropdown mt-2 mb-2 mr-3 ml-5">
+                            <button class="btn btn-light-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Input Data
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Input SLI</a>
+                                <a class="dropdown-item" href="#">Input Invoice</a>
+                                <a class="dropdown-item" href="#">Input Insurance</a>
+                            </div>
+                        </div>
+                        <div class="dropdown mt-2 mb-2 mr-3 ml-5">
+                            <button class="btn btn-light-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Request Data
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Request SLI</a>
+                                <a class="dropdown-item" href="#">Request Invoice</a>
+                            </div>
+                        </div>
+                        <div class="dropdown mt-2 mb-2 mr-3 ml-5">
+                            <button class="btn btn-light-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Set Difficulty
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="#">Easy</a>
                                 <a class="dropdown-item" href="#">Medium</a>
                                 <a class="dropdown-item" href="#">Hard</a>
                             </div>
+                        </div>
+                        <div class="dropdown mt-2 mb-2 mr-3 ml-5">
+                            <button class="btn btn-light-primary" type="button" id="editOperation">
+                                Edit Operation
+                            </button>
                         </div>
                     </div>
                 </div>
