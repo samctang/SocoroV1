@@ -10600,10 +10600,10 @@ button.bg-white:focus {
   padding: 1.5rem !important;
 }
 
-.pt-6,
+/*.pt-6,
 .py-6 {
   padding-top: 1.5rem !important;
-}
+}*/
 
 .pr-6,
 .px-6 {
@@ -52858,7 +52858,7 @@ i {
   justify-content: flex-end;
 }
 .card.card-custom > .card-body {
-  padding: 2rem 2.25rem;
+  padding: 0rem 2.25rem 2rem;
 }
 .card.card-custom > .card-footer {
   background-color: transparent;
@@ -83237,7 +83237,7 @@ body {
     z-index: 2;
   }
   .header .header-top {
-    height: 110px;
+    height: 90px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -83296,7 +83296,7 @@ body {
     border-right-color: transparent;
   }
   .header .header-bottom {
-    height: 70px;
+    height: 60px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
