@@ -1,7 +1,6 @@
 ﻿using Socoro.Application.Interfaces.Repositories;
 using Socoro.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Distributed;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -11,11 +10,9 @@ namespace Socoro.Infrastructure.Repositories
     public class OperationInsuranceRepository : IOperationInsuranceRepository
     {
         private readonly IRepositoryAsync<OperationInsurance> _repository;
-        private readonly IDistributedCache _distributedCache;
 
-        public OperationInsuranceRepository(IDistributedCache distributedCache, IRepositoryAsync<OperationInsurance> repository)
+        public OperationInsuranceRepository(IRepositoryAsync<OperationInsurance> repository)
         {
-            _distributedCache = distributedCache;
             _repository = repository;
         }
         public IQueryable<OperationInsurance> OperationInsurances => _repository.Entities;
@@ -31,14 +28,11 @@ namespace Socoro.Infrastructure.Repositories
         public async Task<int> InsertAsync(OperationInsurance operationInsurance)
         {
             await _repository.AddAsync(operationInsurance);
-            await _distributedCache.RemoveAsync(CacheKeys.OperationInsuranceCacheKeys.ListKey);
             return operationInsurance.Id;
         }
         public async Task UpdateAsync(OperationInsurance operationInsurance)
         {
             await _repository.UpdateAsync(operationInsurance);
-            await _distributedCache.RemoveAsync(CacheKeys.OperationInsuranceCacheKeys.ListKey);
-            await _distributedCache.RemoveAsync(CacheKeys.OperationInsuranceCacheKeys.GetKey(operationInsurance.Id));
         }
     }
 }

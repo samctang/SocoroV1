@@ -16,5 +16,6 @@ namespace Socoro.Application.Interfaces.Repositories
         Task UpdateAsync(OperationProcess operationProcess);
 
         Task<List<OperationProcess>> GetByOperationIdAsync(int operationId);
+        Task<OperationProcess> GetIdByOperationIdAndTypeIdAsync(int operationId, int typeId);
     }
 }

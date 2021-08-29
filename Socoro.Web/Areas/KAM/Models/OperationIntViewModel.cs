@@ -7,5 +7,7 @@
         public OperationBookingMessageViewModel OperationBookingMessageViewModel { get; set; }
         public OperationCargoViewModel OperationCargoViewModel { get; set; }
         public OperationContainerViewModel OperationContainerViewModel { get; set; }
+        public OperationProcessViewModel OperationProcessViewModel { get; set; }
+        public OperationTaskViewModel OperationTaskViewModel { get; set; }
     }
 }

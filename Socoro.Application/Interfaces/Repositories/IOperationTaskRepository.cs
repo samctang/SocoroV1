@@ -9,7 +9,7 @@ namespace Socoro.Application.Interfaces.Repositories
     {
         IQueryable<OperationTask> OperationTasks { get; }
 
-        Task<OperationTask> GetByIdAsync(int operationProcessId);
+        Task<List<OperationTask>> GetAllByOperationProcessIdAsync(int operationProcessId);
         Task<List<OperationTask>> GetListAsync();
         Task<int> InsertAsync(OperationTask operationTask);
         Task UpdateAsync(OperationTask operationTask);
