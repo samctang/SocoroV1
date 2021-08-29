@@ -444,7 +444,6 @@ C:\git\Socoro\Socoro.Web\bin\Debug\net5.0\Socoro.Infrastructure.Shared.pdb
 C:\git\Socoro\Socoro.Web\bin\Debug\net5.0\Socoro.Infrastructure.pdb
 C:\git\Socoro\Socoro.Web\bin\Debug\net5.0\Socoro.Application.pdb
 C:\git\Socoro\Socoro.Web\bin\Debug\net5.0\Socoro.Domain.pdb
-C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Socoro.Web.csproj.AssemblyReference.cache
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Socoro.Web.Resources.SharedResource.ar.resources
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Socoro.Web.Resources.SharedResource.en.resources
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Socoro.Web.csproj.GenerateResource.cache
@@ -549,3 +548,4 @@ C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Socoro.Web.dll
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\ref\Socoro.Web.dll
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Socoro.Web.pdb
 C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Socoro.Web.genruntimeconfig.cache
+C:\git\Socoro\Socoro.Web\obj\Debug\net5.0\Socoro.Web.csprojAssemblyReference.cache

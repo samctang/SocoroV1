@@ -88,7 +88,6 @@ C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\Socoro.Application.pdb
 C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\Socoro.Infrastructure.Shared.pdb
 C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\Socoro.Infrastructure.pdb
 C:\git\Socoro\Socoro.Api\bin\Debug\net5.0\Socoro.Domain.pdb
-C:\git\Socoro\Socoro.Api\obj\Debug\net5.0\Socoro.Api.csproj.AssemblyReference.cache
 C:\git\Socoro\Socoro.Api\obj\Debug\net5.0\Socoro.Api.GeneratedMSBuildEditorConfig.editorconfig
 C:\git\Socoro\Socoro.Api\obj\Debug\net5.0\Socoro.Api.AssemblyInfoInputs.cache
 C:\git\Socoro\Socoro.Api\obj\Debug\net5.0\Socoro.Api.AssemblyInfo.cs
@@ -104,3 +103,4 @@ C:\git\Socoro\Socoro.Api\obj\Debug\net5.0\Socoro.Api.dll
 C:\git\Socoro\Socoro.Api\obj\Debug\net5.0\ref\Socoro.Api.dll
 C:\git\Socoro\Socoro.Api\obj\Debug\net5.0\Socoro.Api.pdb
 C:\git\Socoro\Socoro.Api\obj\Debug\net5.0\Socoro.Api.genruntimeconfig.cache
+C:\git\Socoro\Socoro.Api\obj\Debug\net5.0\Socoro.Api.csprojAssemblyReference.cache

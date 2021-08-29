@@ -8,7 +8,6 @@ C:\git\Socoro\Socoro.Infrastructure\bin\Debug\net5.0\Socoro.Application.dll
 C:\git\Socoro\Socoro.Infrastructure\bin\Debug\net5.0\Socoro.Domain.dll
 C:\git\Socoro\Socoro.Infrastructure\bin\Debug\net5.0\Socoro.Application.pdb
 C:\git\Socoro\Socoro.Infrastructure\bin\Debug\net5.0\Socoro.Domain.pdb
-C:\git\Socoro\Socoro.Infrastructure\obj\Debug\net5.0\Socoro.Infrastructure.csproj.AssemblyReference.cache
 C:\git\Socoro\Socoro.Infrastructure\obj\Debug\net5.0\Socoro.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
 C:\git\Socoro\Socoro.Infrastructure\obj\Debug\net5.0\Socoro.Infrastructure.AssemblyInfoInputs.cache
 C:\git\Socoro\Socoro.Infrastructure\obj\Debug\net5.0\Socoro.Infrastructure.AssemblyInfo.cs
@@ -18,3 +17,4 @@ C:\git\Socoro\Socoro.Infrastructure\obj\Debug\net5.0\Socoro.Infrastructure.dll
 C:\git\Socoro\Socoro.Infrastructure\obj\Debug\net5.0\ref\Socoro.Infrastructure.dll
 C:\git\Socoro\Socoro.Infrastructure\obj\Debug\net5.0\Socoro.Infrastructure.pdb
 C:\git\Socoro\Socoro.Infrastructure\obj\Debug\net5.0\Socoro.Infrastructure.genruntimeconfig.cache
+C:\git\Socoro\Socoro.Infrastructure\obj\Debug\net5.0\Socoro.Infrastructure.csprojAssemblyReference.cache
