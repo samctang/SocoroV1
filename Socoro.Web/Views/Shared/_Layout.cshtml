@@ -17,7 +17,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <head>
     <base href="">
     <meta charset="utf-8" />
-    <title>Metronic Live preview | Keenthemes</title>
+    <title>Forwarding Your Success</title>
     <meta name="description" content="Updates and statistics" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="canonical" href="https://keenthemes.com/metronic" />
@@ -34,7 +34,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--end::Global Theme Styles-->
     <!--begin::Layout Themes(used by all pages)-->
     <!--end::Layout Themes-->
-    <link rel="shortcut icon" href="~/assets/media/logos/favicon.ico" />
+    <link rel="shortcut icon" href="~/assets/media/logos/tiny-interworld-logo.png" />
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -44,8 +44,8 @@ License: You must have a valid license purchased only from themeforest(the above
     <div id="kt_header_mobile" class="header-mobile header-mobile-fixed">
         <div class="d-flex align-items-center">
             <!--begin::Logo-->
-            <a href="index.html" class="mr-7">
-                <img alt="Logo" src="~/assets/media/logos/logo-letter-5.png" class="max-h-30px" />
+            <a href='@Url.Action("Index","Operation", new { area = "KAM"})' class="mr-7">
+                <img alt="Logo" src="~/assets/media/logos/interworld-logo.png" class="max-h-100px" />
             </a>
             <!--end::Logo-->
         </div>
@@ -79,8 +79,8 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!--begin::Left-->
                             <div class="d-none d-lg-flex align-items-center mr-3">
                                 <!--begin::Logo-->
-                                <a href="index.html" class="mr-10">
-                                    <img alt="Logo" src="~/assets/media/logos/logo-letter-5.png" class="max-h-35px" />
+                                <a href='@Url.Action("Index","Operation", new { area = "KAM"})' class="mr-10">
+                                    <img alt="Logo" src="~/assets/media/logos/interworld-logo.png" class="max-h-150px" />
                                 </a>
                                 <!--end::Logo-->
                             </div>
@@ -88,7 +88,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!--begin::Topbar-->
                             <div class="topbar">
                                 <!--begin::User-->
-                                <div class="topbar-item">
+                                <div class="topbar-item">                               
                                     <div class="btn btn-icon w-auto d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
                                         <div class="d-flex text-right pr-3">
                                             <span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline mr-1">Hi,</span>
@@ -99,7 +99,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                         </span>
                                     </div>
                                 </div>
-                                <!--end::User-->
+                             <!--end::User-->
                             </div>
                             <!--end::Topbar-->
                         </div>
@@ -174,18 +174,18 @@ License: You must have a valid license purchased only from themeforest(the above
                     @RenderBody()
                     <!--end::Content-->
                     <!--begin::Footer-->
+                    <br>
                     <div class="footer bg-white py-4 d-flex flex-lg-column" id="kt_footer">
                         <!--begin::Container-->
                         <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between">
                             <!--begin::Copyright-->
                             <div class="text-dark order-2 order-md-1">
-                                <span class="text-muted font-weight-bold mr-2">2021© Socoro</span>
+                                <span class="text-muted font-weight-bold mr-2">Copyright © 2021 Socoro LLC. All Rights Reserved.</span>
                             </div>
                             <!--end::Copyright-->
                             <!--begin::Nav-->
                             <div class="nav nav-dark order-1 order-md-2">
                                 <a href="#" target="_blank" class="nav-link pr-3 pl-0">About</a>
-                                <a href="#" target="_blank" class="nav-link px-3">Team</a>
                                 <a href="#" target="_blank" class="nav-link pl-3 pr-0">Contact</a>
                             </div>
                             <!--end::Nav-->

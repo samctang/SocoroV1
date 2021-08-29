@@ -8,9 +8,9 @@
     <div class="card-body">
         <div asp-validation-summary="All"></div>
         <div class="form-group">
-            <label asp-for="TypeId" class="col-form-label"></label>:
+            <label asp-for="TypeId" class="col-form-label font-weight-bold"></label>:
             <span style="color:red">*</span>
-            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The Operation Type sets the entire application's parameters in order to guide you through the movement or operation selected.">
+            <span class="svg-icon svg-icon-primary svg-icon-2x float-right" data-toggle="tooltip" title="The Operation Type sets the entire application's parameters in order to guide you through the movement or operation selected.">
                 <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                         <rect x="0" y="0" width="24" height="24" />
@@ -38,9 +38,9 @@
             </script>
         </div>
         <div class="form-group">
-            <label asp-for="Agent" class="col-form-label"></label>:
+            <label asp-for="Agent" class="col-form-label font-weight-bold"></label>:
             <span style="color:red">*</span>
-            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The company specialized in international business, hired by the customer or the cargo owner (consignee).
+            <span class="svg-icon svg-icon-primary svg-icon-2x float-right" data-toggle="tooltip" title="The company specialized in international business, hired by the customer or the cargo owner (consignee).
 Their job is to manage the cargo transportation from the country of origin to the destination place, with the objective of delivering it to the consignee or final customer. In order to complete this objective they must contact a forwarding agent specialized in exportations at the origin place.">
                 <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -53,14 +53,15 @@ Their job is to manage the cargo transportation from the country of origin to th
             <select asp-for="Agent" name="Agent" class="selectpicker form-control" data-ng-style="select-with-transition"></select>
             <span asp-validation-for="Agent" class="text-danger"></span>
             <br />
+            <br />
             <a asp-area="Shared" asp-controller="Customer" asp-action="Index" asp-route-id="1">
                 <input type="button" class="btn btn-primary font-weight-bold" value="Add New Agent" />
             </a>
         </div>
         <div class="form-group">
-            <label asp-for="Shipper" class="col-form-label"></label>:
+            <label asp-for="Shipper" class="col-form-label font-weight-bold"></label>:
             <span style="color:red">*</span>
-            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The company that sells the cargo related to the movement, they must provide the cargo documentation (invoice, packing list, shipper's letter of instruction, certificates, hazmat documentation, etc ...)">
+            <span class="svg-icon svg-icon-primary svg-icon-2x float-right float-right" data-toggle="tooltip" title="The company that sells the cargo related to the movement, they must provide the cargo documentation (invoice, packing list, shipper's letter of instruction, certificates, hazmat documentation, etc ...)">
                 <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                         <rect x="0" y="0" width="24" height="24" />
@@ -72,14 +73,15 @@ Their job is to manage the cargo transportation from the country of origin to th
             <select asp-for="Shipper" name="Shipper" class="selectpicker form-control" data-ng-style="select-with-transition"></select>
             <span asp-validation-for="Shipper" class="text-danger"></span>
             <br />
+            <br />
             <a asp-area="Shared" asp-controller="Customer" asp-action="Index" asp-route-id="2">
                 <input type="button" class="btn btn-primary font-weight-bold" value="Add New Shipper" />
             </a>
         </div>
         <div class="form-group">
-            <label asp-for="Consignee" class="col-form-label"></label>:
+            <label asp-for="Consignee" class="col-form-label font-weight-bold"></label>:
             <span style="color:red">*</span>
-            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The shipper's customer, the company that buys the cargo from the provider or shipper and to whom the cargo is finally delivered.">
+            <span class="svg-icon svg-icon-primary svg-icon-2x float-right" data-toggle="tooltip" title="The shipper's customer, the company that buys the cargo from the provider or shipper and to whom the cargo is finally delivered.">
                 <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                         <rect x="0" y="0" width="24" height="24" />
@@ -91,13 +93,14 @@ Their job is to manage the cargo transportation from the country of origin to th
             <select asp-for="Consignee" name="Consignee" class="selectpicker form-control" data-ng-style="select-with-transition"></select>
             <span asp-validation-for="Consignee" class="text-danger"></span>
             <br />
+            <br />
             <a asp-area="Shared" asp-controller="Customer" asp-action="Index" asp-route-id="3">
                 <input type="button" class="btn btn-primary font-weight-bold" value="Add New Consignee" />
             </a>
         </div>
         <div class="form-group">
-            <label asp-for="AgentRefNo" class="col-form-label"></label>:
-            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The Agent Reference Number is the number or code that your cargo or destination agent uses for tracking or internal purposes within their company.
+            <label asp-for="AgentRefNo" class="col-form-label font-weight-bold"></label>:
+            <span class="svg-icon svg-icon-primary svg-icon-2x float-right" data-toggle="tooltip" title="The Agent Reference Number is the number or code that your cargo or destination agent uses for tracking or internal purposes within their company.
 It is especially useful when you communicate with your agent so you both are sure about what specific process or movement is being discussed.">
                 <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -111,8 +114,8 @@ It is especially useful when you communicate with your agent so you both are sur
             <span asp-validation-for="AgentRefNo" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="ShipperRefNo" class="col-form-label"></label>:
-            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The Shipper Reference Number is the number or code that your shipper or provider uses for tracking or internal purposes within their company.
+            <label asp-for="ShipperRefNo" class="col-form-label font-weight-bold"></label>:
+            <span class="svg-icon svg-icon-primary svg-icon-2x float-right" data-toggle="tooltip" title="The Shipper Reference Number is the number or code that your shipper or provider uses for tracking or internal purposes within their company.
 It is especially useful when you communicate with your shipper so you both are sure about what specific process or movement is being discussed.">
                 <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -126,8 +129,8 @@ It is especially useful when you communicate with your shipper so you both are s
             <span asp-validation-for="ShipperRefNo" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="ConsigneeRefNo" class="col-form-label"></label>:
-            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The Consignee Reference Number is the number or code that your consignee or final customer uses for tracking or internal purposes within their company.
+            <label asp-for="ConsigneeRefNo" class="col-form-label font-weight-bold"></label>:
+            <span class="svg-icon svg-icon-primary svg-icon-2x float-right" data-toggle="tooltip" title="The Consignee Reference Number is the number or code that your consignee or final customer uses for tracking or internal purposes within their company.
 It is especially useful when you communicate with your consignee so you both are sure about what specific process or movement is being discussed.">
                 <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -141,9 +144,9 @@ It is especially useful when you communicate with your consignee so you both are
             <span asp-validation-for="ConsigneeRefNo" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="PoL" class="col-form-label"></label>:
+            <label asp-for="PoL" class="col-form-label font-weight-bold"></label>:
             <span style="color:red">*</span>
-            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Place where shipments are loaded and secured aboard a vessel.
+            <span class="svg-icon svg-icon-primary svg-icon-2x float-right" data-toggle="tooltip" title="Place where shipments are loaded and secured aboard a vessel.
 It may or may not be the same as the point of origin.">
                 <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -157,9 +160,9 @@ It may or may not be the same as the point of origin.">
             <span asp-validation-for="PoL" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="PoD" class="col-form-label"></label>:
+            <label asp-for="PoD" class="col-form-label font-weight-bold"></label>:
             <span style="color:red">*</span>
-            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Place where a vessel is off-loaded and the shipments are dispersed to their respective consignees. It may or may not be the final destination. Also called the port of unloading.">
+            <span class="svg-icon svg-icon-primary svg-icon-2x float-right" data-toggle="tooltip" title="Place where a vessel is off-loaded and the shipments are dispersed to their respective consignees. It may or may not be the final destination. Also called the port of unloading.">
                 <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                         <rect x="0" y="0" width="24" height="24" />
@@ -172,9 +175,9 @@ It may or may not be the same as the point of origin.">
             <span asp-validation-for="PoD" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="OriginAddr1" class="col-form-label"></label>:
+            <label asp-for="OriginAddr1" class="col-form-label font-weight-bold"></label>:
             <span style="color:red">*</span>
-            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Address of the physical location in which the cargo is going to be picked up or loaded into the container, this information is provided by the shipper.
+            <span class="svg-icon svg-icon-primary svg-icon-2x float-right" data-toggle="tooltip" title="Address of the physical location in which the cargo is going to be picked up or loaded into the container, this information is provided by the shipper.
 Do not confuse it with the port of loading.">
                 <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -188,8 +191,8 @@ Do not confuse it with the port of loading.">
             <span asp-validation-for="OriginAddr1" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="OriginAddr2" class="col-form-label"></label>:
-            <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Address of the physical location in which the cargo is going to be picked up or loaded into the container, this information is provided by the shipper.
+            <label asp-for="OriginAddr2" class="col-form-label font-weight-bold"></label>:
+            <span class="svg-icon svg-icon-primary svg-icon-2x float-right" data-toggle="tooltip" title="Address of the physical location in which the cargo is going to be picked up or loaded into the container, this information is provided by the shipper.
 Do not confuse it with the port of loading.">
                 <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -204,9 +207,9 @@ Do not confuse it with the port of loading.">
         </div>
         <div class="form-group">
             <div class="form-group">
-                <label asp-for="OriginCity" class="col-form-label"></label>:
+                <label asp-for="OriginCity" class="col-form-label font-weight-bold"></label>:
                 <span style="color:red">*</span>
-                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="City of the physical location in which the cargo is going to be picked up, this information is provided by the shipper.
+                <span class="svg-icon svg-icon-primary svg-icon-2x float-right" data-toggle="tooltip" title="City of the physical location in which the cargo is going to be picked up, this information is provided by the shipper.
 It may or may not be the same city in which the port of loading is located.">
                     <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -220,9 +223,9 @@ It may or may not be the same city in which the port of loading is located.">
                 <span asp-validation-for="OriginCity" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="OriginState" class="col-form-label"></label>:
+                <label asp-for="OriginState" class="col-form-label font-weight-bold"></label>:
                 <span style="color:red">*</span>
-                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="State of the city in which the cargo is going to be picked up, this information is provided by the shipper.
+                <span class="svg-icon svg-icon-primary svg-icon-2x float-right" data-toggle="tooltip" title="State of the city in which the cargo is going to be picked up, this information is provided by the shipper.
 It may or may not be the same state in which the port of loading is located.">
                     <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -236,9 +239,9 @@ It may or may not be the same state in which the port of loading is located.">
                 <span asp-validation-for="OriginState" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="OriginZip" class="col-form-label"></label>:
+                <label asp-for="OriginZip" class="col-form-label font-weight-bold"></label>:
                 <span style="color:red">*</span>
-                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Zip code of the location in which the cargo is going to be picked up, this information is provided by the shipper.
+                <span class="svg-icon svg-icon-primary svg-icon-2x float-right" data-toggle="tooltip" title="Zip code of the location in which the cargo is going to be picked up, this information is provided by the shipper.
 ZIP Codes in the United States make sortation of letters down to a specific street address or apartment a lot easier. This also reduces transit time and makes delivery far more efficient, as this mail gets sorted in the sequence that delivery is made by the carrier on his route.">
                     <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -252,9 +255,9 @@ ZIP Codes in the United States make sortation of letters down to a specific stre
                 <span asp-validation-for="OriginZip" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="OriginCountry" class="col-form-label"></label>:
+                <label asp-for="OriginCountry" class="col-form-label font-weight-bold"></label>:
                 <span style="color:red">*</span>
-                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Country in which the cargo is going to be picked up, this information is provided by the shipper.
+                <span class="svg-icon svg-icon-primary svg-icon-2x float-right" data-toggle="tooltip" title="Country in which the cargo is going to be picked up, this information is provided by the shipper.
 It may or may not be the same country in which the port of loading is located.">
                     <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -268,37 +271,9 @@ It may or may not be the same country in which the port of loading is located.">
                 <span asp-validation-for="OriginCountry" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DestinationAddr1" class="col-form-label"></label>:
-                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Final address in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
-                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <rect x="0" y="0" width="24" height="24" />
-                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                        </g>
-                    </svg><!--end::Svg Icon-->
-                </span>
-                <input type="text" asp-for="DestinationAddr1" name="DestinationAddr1" class="form-control" />
-                <span asp-validation-for="DestinationAddr1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DestinationAddr2" class="col-form-label"></label>:
-                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Final address in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
-                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <rect x="0" y="0" width="24" height="24" />
-                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
-                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
-                        </g>
-                    </svg><!--end::Svg Icon-->
-                </span>
-                <input type="text" asp-for="DestinationAddr2" name="DestinationAddr2" class="form-control" />
-                <span asp-validation-for="DestinationAddr2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DestinationCity" class="col-form-label"></label>:
+                <label asp-for="DestinationCity" class="col-form-label font-weight-bold"></label>:
                 <span style="color:red">*</span>
-                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Final city in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
+                <span class="svg-icon svg-icon-primary svg-icon-2x float-right" data-toggle="tooltip" title="Final city in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
                     <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <rect x="0" y="0" width="24" height="24" />
@@ -311,8 +286,36 @@ It may or may not be the same country in which the port of loading is located.">
                 <span asp-validation-for="DestinationCity" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DestinationState" class="col-form-label"></label>:
-                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Final state in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
+                <label asp-for="DestinationAddr1" class="col-form-label font-weight-bold"></label>:
+                <span class="svg-icon svg-icon-primary svg-icon-2x float-right" data-toggle="tooltip" title="Final address in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
+                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24" />
+                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                        </g>
+                    </svg><!--end::Svg Icon-->
+                </span>
+                <input type="text" asp-for="DestinationAddr1" name="DestinationAddr1" class="form-control" />
+                <span asp-validation-for="DestinationAddr1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DestinationAddr2" class="col-form-label font-weight-bold"></label>:
+                <span class="svg-icon svg-icon-primary svg-icon-2x float-right" data-toggle="tooltip" title="Final address in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
+                    <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24" />
+                            <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                            <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                        </g>
+                    </svg><!--end::Svg Icon-->
+                </span>
+                <input type="text" asp-for="DestinationAddr2" name="DestinationAddr2" class="form-control" />
+                <span asp-validation-for="DestinationAddr2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DestinationState" class="col-form-label font-weight-bold"></label>:
+                <span class="svg-icon svg-icon-primary svg-icon-2x float-right" data-toggle="tooltip" title="Final state in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
                     <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <rect x="0" y="0" width="24" height="24" />
@@ -325,8 +328,8 @@ It may or may not be the same country in which the port of loading is located.">
                 <span asp-validation-for="DestinationState" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DestinationZip" class="col-form-label"></label>:
-                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Final zip code in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
+                <label asp-for="DestinationZip" class="col-form-label font-weight-bold"></label>:
+                <span class="svg-icon svg-icon-primary svg-icon-2x float-right" data-toggle="tooltip" title="Final zip code in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
                     <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <rect x="0" y="0" width="24" height="24" />
@@ -339,8 +342,8 @@ It may or may not be the same country in which the port of loading is located.">
                 <span asp-validation-for="DestinationZip" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DestinationCountry" class="col-form-label"></label>:
-                <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Final country in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
+                <label asp-for="DestinationCountry" class="col-form-label font-weight-bold"></label>:
+                <span class="svg-icon svg-icon-primary svg-icon-2x float-right float-right" data-toggle="tooltip" title="Final country in which the cargo is going to be delivered by the ocean carrier, typically to the consignee.">
                     <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <rect x="0" y="0" width="24" height="24" />

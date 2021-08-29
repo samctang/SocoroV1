@@ -5552,7 +5552,7 @@ input[type=button].btn-block {
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   min-height: 1px;
-  padding: 2.25rem;
+  /*padding: 2.25rem;*/
 }
 
 .card-title {
@@ -6881,7 +6881,7 @@ a.close.disabled {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
-  padding: 1.75rem;
+  padding: .5rem 1.75rem;
 }
 
 .modal-footer {
@@ -10600,10 +10600,10 @@ button.bg-white:focus {
   padding: 1.5rem !important;
 }
 
-.pt-6,
+/*.pt-6,
 .py-6 {
   padding-top: 1.5rem !important;
-}
+}*/
 
 .pr-6,
 .px-6 {
@@ -52858,7 +52858,7 @@ i {
   justify-content: flex-end;
 }
 .card.card-custom > .card-body {
-  padding: 2rem 2.25rem;
+  padding: 0rem 2.25rem 1rem;
 }
 .card.card-custom > .card-footer {
   background-color: transparent;
@@ -83237,7 +83237,7 @@ body {
     z-index: 2;
   }
   .header .header-top {
-    height: 110px;
+    height: 70px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -83296,7 +83296,7 @@ body {
     border-right-color: transparent;
   }
   .header .header-bottom {
-    height: 70px;
+    height: 40px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -85622,7 +85622,7 @@ body {
     display: -ms-flexbox;
     display: flex;
     border-radius: 0.42rem;
-    padding: 0.85rem 1.5rem;
+    /*padding: 0.85rem 1.5rem;*/
   }
   .header-menu .menu-nav > .menu-item:last-child > .menu-link {
     margin-right: 0;
