@@ -52858,7 +52858,7 @@ i {
   justify-content: flex-end;
 }
 .card.card-custom > .card-body {
-  padding: 0rem 2.25rem 2rem;
+  padding: 0rem 2.25rem 1rem;
 }
 .card.card-custom > .card-footer {
   background-color: transparent;
@@ -83237,7 +83237,7 @@ body {
     z-index: 2;
   }
   .header .header-top {
-    height: 90px;
+    height: 70px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -83296,7 +83296,7 @@ body {
     border-right-color: transparent;
   }
   .header .header-bottom {
-    height: 60px;
+    height: 40px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -85622,7 +85622,7 @@ body {
     display: -ms-flexbox;
     display: flex;
     border-radius: 0.42rem;
-    padding: 0.85rem 1.5rem;
+    /*padding: 0.85rem 1.5rem;*/
   }
   .header-menu .menu-nav > .menu-item:last-child > .menu-link {
     margin-right: 0;
