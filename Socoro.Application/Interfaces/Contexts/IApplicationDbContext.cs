@@ -16,18 +16,26 @@ namespace Socoro.Application.Interfaces.Contexts
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 
-        DbSet<Carrier> Carriers { get; set; }
-        DbSet<CarrierType> CarrierTypes { get; set; }
-        DbSet<Company> Companies { get; set; }
-        DbSet<CompanyType> CompanyTypes { get; set; }
-        DbSet<Customer> Customers { get; set; }
-        DbSet<CustomerType> CustomerTypes { get; set; }
-        DbSet<Department> Departments { get; set; }
-        DbSet<Employee> Employees { get; set; }
-        DbSet<EmployeeNote> EmployeeNotes { get; set; }
-        DbSet<Operation> Operations { get; set; }
-        DbSet<OperationType> OperationTypes { get; set; }
-        DbSet<OperationProcess> OperationProcesses { get; set; }
-        DbSet<OperationProcessType> OperationProcessTypes { get; set; }
+        public DbSet<Carrier> Carriers { get; set; }
+        public DbSet<CarrierType> CarrierTypes { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<CompanyType> CompanyTypes { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<CustomerType> CustomerTypes { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<EmployeeNote> EmployeeNotes { get; set; }
+        public DbSet<Operation> Operations { get; set; }
+        public DbSet<OperationType> OperationTypes { get; set; }
+        public DbSet<OperationProcess> OperationProcesses { get; set; }
+        public DbSet<OperationProcessType> OperationProcessTypes { get; set; }
+        public DbSet<OperationContainer> OperationContainers { get; set; }
+        public DbSet<OperationContainerType> OperationContainerTypes { get; set; }
+        public DbSet<OperationBooking> OperationBookings { get; set; }
+        public DbSet<OperationBookingMessage> OperationBookingMessages { get; set; }
+        public DbSet<OperationCargo> OperationCargos { get; set; }
+        public DbSet<OperationQuote> OperationQuotes { get; set; }
+        public DbSet<OperationInsurance> OperationInsurances { get; set; }
+        public DbSet<OperationTask> OperationTasks { get; set; }
     }
 }

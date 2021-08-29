@@ -7,7 +7,6 @@ using Socoro.Application.Features.OperationCargos.Commands;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Text;
-using System.Collections.Generic;
 
 namespace Socoro.Web.Areas.KAM.Controllers
 {

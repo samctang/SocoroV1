@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Socoro.Application.DTOs.Operation
+﻿namespace Socoro.Application.DTOs.Operation
 {
     public class OperationContainerResponse
     {

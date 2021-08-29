@@ -14,7 +14,7 @@ namespace Socoro.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var operationTypes = await _mediator.Send(new GetAllOperationTypesCached());
+            var operationTypes = await _mediator.Send(new GetAllOperationTypes());
             return Ok(operationTypes);
         }
         [EnableCors("GET")]

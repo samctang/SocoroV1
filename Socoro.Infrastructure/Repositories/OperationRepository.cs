@@ -1,7 +1,6 @@
 ﻿using Socoro.Application.Interfaces.Repositories;
 using Socoro.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Caching.Distributed;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,11 +10,9 @@ namespace Socoro.Infrastructure.Repositories
     public class OperationRepository : IOperationRepository
     {
         private readonly IRepositoryAsync<Operation> _repository;
-        private readonly IDistributedCache _distributedCache;
 
-        public OperationRepository(IDistributedCache distributedCache, IRepositoryAsync<Operation> repository)
+        public OperationRepository(IRepositoryAsync<Operation> repository)
         {
-            _distributedCache = distributedCache;
             _repository = repository;
         }
 
@@ -24,8 +21,6 @@ namespace Socoro.Infrastructure.Repositories
         public async Task DeleteAsync(Operation operation)
         {
             await _repository.DeleteAsync(operation);
-            await _distributedCache.RemoveAsync(CacheKeys.OperationCacheKeys.ListKey);
-            await _distributedCache.RemoveAsync(CacheKeys.OperationCacheKeys.GetKey(operation.Id));
         }
 
         public async Task<Operation> GetByIdAsync(int operationId)
@@ -50,15 +45,12 @@ namespace Socoro.Infrastructure.Repositories
         public async Task<int> InsertAsync(Operation operation)
         {
             await _repository.AddAsync(operation);
-            await _distributedCache.RemoveAsync(CacheKeys.OperationCacheKeys.ListKey);
             return operation.Id;
         }
 
         public async Task UpdateAsync(Operation operation)
         {
             await _repository.UpdateAsync(operation);
-            await _distributedCache.RemoveAsync(CacheKeys.OperationCacheKeys.ListKey);
-            await _distributedCache.RemoveAsync(CacheKeys.OperationCacheKeys.GetKey(operation.Id));
         }
     }
 }

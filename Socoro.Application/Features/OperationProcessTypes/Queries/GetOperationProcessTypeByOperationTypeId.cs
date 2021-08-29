@@ -1,4 +1,4 @@
-﻿using Socoro.Application.Interfaces.CacheRepositories;
+﻿using Socoro.Application.Interfaces.Repositories;
 using Socoro.Application.DTOs.Results;
 using AutoMapper;
 using MediatR;
@@ -15,10 +15,10 @@ namespace Socoro.Application.Features.OperationProcessTypes.Queries
     }
     public class GetOperationProcessTypeByOperationTypeIdHandler : IRequestHandler<GetOperationProcessTypeByOperationTypeId, Result<List<OperationProcessTypeResponse>>>
     {
-        private readonly IOperationProcessTypeCacheRepository _operationProcessTypeCache;
+        private readonly IOperationProcessTypeRepository _operationProcessTypeCache;
         private readonly IMapper _mapper;
 
-        public GetOperationProcessTypeByOperationTypeIdHandler(IOperationProcessTypeCacheRepository operationProcessTypeCache, IMapper mapper)
+        public GetOperationProcessTypeByOperationTypeIdHandler(IOperationProcessTypeRepository operationProcessTypeCache, IMapper mapper)
         {
             _operationProcessTypeCache = operationProcessTypeCache;
             _mapper = mapper;

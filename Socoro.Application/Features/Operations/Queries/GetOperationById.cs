@@ -1,4 +1,4 @@
-﻿using Socoro.Application.Interfaces.CacheRepositories;
+﻿using Socoro.Application.Interfaces.Repositories;
 using Socoro.Application.DTOs.Results;
 using AutoMapper;
 using MediatR;
@@ -14,10 +14,10 @@ namespace Socoro.Application.Features.Operations.Queries
     }
     public class GetOperationByIdHandler : IRequestHandler<GetOperationById, Result<OperationResponse>>
     {
-        private readonly IOperationCacheRepository _operationCache;
+        private readonly IOperationRepository _operationCache;
         private readonly IMapper _mapper;
 
-        public GetOperationByIdHandler(IOperationCacheRepository operationCache, IMapper mapper)
+        public GetOperationByIdHandler(IOperationRepository operationCache, IMapper mapper)
         {
             _operationCache = operationCache;
             _mapper = mapper;
