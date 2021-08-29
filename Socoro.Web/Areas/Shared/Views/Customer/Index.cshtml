@@ -13,16 +13,32 @@
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
         <div class="container">
-            <!--begin::Card-->
+            <!--begin::Card-->           
             <div class="card card-custom card-transparent">
                 <div class="card-body p-0">
                     <!--begin::Card-->
                     <div class="card card-custom card-shadowless rounded-top-0">
-                        <!--begin::Body-->
+                        <!--begin::Body-->                       
                         <div class="card-body p-0">
                             <div asp-validation-summary="All"></div>
-                            <div class="row justify-content-center py-8 px-8 py-lg-10 px-lg-10">
+                            <div class="row justify-content-center py-8 px-8 pb-lg-10 px-lg-10">
                                 <div class="col-xl-10 col-xxl-9">
+                                    <div class="card card-custom">
+                                        <div class="card-header" style="background-color: lightyellow">
+                                            <div class="card-title">
+                                                <span class="card-icon">
+                                                    <i class="flaticon2-pen"></i>
+                                                </span>
+                                                <h3 class="card-label">
+                                                    Warning
+                                                </h3>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                        <br />
+                                        <p> - The fields marked with an asterisk ('<a style="color:red;">*</a>') must be filled in.</a>
+                                        <p> - You may complete or update the other fields later.</p></div>
+                                    </div>
                                     <!--begin::Wizard Form-->
                                     <form class="form" id="kt_form" method="post" enctype="multipart/form-data" asp-area="Shared" asp-controller="Customer" asp-action="AddCustomer" asp-route-id="@Model.TypeId">
                                         <div class="row justify-content-center">
