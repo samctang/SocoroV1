@@ -4,6 +4,7 @@ C:\git\Socoro\Socoro.Application\bin\Debug\net5.0\ref\Socoro.Application.dll
 C:\git\Socoro\Socoro.Application\bin\Debug\net5.0\Socoro.Application.pdb
 C:\git\Socoro\Socoro.Application\bin\Debug\net5.0\Socoro.Domain.dll
 C:\git\Socoro\Socoro.Application\bin\Debug\net5.0\Socoro.Domain.pdb
+C:\git\Socoro\Socoro.Application\obj\Debug\net5.0\Socoro.Application.csprojAssemblyReference.cache
 C:\git\Socoro\Socoro.Application\obj\Debug\net5.0\Socoro.Application.GeneratedMSBuildEditorConfig.editorconfig
 C:\git\Socoro\Socoro.Application\obj\Debug\net5.0\Socoro.Application.AssemblyInfoInputs.cache
 C:\git\Socoro\Socoro.Application\obj\Debug\net5.0\Socoro.Application.AssemblyInfo.cs
@@ -12,4 +13,3 @@ C:\git\Socoro\Socoro.Application\obj\Debug\net5.0\Socoro.Application.csproj.Copy
 C:\git\Socoro\Socoro.Application\obj\Debug\net5.0\Socoro.Application.dll
 C:\git\Socoro\Socoro.Application\obj\Debug\net5.0\ref\Socoro.Application.dll
 C:\git\Socoro\Socoro.Application\obj\Debug\net5.0\Socoro.Application.pdb
-C:\git\Socoro\Socoro.Application\obj\Debug\net5.0\Socoro.Application.csprojAssemblyReference.cache

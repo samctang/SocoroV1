@@ -2,6 +2,7 @@ C:\git\Socoro\Socoro.Domain\bin\Debug\net5.0\Socoro.Domain.deps.json
 C:\git\Socoro\Socoro.Domain\bin\Debug\net5.0\Socoro.Domain.dll
 C:\git\Socoro\Socoro.Domain\bin\Debug\net5.0\ref\Socoro.Domain.dll
 C:\git\Socoro\Socoro.Domain\bin\Debug\net5.0\Socoro.Domain.pdb
+C:\git\Socoro\Socoro.Domain\obj\Debug\net5.0\Socoro.Domain.csprojAssemblyReference.cache
 C:\git\Socoro\Socoro.Domain\obj\Debug\net5.0\Socoro.Domain.GeneratedMSBuildEditorConfig.editorconfig
 C:\git\Socoro\Socoro.Domain\obj\Debug\net5.0\Socoro.Domain.AssemblyInfoInputs.cache
 C:\git\Socoro\Socoro.Domain\obj\Debug\net5.0\Socoro.Domain.AssemblyInfo.cs
@@ -9,4 +10,3 @@ C:\git\Socoro\Socoro.Domain\obj\Debug\net5.0\Socoro.Domain.csproj.CoreCompileInp
 C:\git\Socoro\Socoro.Domain\obj\Debug\net5.0\Socoro.Domain.dll
 C:\git\Socoro\Socoro.Domain\obj\Debug\net5.0\ref\Socoro.Domain.dll
 C:\git\Socoro\Socoro.Domain\obj\Debug\net5.0\Socoro.Domain.pdb
-C:\git\Socoro\Socoro.Domain\obj\Debug\net5.0\Socoro.Domain.csprojAssemblyReference.cache
