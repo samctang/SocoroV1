@@ -22,7 +22,7 @@ namespace Socoro.Domain.Entities
         public string MailCity { get; set; }
         public string MailState { get; set; }
         public string MailZip { get; set; }
-        public DateTime? DoB { get; set; }
+        public DateTime DoB { get; set; }
         public char Gender { get; set; }
         public DateTime? HireDate { get; set; }
         public int? CompanyId { get; set; }
