@@ -1,10 +1,12 @@
 ﻿@model Socoro.Web.Areas.KAM.Models.OperationIntViewModel;
 
 <script language="JavaScript" type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 <partial name="_ViewInfo" />
 <!--begin::Subheader-->
 <div class="subheader py-2 subheader-transparent" id="kt_subheader">
-   
+
 </div>
 <!--end::Subheader-->
 <!--begin::Entry-->
@@ -90,6 +92,9 @@
 </div>
 
 <script>
+    var typeId = '';
+    var operationProcessId = '';
+    var datatableTasks = '';
     var initDataTable = function () {
         var datatable = $('#kt_datatable').KTDatatable({
             // datasource definition
@@ -183,8 +188,92 @@
         });
 
         $(datatable.table).on('click', 'tbody tr', function () {
-            var id = $(this).data('typeId');
-            $('#operationProcessType_Id_' + id + "_Modal").modal('show');
+            typeId = $(this).data('typeId');
+            $.ajax({
+                url: "@Environment.GetEnvironmentVariable("ApiEndpoint")" + "/OperationProcess/" + @Model.OperationViewModel.Id + "/" + typeId,
+                type: 'GET',
+                contentType: 'application/json; charset=utf-8',
+                processData: true,
+                success: function (result) {
+                    operationProcessId = result.data.id;
+                    var initDataTableTasks = function () {
+                        datatableTasks = $('#kt_datatable_Task_'+typeId).KTDatatable({
+                            // datasource definition
+                            data: {
+                                type: 'remote',
+                                source: {
+                                    read: {
+                                        url: "@Environment.GetEnvironmentVariable("ApiEndpoint")" + "/OperationTask/" + operationProcessId,
+                                        method: 'GET'
+                                    },
+                                },
+                                pageSize: 10,
+                            },
+
+                            // layout definition
+                            layout: {
+                                scroll: true, // enable/disable datatable scroll both horizontal and vertical when needed.
+                                footer: false // display/hide footer
+                            },
+
+                            // column sorting
+                            sortable: false,
+
+                            pagination: false,
+
+                            search: {
+                                input: $('#kt_datatable_search_query'),
+                                key: 'generalSearch'
+                            },
+
+                            rows: {
+                                autoHide: false,
+                                afterTemplate: function (row, data, index) {
+                                    console.log(data);
+                                    if (data != null) {
+                                        $('#operationProcessType_Id_' + typeId + '_TaskList').show();
+                                    } else {
+                                        $('#operationProcessType_Id_' + typeId + '_TaskList').hide();
+                                    }
+                                }
+                            },
+
+                            columns: [{
+                                field: 'note',
+                                title: 'Note',
+                                template: function (row) {
+                                    return row.note;
+                                }
+                            }, {
+                                field: 'dueDate',
+                                title: 'Due Date',
+                                template: function (row) {
+                                    var date = row.dueDate;
+                                    return date.substring(0,10);
+                                }
+                            }, {
+                                field: 'status',
+                                title: 'Status',
+                                template: function (row) {
+                                    var spanClass = '';
+                                    var status = '';
+                                    if (row.status == 0) {
+                                        spanClass = 'label-light-danger';
+                                        status = 'Not Completed';
+                                    } else {
+                                        spanClass = 'label-light-success';
+                                        status = 'Completed';
+                                    }
+                                    return '<span class="label font-weight-bold label-lg label-inline ' + spanClass + '"> ' + status + '</span >';
+                                }
+                            }]
+                        });
+
+                    };
+                    initDataTableTasks();
+                }
+            });
+            $('#operationProcessType_Id_' + typeId + "_Modal").modal('show');
         });
     };
 

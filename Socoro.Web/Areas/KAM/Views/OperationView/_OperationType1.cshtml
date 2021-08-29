@@ -81,7 +81,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form id="operationProcessType_Id_3_Task_Form">
                             <div class="form-group">
                                 <label class="col-form-label notes" asp-for="OperationTaskViewModel.Note"></label>:
                                 <br />
@@ -95,7 +95,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_3">Cancel</button>
-                        <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_3">Add Task</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_3" form="operationProcessType_Id_3_Task_Form">Add Task</button>
                     </div>
                 </div>
                 <div class="card card-custom" id="operationProcessType_Id_3_TaskList" style="display: none">
@@ -106,10 +106,9 @@
                             </h3>
                         </div>
                     </div>
+                    <br />
                     <div class="card-body">
-                        <div class="container" id="operationProcessType_Id_3_Container" style="border: 1px solid green;">
-                            
-                        </div>
+                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_Task_3"></div>
                     </div>
                 </div>
             </div>
@@ -146,9 +145,49 @@
                     </div>
                     <div class="card-body"><p>We will send you reminders about this step via <strong>email</strong> every <strong>24 hours</strong> until you confirm that you have received the cargo information.</p></div>
                 </div>
+                <br />
+                <div class="card card-custom" id="operationProcessType_Id_4_Task" style="display:none">
+                    <div class="card-header" style="background-color: lavender">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                Create Task for Operation #@Model.OperationViewModel.OperationNo
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form id="operationProcessType_Id_4_Task_Form">
+                            <div class="form-group">
+                                <label class="col-form-label notes" asp-for="OperationTaskViewModel.Note"></label>:
+                                <br />
+                                <textarea class="col-form-label" asp-for="OperationTaskViewModel.Note" id="operationProcessType_Id_4_Note"></textarea>
+                                <br />
+                                <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
+                                <br />
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_4_DueDate" class="form-control" placeholder="Due Date" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_4">Cancel</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_4" form="operationProcessType_Id_4_Task_Form">Add Task</button>
+                    </div>
+                </div>
+                <div class="card card-custom" id="operationProcessType_Id_4_TaskList" style="display: none">
+                    <div class="card-header" style="background-color: lightseagreen">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                Tasks for this step
+                            </h3>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="card-body">
+                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_Task_4"></div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info font-weight-bold mr-auto">Tasks</button>
+                <button type="button" class="btn btn-info font-weight-bold mr-auto tasksBtn" name="operationProcessType_Id_4">Tasks</button>
                 <button type="button" class="btn btn-success font-weight-bold">Confirm</button>
             </div>
         </div>
@@ -163,10 +202,10 @@
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
-            <form class="form" id="operationQuote" method="post" enctype="multipart/form-data" asp-area="" asp-controller="" asp-action="">
-                <div class="modal-body">
-                    <p>Please confirm the prices that you negotiated with your shipper <strong><span class="ShipperCompany"></span></strong>.</p>
-                    <br />
+            <div class="modal-body">
+                <p>Please confirm the prices that you negotiated with your shipper <strong><span class="ShipperCompany"></span></strong>.</p>
+                <br />
+                <form class="form" id="operationProcessType_Id_5_Quote_Form" method="post" enctype="multipart/form-data" asp-area="" asp-controller="" asp-action="">
                     <div class="form-group">
                         <label asp-for="OperationQuoteViewModel.Profit" class="col-form-label"></label>:
                         <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Please upload a PDF document supporting the quotation issued by our pricing department (including net and sell prices).">
@@ -269,13 +308,54 @@
                     <br />
                     <br />
                     <p><span style="color:red">*</span>Please upload a PDF document supporting the quotation issued by our pricing department (including <strong>net</strong> and <strong>sell</strong> prices).</p>
+                    <br />
+                </form>
+                <div class="card card-custom" id="operationProcessType_Id_5_Task" style="display:none">
+                    <div class="card-header" style="background-color: lavender">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                Create Task for Operation #@Model.OperationViewModel.OperationNo
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form id="operationProcessType_Id_5_Task_Form">
+                            <div class="form-group">
+                                <label class="col-form-label notes" asp-for="OperationTaskViewModel.Note"></label>:
+                                <br />
+                                <textarea class="col-form-label" asp-for="OperationTaskViewModel.Note" id="operationProcessType_Id_5_Note"></textarea>
+                                <br />
+                                <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
+                                <br />
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_5_DueDate" class="form-control" placeholder="Due Date" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_5">Cancel</button>
+                        <button type="button" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_5" form="operationProcessType_Id_5_Task_Form">Add Task</button>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-info font-weight-bold mr-auto">Tasks</button>
-                    <button type="button" class="btn btn-light-primary font-weight-bold">Request</button>
-                    <button type="button" class="btn btn-success font-weight-bold">Confirm</button>
+                <div class="card card-custom" id="operationProcessType_Id_5_TaskList" style="display: none">
+                    <div class="card-header" style="background-color: lightseagreen">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                Tasks for this step
+                            </h3>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="card-body">
+                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_Task_5"></div>
+                    </div>
                 </div>
-            </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info font-weight-bold mr-auto tasksBtn" name="operationProcessType_Id_5">Tasks</button>
+                <button type="button" class="btn btn-light-primary font-weight-bold">Request</button>
+                <button type="submit" class="btn btn-success font-weight-bold" form="operationProcessType_Id_5_Quote_Form">Confirm</button>
+            </div>
+
         </div>
     </div>
 </div>
@@ -309,9 +389,49 @@
                         </ul>
                     </div>
                 </div>
+                <br />
+                <div class="card card-custom" id="operationProcessType_Id_6_Task" style="display:none">
+                    <div class="card-header" style="background-color: lavender">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                Create Task for Operation #@Model.OperationViewModel.OperationNo
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form id="operationProcessType_Id_6_Task_Form">
+                            <div class="form-group">
+                                <label class="col-form-label notes" asp-for="OperationTaskViewModel.Note"></label>:
+                                <br />
+                                <textarea class="col-form-label" asp-for="OperationTaskViewModel.Note" id="operationProcessType_Id_6_Note"></textarea>
+                                <br />
+                                <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
+                                <br />
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_6_DueDate" class="form-control" placeholder="Due Date" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_6">Cancel</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_6" form="operationProcessType_Id_6_Task_Form">Add Task</button>
+                    </div>
+                </div>
+                <div class="card card-custom" id="operationProcessType_Id_6_TaskList" style="display: none">
+                    <div class="card-header" style="background-color: lightseagreen">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                Tasks for this step
+                            </h3>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="card-body">
+                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_Task_6"></div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info font-weight-bold mr-auto">Tasks</button>
+                <button type="button" class="btn btn-info font-weight-bold mr-auto tasksBtn" name="operationProcessType_Id_6">Tasks</button>
                 <a asp-area="KAM" asp-controller="OperationCargo" asp-action="Index" asp-route-id="@Model.OperationViewModel.Id">
                     <input type="button" class="btn btn-success font-weight-bold" value="Fill In Info" />
                 </a>
@@ -328,8 +448,8 @@
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
-            <form class="form" id="requestBooking" method="post" enctype="multipart/form-data" asp-area="" asp-controller="" asp-action="">
-                <div class="modal-body">
+            <div class="modal-body">
+                <form class="form" id="operationProcessType_Id_7_Booking_Form" method="post" enctype="multipart/form-data" asp-area="" asp-controller="" asp-action="">
                     <p>A booking order generated with the previous information will be sent to your <strong>selected carrier</strong>, please be aware of their confirmation.</p>
                     <br />
                     <label asp-for="OperationViewModel.Carrier" class="col-form-label"></label>:
@@ -359,13 +479,53 @@
                     <br />
                     <label asp-for="OperationBookingMessageViewModel.Message" class="col-form-label"></label>:
                     <textarea type="text" asp-for="OperationBookingMessageViewModel.Message" name="Message" class="form-control"></textarea>
+                </form>
+                <br />
+                <div class="card card-custom" id="operationProcessType_Id_7_Task" style="display:none">
+                    <div class="card-header" style="background-color: lavender">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                Create Task for Operation #@Model.OperationViewModel.OperationNo
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form id="operationProcessType_Id_7_Task_Form">
+                            <div class="form-group">
+                                <label class="col-form-label notes" asp-for="OperationTaskViewModel.Note"></label>:
+                                <br />
+                                <textarea class="col-form-label" asp-for="OperationTaskViewModel.Note" id="operationProcessType_Id_7_Note"></textarea>
+                                <br />
+                                <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
+                                <br />
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_7_DueDate" class="form-control" placeholder="Due Date" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_7">Cancel</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_7" form="operationProcessType_Id_7_Task_Form">Add Task</button>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-info font-weight-bold mr-auto">Tasks</button>
-                    <button type="button" class="btn btn-light-primary font-weight-bold">Notify Agent</button>
-                    <button type="button" class="btn btn-success font-weight-bold">Request Booking</button>
+                <div class="card card-custom" id="operationProcessType_Id_7_TaskList" style="display: none">
+                    <div class="card-header" style="background-color: lightseagreen">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                Tasks for this step
+                            </h3>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="card-body">
+                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_Task_7"></div>
+                    </div>
                 </div>
-            </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info font-weight-bold mr-auto tasksBtn" name="operationProcessType_Id_7">Tasks</button>
+                <button type="button" class="btn btn-light-primary font-weight-bold">Notify Agent</button>
+                <button type="button" class="btn btn-success font-weight-bold" id="operationProcessType_Id_7_Booking_Form">Request Booking</button>
+            </div>
         </div>
     </div>
 </div>
@@ -396,9 +556,49 @@
                         <p>The information will be sent to your agent (<strong><span class="AgentCompany"></span></strong>) everytime a change is made.</p>
                     </div>
                 </div>
+                <br />
+                <div class="card card-custom" id="operationProcessType_Id_8_Task" style="display:none">
+                    <div class="card-header" style="background-color: lavender">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                Create Task for Operation #@Model.OperationViewModel.OperationNo
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form id="operationProcessType_Id_8_Task_Form">
+                            <div class="form-group">
+                                <label class="col-form-label notes" asp-for="OperationTaskViewModel.Note"></label>:
+                                <br />
+                                <textarea class="col-form-label" asp-for="OperationTaskViewModel.Note" id="operationProcessType_Id_8_Note"></textarea>
+                                <br />
+                                <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
+                                <br />
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_8_DueDate" class="form-control" placeholder="Due Date" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_8">Cancel</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_8" form="operationProcessType_Id_8_Task_Form">Add Task</button>
+                    </div>
+                </div>
+                <div class="card card-custom" id="operationProcessType_Id_8_TaskList" style="display: none">
+                    <div class="card-header" style="background-color: lightseagreen">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                Tasks for this step
+                            </h3>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="card-body">
+                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_Task_8"></div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info font-weight-bold mr-auto">Tasks</button>
+                <button type="button" class="btn btn-info font-weight-bold mr-auto tasksBtn" name="operationProcessType_Id_8">Tasks</button>
                 <a asp-area="KAM" asp-controller="OperationBooking" asp-action="Index">
                     <input type="button" class="btn btn-success font-weight-bold" value="Fill In Info" />
                 </a>
@@ -417,9 +617,49 @@
             </div>
             <div class="modal-body">
                 <p>By completing this step an email will be automatically sent to your shipper (<strong><span class="ShipperCompany"></span></strong>) and agent (<strong><span class="AgentCompany"></span></strong>), confirming that the loading process of the related containers has been completed.</p>
+                <br />
+                <div class="card card-custom" id="operationProcessType_Id_9_Task" style="display:none">
+                    <div class="card-header" style="background-color: lavender">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                Create Task for Operation #@Model.OperationViewModel.OperationNo
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form id="operationProcessType_Id_9_Task_Form">
+                            <div class="form-group">
+                                <label class="col-form-label notes" asp-for="OperationTaskViewModel.Note"></label>:
+                                <br />
+                                <textarea class="col-form-label" asp-for="OperationTaskViewModel.Note" id="operationProcessType_Id_9_Note"></textarea>
+                                <br />
+                                <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
+                                <br />
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_9_DueDate" class="form-control" placeholder="Due Date" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_9">Cancel</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_9" form="operationProcessType_Id_9_Task_Form">Add Task</button>
+                    </div>
+                </div>
+                <div class="card card-custom" id="operationProcessType_Id_9_TaskList" style="display: none">
+                    <div class="card-header" style="background-color: lightseagreen">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                Tasks for this step
+                            </h3>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="card-body">
+                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_Task_9"></div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info font-weight-bold mr-auto">Tasks</button>
+                <button type="button" class="btn btn-info font-weight-bold mr-auto tasksBtn" name="operationProcessType_Id_9">Tasks</button>
                 <button type="button" class="btn btn-success font-weight-bold">Confirm</button>
             </div>
         </div>
@@ -436,9 +676,49 @@
             </div>
             <div class="modal-body">
                 <p>By completing this step an email will be automatically sent to your shipper (<strong><span class="ShipperCompany"></span></strong>) and agent (<strong><span class="AgentCompany"></span></strong>), confirming that the delivery process of the related containers has been completed.</p>
+                <br />
+                <div class="card card-custom" id="operationProcessType_Id_10_Task" style="display:none">
+                    <div class="card-header" style="background-color: lavender">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                Create Task for Operation #@Model.OperationViewModel.OperationNo
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form id="operationProcessType_Id_10_Task_Form">
+                            <div class="form-group">
+                                <label class="col-form-label notes" asp-for="OperationTaskViewModel.Note"></label>:
+                                <br />
+                                <textarea class="col-form-label" asp-for="OperationTaskViewModel.Note" id="operationProcessType_Id_10_Note"></textarea>
+                                <br />
+                                <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
+                                <br />
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_10_DueDate" class="form-control" placeholder="Due Date" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_10">Cancel</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_10" form="operationProcessType_Id_10_Task_Form">Add Task</button>
+                    </div>
+                </div>
+                <div class="card card-custom" id="operationProcessType_Id_10_TaskList" style="display: none">
+                    <div class="card-header" style="background-color: lightseagreen">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                Tasks for this step
+                            </h3>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="card-body">
+                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_Task_10"></div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info font-weight-bold mr-auto">Tasks</button>
+                <button type="button" class="btn btn-info font-weight-bold mr-auto tasksBtn" name="operationProcessType_Id_10">Tasks</button>
                 <button type="button" class="btn btn-success font-weight-bold">Confirm</button>
             </div>
         </div>
@@ -456,47 +736,25 @@
     $('.submitTask').on('click', function () {
         var name = $(this).attr('name');
         $('#' + name + '_Task').hide();
-        var typeId = name.split("_");
-        typeId = typeId[typeId.length - 1];
         var note = $('#' + $(this).attr('name') + '_Note').val();
         var dueDate = new Date($('#' + $(this).attr('name') + '_DueDate').val());
-        var operationProcessId = '';
-        $.ajax({
-            url: "@Environment.GetEnvironmentVariable("ApiEndpoint")" + "/OperationProcess/" + @Model.OperationViewModel.Id + "/" + typeId,
-            type: 'GET',
-            contentType: 'application/json; charset=utf-8',
-            processData: true,
-            success: function (result) {
-                operationProcessId = result.data.id;
-                var data = {
-                    "note": note,
-                    "dueDate": dueDate,
-                    "status": false,
-                    "operationProcessId": operationProcessId
-                };
-                $.ajax({
-                    url: "@Environment.GetEnvironmentVariable("ApiEndpoint")" + "/OperationTask/",
-                    type: 'POST',
-                    data: JSON.stringify(data),
-                    contentType: 'application/json; charset=utf-8',
-                    processData: true,
-                    success: function (result) {
-                        $('#' + name + '_Container').empty();
-                        $.ajax({
-                            url: "@Environment.GetEnvironmentVariable("ApiEndpoint")" + "/OperationTask/" + operationProcessId,
-                            type: 'GET',
-                            contentType: 'application/json; charset=utf-8',
-                            processData: true,
-                            success: function (result) {
-                                $.each(result.data, function (index, val) {
-                                    $('#' + name + '_Container').append($("<div></div>").text(val.note + "|| Due Date: " + val.dueDate));
-                                });
-                                $('#' + name + '_TaskList').show();
-                            }
-                        });
-                    }
-                });
-            }
-        });
+        var data = {
+            "note": note,
+            "dueDate": dueDate,
+            "status": false,
+            "operationProcessId": operationProcessId
+        };
+        if (note != null && dueDate != null) {
+            $.ajax({
+                url: "@Environment.GetEnvironmentVariable("ApiEndpoint")" + "/OperationTask/",
+                type: 'POST',
+                data: JSON.stringify(data),
+                contentType: 'application/json; charset=utf-8',
+                processData: true,
+                success: function (result) {
+                    datatableTasks.reload();
+                }
+            });
+        }
     });
 </script>
