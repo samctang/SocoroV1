@@ -24,11 +24,11 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="operationProcessType_Id_2_Modal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+<div class="modal fade" id="operationProcessType_Id_4_Modal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Step 2: Cargo Info Request</h5>
+                <h5 class="modal-title">Step 4: Request Freight Data</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
@@ -53,11 +53,11 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="operationProcessType_Id_3_Modal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+<div class="modal fade" id="operationProcessType_Id_2_Modal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Step 3: Quote</h5>
+                <h5 class="modal-title">Step 2: Quote</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
@@ -72,7 +72,7 @@
                 <br />
                 <p><span style="color:red">*</span>Please upload a PDF document supporting the quotation issued by our pricing department (including <strong>net</strong> and <strong>sell</strong> prices).</p>
                 <br />
-                <div class="card card-custom" id="operationProcessType_Id_3_Task" style="display:none">
+                <div class="card card-custom" id="operationProcessType_Id_2_Task" style="display:none">
                     <div class="card-header" style="background-color: lavender">
                         <div class="card-title">
                             <h3 class="card-label">
@@ -81,24 +81,27 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="operationProcessType_Id_3_Task_Form">
+                        <form id="operationProcessType_Id_2_Task_Form">
                             <div class="form-group">
                                 <label class="col-form-label notes" asp-for="OperationTaskViewModel.Note"></label>:
                                 <br />
-                                <textarea class="col-form-label" asp-for="OperationTaskViewModel.Note" id="operationProcessType_Id_3_Note"></textarea>
+                                <textarea class="col-form-label" asp-for="OperationTaskViewModel.Note" id="operationProcessType_Id_2_Note"></textarea>
                                 <br />
                                 <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
                                 <br />
-                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_3_DueDate" class="form-control" placeholder="Due Date" />
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_2_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}"/>
+                                <br />
+                                <p id="operationProcessType_Id_2_Status" style="display:none"><input asp-for="OperationTaskViewModel.Status" type="checkbox" /> Mark as completed </p>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_3">Cancel</button>
-                        <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_3" form="operationProcessType_Id_3_Task_Form">Add Task</button>
+                        <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_2">Cancel</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_2" form="operationProcessType_Id_3_Task_Form">Add Task</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-primary editTask" name="operationProcessType_Id_2" form="operationProcessType_Id_3_Edit_Task_Form" style="display:none">Edit Task</button>
                     </div>
                 </div>
-                <div class="card card-custom" id="operationProcessType_Id_3_TaskList" style="display: none">
+                <div class="card card-custom" id="operationProcessType_Id_2_TaskList" style="display: none">
                     <div class="card-header" style="background-color: lightseagreen">
                         <div class="card-title">
                             <h3 class="card-label">
@@ -108,23 +111,23 @@
                     </div>
                     <br />
                     <div class="card-body">
-                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_Task_3"></div>
+                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_Task_2"></div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info font-weight-bold mr-auto tasksBtn" name="operationProcessType_Id_3">Tasks</button>
+                <button type="button" class="btn btn-info font-weight-bold mr-auto tasksBtn" name="operationProcessType_Id_2">Tasks</button>
                 <button type="button" class="btn btn-light-primary font-weight-bold">Issue</button>
                 <button type="button" class="btn btn-success font-weight-bold">Confirm</button>
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="operationProcessType_Id_4_Modal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+<div class="modal fade" id="operationProcessType_Id_5_Modal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Step 4: Confirm Freight Data</h5>
+                <h5 class="modal-title">Step 5: Confirm Freight Data</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
@@ -146,7 +149,7 @@
                     <div class="card-body"><p>We will send you reminders about this step via <strong>email</strong> every <strong>24 hours</strong> until you confirm that you have received the cargo information.</p></div>
                 </div>
                 <br />
-                <div class="card card-custom" id="operationProcessType_Id_4_Task" style="display:none">
+                <div class="card card-custom" id="operationProcessType_Id_5_Task" style="display:none">
                     <div class="card-header" style="background-color: lavender">
                         <div class="card-title">
                             <h3 class="card-label">
@@ -155,24 +158,24 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="operationProcessType_Id_4_Task_Form">
+                        <form id="operationProcessType_Id_5_Task_Form">
                             <div class="form-group">
                                 <label class="col-form-label notes" asp-for="OperationTaskViewModel.Note"></label>:
                                 <br />
-                                <textarea class="col-form-label" asp-for="OperationTaskViewModel.Note" id="operationProcessType_Id_4_Note"></textarea>
+                                <textarea class="col-form-label" asp-for="OperationTaskViewModel.Note" id="operationProcessType_Id_5_Note"></textarea>
                                 <br />
                                 <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
                                 <br />
-                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_4_DueDate" class="form-control" placeholder="Due Date" />
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_5_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}"/>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_4">Cancel</button>
-                        <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_4" form="operationProcessType_Id_4_Task_Form">Add Task</button>
+                        <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_5">Cancel</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_5" form="operationProcessType_Id_5_Task_Form">Add Task</button>
                     </div>
                 </div>
-                <div class="card card-custom" id="operationProcessType_Id_4_TaskList" style="display: none">
+                <div class="card card-custom" id="operationProcessType_Id_5_TaskList" style="display: none">
                     <div class="card-header" style="background-color: lightseagreen">
                         <div class="card-title">
                             <h3 class="card-label">
@@ -182,22 +185,22 @@
                     </div>
                     <br />
                     <div class="card-body">
-                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_Task_4"></div>
+                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_Task_5"></div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info font-weight-bold mr-auto tasksBtn" name="operationProcessType_Id_4">Tasks</button>
+                <button type="button" class="btn btn-info font-weight-bold mr-auto tasksBtn" name="operationProcessType_Id_5">Tasks</button>
                 <button type="button" class="btn btn-success font-weight-bold">Confirm</button>
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="operationProcessType_Id_5_Modal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+<div class="modal fade" id="operationProcessType_Id_3_Modal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Step 5: Confirm Quote</h5>
+                <h5 class="modal-title">Step 3: Confirm Quote</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
@@ -205,7 +208,7 @@
             <div class="modal-body">
                 <p>Please confirm the prices that you negotiated with your shipper <strong><span class="ShipperCompany"></span></strong>.</p>
                 <br />
-                <form class="form" id="operationProcessType_Id_5_Quote_Form" method="post" enctype="multipart/form-data" asp-area="" asp-controller="" asp-action="">
+                <form class="form" id="operationProcessType_Id_3_Quote_Form" method="post" enctype="multipart/form-data" asp-area="" asp-controller="" asp-action="">
                     <div class="form-group">
                         <label asp-for="OperationQuoteViewModel.Profit" class="col-form-label"></label>:
                         <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Please upload a PDF document supporting the quotation issued by our pricing department (including net and sell prices).">
@@ -310,7 +313,7 @@
                     <p><span style="color:red">*</span>Please upload a PDF document supporting the quotation issued by our pricing department (including <strong>net</strong> and <strong>sell</strong> prices).</p>
                     <br />
                 </form>
-                <div class="card card-custom" id="operationProcessType_Id_5_Task" style="display:none">
+                <div class="card card-custom" id="operationProcessType_Id_3_Task" style="display:none">
                     <div class="card-header" style="background-color: lavender">
                         <div class="card-title">
                             <h3 class="card-label">
@@ -319,24 +322,24 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="operationProcessType_Id_5_Task_Form">
+                        <form id="operationProcessType_Id_3_Task_Form">
                             <div class="form-group">
                                 <label class="col-form-label notes" asp-for="OperationTaskViewModel.Note"></label>:
                                 <br />
-                                <textarea class="col-form-label" asp-for="OperationTaskViewModel.Note" id="operationProcessType_Id_5_Note"></textarea>
+                                <textarea class="col-form-label" asp-for="OperationTaskViewModel.Note" id="operationProcessType_Id_3_Note"></textarea>
                                 <br />
                                 <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
                                 <br />
-                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_5_DueDate" class="form-control" placeholder="Due Date" />
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_3_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}"/>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_5">Cancel</button>
-                        <button type="button" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_5" form="operationProcessType_Id_5_Task_Form">Add Task</button>
+                        <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_3">Cancel</button>
+                        <button type="button" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_3" form="operationProcessType_Id_3_Task_Form">Add Task</button>
                     </div>
                 </div>
-                <div class="card card-custom" id="operationProcessType_Id_5_TaskList" style="display: none">
+                <div class="card card-custom" id="operationProcessType_Id_3_TaskList" style="display: none">
                     <div class="card-header" style="background-color: lightseagreen">
                         <div class="card-title">
                             <h3 class="card-label">
@@ -346,14 +349,14 @@
                     </div>
                     <br />
                     <div class="card-body">
-                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_Task_5"></div>
+                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_Task_3"></div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info font-weight-bold mr-auto tasksBtn" name="operationProcessType_Id_5">Tasks</button>
+                <button type="button" class="btn btn-info font-weight-bold mr-auto tasksBtn" name="operationProcessType_Id_3">Tasks</button>
                 <button type="button" class="btn btn-light-primary font-weight-bold">Request</button>
-                <button type="submit" class="btn btn-success font-weight-bold" form="operationProcessType_Id_5_Quote_Form">Confirm</button>
+                <button type="submit" class="btn btn-success font-weight-bold" form="operationProcessType_Id_3_Quote_Form">Confirm</button>
             </div>
 
         </div>
@@ -407,7 +410,7 @@
                                 <br />
                                 <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
                                 <br />
-                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_6_DueDate" class="form-control" placeholder="Due Date" />
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_6_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}"/>
                             </div>
                         </form>
                     </div>
@@ -498,7 +501,7 @@
                                 <br />
                                 <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
                                 <br />
-                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_7_DueDate" class="form-control" placeholder="Due Date" />
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_7_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}"/>
                             </div>
                         </form>
                     </div>
@@ -574,7 +577,7 @@
                                 <br />
                                 <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
                                 <br />
-                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_8_DueDate" class="form-control" placeholder="Due Date" />
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_8_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}"/>
                             </div>
                         </form>
                     </div>
@@ -635,7 +638,7 @@
                                 <br />
                                 <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
                                 <br />
-                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_9_DueDate" class="form-control" placeholder="Due Date" />
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_9_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}"/>
                             </div>
                         </form>
                     </div>
@@ -694,7 +697,7 @@
                                 <br />
                                 <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
                                 <br />
-                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_10_DueDate" class="form-control" placeholder="Due Date" />
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_10_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}"/>
                             </div>
                         </form>
                     </div>
@@ -729,6 +732,11 @@
 <script>
     $('.tasksBtn').on('click', function () {
         $('#' + $(this).attr('name') + '_Task').show();
+        $('#' + $(this).attr('name') + '_Note').val('');
+        $('#' + $(this).attr('name') + '_DueDate').val('');
+        $('.submitTask').show();
+        $('.editTask').hide();
+        $('#' + $(this).attr('name') + '_Status').hide();
     });
     $('.cancelTask').on('click', function () {
         $('#' + $(this).attr('name') + '_Task').hide();

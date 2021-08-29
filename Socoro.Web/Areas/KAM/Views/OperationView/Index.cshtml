@@ -95,6 +95,7 @@
     var typeId = '';
     var operationProcessId = '';
     var datatableTasks = '';
+    var initDataTableTasks = function () { };
     var initDataTable = function () {
         var datatable = $('#kt_datatable').KTDatatable({
             // datasource definition
@@ -196,7 +197,7 @@
                 processData: true,
                 success: function (result) {
                     operationProcessId = result.data.id;
-                    var initDataTableTasks = function () {
+                    initDataTableTasks = function () {
                         datatableTasks = $('#kt_datatable_Task_'+typeId).KTDatatable({
                             // datasource definition
                             data: {
@@ -229,7 +230,9 @@
                             rows: {
                                 autoHide: false,
                                 afterTemplate: function (row, data, index) {
-                                    console.log(data);
+                                    $(row).data('note', data.note);
+                                    $(row).data('dueDate', data.dueDate);
+                                    $(row).data('status', data.status);
                                     if (data != null) {
                                         $('#operationProcessType_Id_' + typeId + '_TaskList').show();
                                     } else {
@@ -271,6 +274,19 @@
 
                     };
                     initDataTableTasks();
+                    $('#operationProcessType_Id_' + typeId + "_Task").hide();
+                    $(datatableTasks.table).on('click', 'tbody tr', function () {
+                        var note = $(this).data('note');
+                        var dueDate = '';
+                        if ($(this).data('dueDate') != null)
+                            dueDate = $(this).data('dueDate').toString().substring(0, 10);
+                        $('#operationProcessType_Id_' + typeId + "_Note").val(note);
+                        $('#operationProcessType_Id_' + typeId + "_DueDate").val(dueDate);
+                        $('#operationProcessType_Id_' + typeId + "_Status").show();
+                        $('.submitTask').hide();
+                        $('.editTask').show();
+                        $('#operationProcessType_Id_' + typeId + "_Task").show();
+                    });
                 }
             });
             $('#operationProcessType_Id_' + typeId + "_Modal").modal('show');
@@ -279,6 +295,7 @@
 
     $(document).ready(function () {
         initDataTable();
+        initDataTableTasks();
     });
 </script>
 
