@@ -3,7 +3,7 @@
 <script language="JavaScript" type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
 
 <!--begin::Modals-->
-<div class="modal fade" id="operationProcessType_Id_1" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+<div class="modal fade" id="operationProcessType_Id_1_Modal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -24,7 +24,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="operationProcessType_Id_2" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+<div class="modal fade" id="operationProcessType_Id_2_Modal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -53,7 +53,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="operationProcessType_Id_3" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+<div class="modal fade" id="operationProcessType_Id_3_Modal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -71,16 +71,57 @@
                 <br />
                 <br />
                 <p><span style="color:red">*</span>Please upload a PDF document supporting the quotation issued by our pricing department (including <strong>net</strong> and <strong>sell</strong> prices).</p>
+                <br />
+                <div class="card card-custom" id="operationProcessType_Id_3_Task" style="display:none">
+                    <div class="card-header" style="background-color: lavender">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                Create Task for Operation #@Model.OperationViewModel.OperationNo
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label class="col-form-label notes" asp-for="OperationTaskViewModel.Note"></label>:
+                                <br />
+                                <textarea class="col-form-label" asp-for="OperationTaskViewModel.Note" id="operationProcessType_Id_3_Note"></textarea>
+                                <br />
+                                <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
+                                <br />
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_3_DueDate" class="form-control" placeholder="Due Date" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_3">Cancel</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_3">Add Task</button>
+                    </div>
+                </div>
+                <div class="card card-custom" id="operationProcessType_Id_3_TaskList" style="display: none">
+                    <div class="card-header" style="background-color: lightseagreen">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                Tasks for this step
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="container" id="operationProcessType_Id_3_Container" style="border: 1px solid green;">
+                            
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info font-weight-bold mr-auto">Tasks</button>
+                <button type="button" class="btn btn-info font-weight-bold mr-auto tasksBtn" name="operationProcessType_Id_3">Tasks</button>
                 <button type="button" class="btn btn-light-primary font-weight-bold">Issue</button>
                 <button type="button" class="btn btn-success font-weight-bold">Confirm</button>
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="operationProcessType_Id_4" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+<div class="modal fade" id="operationProcessType_Id_4_Modal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -113,7 +154,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="operationProcessType_Id_5" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+<div class="modal fade" id="operationProcessType_Id_5_Modal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -238,7 +279,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="operationProcessType_Id_6" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+<div class="modal fade" id="operationProcessType_Id_6_Modal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -278,7 +319,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="operationProcessType_Id_7" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+<div class="modal fade" id="operationProcessType_Id_7_Modal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -328,7 +369,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="operationProcessType_Id_8" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+<div class="modal fade" id="operationProcessType_Id_8_Modal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -365,7 +406,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="operationProcessType_Id_9" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+<div class="modal fade" id="operationProcessType_Id_9_Modal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -384,7 +425,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="operationProcessType_Id_10" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+<div class="modal fade" id="operationProcessType_Id_10_Modal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -404,3 +445,58 @@
     </div>
 </div>
 <!--end::Modals-->
+
+<script>
+    $('.tasksBtn').on('click', function () {
+        $('#' + $(this).attr('name') + '_Task').show();
+    });
+    $('.cancelTask').on('click', function () {
+        $('#' + $(this).attr('name') + '_Task').hide();
+    });
+    $('.submitTask').on('click', function () {
+        var name = $(this).attr('name');
+        $('#' + name + '_Task').hide();
+        var typeId = name.split("_");
+        typeId = typeId[typeId.length - 1];
+        var note = $('#' + $(this).attr('name') + '_Note').val();
+        var dueDate = new Date($('#' + $(this).attr('name') + '_DueDate').val());
+        var operationProcessId = '';
+        $.ajax({
+            url: "@Environment.GetEnvironmentVariable("ApiEndpoint")" + "/OperationProcess/" + @Model.OperationViewModel.Id + "/" + typeId,
+            type: 'GET',
+            contentType: 'application/json; charset=utf-8',
+            processData: true,
+            success: function (result) {
+                operationProcessId = result.data.id;
+                var data = {
+                    "note": note,
+                    "dueDate": dueDate,
+                    "status": false,
+                    "operationProcessId": operationProcessId
+                };
+                $.ajax({
+                    url: "@Environment.GetEnvironmentVariable("ApiEndpoint")" + "/OperationTask/",
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json; charset=utf-8',
+                    processData: true,
+                    success: function (result) {
+                        $('#' + name + '_Container').empty();
+                        $.ajax({
+                            url: "@Environment.GetEnvironmentVariable("ApiEndpoint")" + "/OperationTask/" + operationProcessId,
+                            type: 'GET',
+                            contentType: 'application/json; charset=utf-8',
+                            processData: true,
+                            success: function (result) {
+                                $.each(result.data, function (index, val) {
+                                    $('#' + name + '_Container').append($("<div></div>").text(val.note + "|| Due Date: " + val.dueDate));
+                                });
+                                $('#' + name + '_TaskList').show();
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    });
+</script>

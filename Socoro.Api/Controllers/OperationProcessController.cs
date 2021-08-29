@@ -18,6 +18,13 @@ namespace Socoro.Api.Controllers
             var operation = await _mediator.Send(new GetOperationProcessByOperationId() { OperationId = operationId });
             return Ok(operation);
         }
+        [EnableCors("GET")]
+        [HttpGet("{operationId}/{typeId}")]
+        public async Task<IActionResult> GetIdByOperationIdAndTypeId(int operationId, int typeId)
+        {
+            var operation = await _mediator.Send(new GetIdByOperationIdAndTypeId() { OperationId = operationId, TypeId = typeId });
+            return Ok(operation);
+        }
         // POST api/<controller>
         [EnableCors("POST")]
         [HttpPost]
