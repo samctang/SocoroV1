@@ -20,6 +20,51 @@
                 <p><strong>Consignee</strong>: <span class="ConsigneeCompany"></span></p>
                 <br />
                 <p>The shipper will be notified that you will be in charge of their operation in the next step.</p>
+                <div class="card card-custom" id="operationProcessType_Id_1_Task" style="display:none">
+                    <div class="card-header" style="background-color: lavender">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                Create Task for Operation #@Model.OperationViewModel.OperationNo
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form id="operationProcessType_Id_1_Task_Form">
+                            <div class="form-group">
+                                <label class="col-form-label notes" asp-for="OperationTaskViewModel.Note"></label>:
+                                <br />
+                                <textarea class="col-form-label" asp-for="OperationTaskViewModel.Note" id="operationProcessType_Id_1_Note"></textarea>
+                                <br />
+                                <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
+                                <br />
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_1_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}" />
+                                <br />
+                                <p id="operationProcessType_Id_1_Status_Display" style="display:none"><input asp-for="OperationTaskViewModel.Status" type="checkbox" id="operationProcessType_Id_1_Status" /> Mark as completed </p>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_1">Cancel</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_1" form="operationProcessType_Id_1_Task_Form">Add Task</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-primary editTask" name="operationProcessType_Id_1" form="operationProcessType_Id_1_Edit_Task_Form" style="display:none">Edit Task</button>
+                    </div>
+                </div>
+                <div class="card card-custom" id="operationProcessType_Id_1_TaskList" style="display: none">
+                    <div class="card-header" style="background-color: lightseagreen">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                Tasks for this step
+                            </h3>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="card-body">
+                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_Task_1"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info font-weight-bold mr-auto tasksBtn" name="operationProcessType_Id_1">Tasks</button>
             </div>
         </div>
     </div>
@@ -46,8 +91,51 @@
                     <li>Bonded</li>
                     <li>Self Propelled</li>
                 </ul>
+                <div class="card card-custom" id="operationProcessType_Id_4_Task" style="display:none">
+                    <div class="card-header" style="background-color: lavender">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                Create Task for Operation #@Model.OperationViewModel.OperationNo
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form id="operationProcessType_Id_4_Task_Form">
+                            <div class="form-group">
+                                <label class="col-form-label notes" asp-for="OperationTaskViewModel.Note"></label>:
+                                <br />
+                                <textarea class="col-form-label" asp-for="OperationTaskViewModel.Note" id="operationProcessType_Id_4_Note"></textarea>
+                                <br />
+                                <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
+                                <br />
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_4_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}" />
+                                <br />
+                                <p id="operationProcessType_Id_4_Status_Display" style="display:none"><input asp-for="OperationTaskViewModel.Status" type="checkbox" id="operationProcessType_Id_4_Status" /> Mark as completed </p>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_4">Cancel</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_4" form="operationProcessType_Id_4_Task_Form">Add Task</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-primary editTask" name="operationProcessType_Id_4" form="operationProcessType_Id_4_Edit_Task_Form" style="display:none">Edit Task</button>
+                    </div>
+                </div>
+                <div class="card card-custom" id="operationProcessType_Id_4_TaskList" style="display: none">
+                    <div class="card-header" style="background-color: lightseagreen">
+                        <div class="card-title">
+                            <h3 class="card-label">
+                                Tasks for this step
+                            </h3>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="card-body">
+                        <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable_Task_4"></div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-info font-weight-bold mr-auto tasksBtn" name="operationProcessType_Id_4">Tasks</button>
                 <input type="submit" class="btn btn-light-primary font-weight-bold" value="Send Request" />
             </div>
         </div>
@@ -91,14 +179,14 @@
                                 <br />
                                 <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_2_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}"/>
                                 <br />
-                                <p id="operationProcessType_Id_2_Status" style="display:none"><input asp-for="OperationTaskViewModel.Status" type="checkbox" /> Mark as completed </p>
+                                <p id="operationProcessType_Id_2_Status_Display" style="display:none"><input asp-for="OperationTaskViewModel.Status" type="checkbox" id="operationProcessType_Id_2_Status"/> Mark as completed </p>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_2">Cancel</button>
-                        <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_2" form="operationProcessType_Id_3_Task_Form">Add Task</button>
-                        <button type="submit" class="btn font-weight-bold btn-light-primary editTask" name="operationProcessType_Id_2" form="operationProcessType_Id_3_Edit_Task_Form" style="display:none">Edit Task</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_2" form="operationProcessType_Id_2_Task_Form">Add Task</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-primary editTask" name="operationProcessType_Id_2" form="operationProcessType_Id_2_Edit_Task_Form" style="display:none">Edit Task</button>
                     </div>
                 </div>
                 <div class="card card-custom" id="operationProcessType_Id_2_TaskList" style="display: none">
@@ -166,13 +254,16 @@
                                 <br />
                                 <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
                                 <br />
-                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_5_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}"/>
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_5_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}" />
+                                <br />
+                                <p id="operationProcessType_Id_5_Status_Display" style="display:none"><input asp-for="OperationTaskViewModel.Status" type="checkbox" id="operationProcessType_Id_5_Status" /> Mark as completed </p>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_5">Cancel</button>
                         <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_5" form="operationProcessType_Id_5_Task_Form">Add Task</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-primary editTask" name="operationProcessType_Id_5" form="operationProcessType_Id_5_Edit_Task_Form" style="display:none">Edit Task</button>
                     </div>
                 </div>
                 <div class="card card-custom" id="operationProcessType_Id_5_TaskList" style="display: none">
@@ -330,13 +421,16 @@
                                 <br />
                                 <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
                                 <br />
-                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_3_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}"/>
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_3_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}" />
+                                <br />
+                                <p id="operationProcessType_Id_3_Status_Display" style="display:none"><input asp-for="OperationTaskViewModel.Status" type="checkbox" id="operationProcessType_Id_3_Status" /> Mark as completed </p>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_3">Cancel</button>
-                        <button type="button" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_3" form="operationProcessType_Id_3_Task_Form">Add Task</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_3" form="operationProcessType_Id_3_Task_Form">Add Task</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-primary editTask" name="operationProcessType_Id_3" form="operationProcessType_Id_3_Edit_Task_Form" style="display:none">Edit Task</button>
                     </div>
                 </div>
                 <div class="card card-custom" id="operationProcessType_Id_3_TaskList" style="display: none">
@@ -410,13 +504,16 @@
                                 <br />
                                 <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
                                 <br />
-                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_6_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}"/>
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_6_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}" />
+                                <br />
+                                <p id="operationProcessType_Id_6_Status_Display" style="display:none"><input asp-for="OperationTaskViewModel.Status" type="checkbox" id="operationProcessType_Id_6_Status" /> Mark as completed </p>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_6">Cancel</button>
                         <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_6" form="operationProcessType_Id_6_Task_Form">Add Task</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-primary editTask" name="operationProcessType_Id_6" form="operationProcessType_Id_6_Edit_Task_Form" style="display:none">Edit Task</button>
                     </div>
                 </div>
                 <div class="card card-custom" id="operationProcessType_Id_6_TaskList" style="display: none">
@@ -501,13 +598,16 @@
                                 <br />
                                 <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
                                 <br />
-                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_7_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}"/>
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_7_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}" />
+                                <br />
+                                <p id="operationProcessType_Id_7_Status_Display" style="display:none"><input asp-for="OperationTaskViewModel.Status" type="checkbox" id="operationProcessType_Id_7_Status" /> Mark as completed </p>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_7">Cancel</button>
                         <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_7" form="operationProcessType_Id_7_Task_Form">Add Task</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-primary editTask" name="operationProcessType_Id_7" form="operationProcessType_Id_7_Edit_Task_Form" style="display:none">Edit Task</button>
                     </div>
                 </div>
                 <div class="card card-custom" id="operationProcessType_Id_7_TaskList" style="display: none">
@@ -577,13 +677,16 @@
                                 <br />
                                 <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
                                 <br />
-                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_8_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}"/>
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_8_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}" />
+                                <br />
+                                <p id="operationProcessType_Id_8_Status_Display" style="display:none"><input asp-for="OperationTaskViewModel.Status" type="checkbox" id="operationProcessType_Id_8_Status" /> Mark as completed </p>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_8">Cancel</button>
                         <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_8" form="operationProcessType_Id_8_Task_Form">Add Task</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-primary editTask" name="operationProcessType_Id_8" form="operationProcessType_Id_8_Edit_Task_Form" style="display:none">Edit Task</button>
                     </div>
                 </div>
                 <div class="card card-custom" id="operationProcessType_Id_8_TaskList" style="display: none">
@@ -638,13 +741,16 @@
                                 <br />
                                 <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
                                 <br />
-                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_9_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}"/>
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_9_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}" />
+                                <br />
+                                <p id="operationProcessType_Id_9_Status_Display" style="display:none"><input asp-for="OperationTaskViewModel.Status" type="checkbox" id="operationProcessType_Id_9_Status" /> Mark as completed </p>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_9">Cancel</button>
                         <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_9" form="operationProcessType_Id_9_Task_Form">Add Task</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-primary editTask" name="operationProcessType_Id_9" form="operationProcessType_Id_9_Edit_Task_Form" style="display:none">Edit Task</button>
                     </div>
                 </div>
                 <div class="card card-custom" id="operationProcessType_Id_9_TaskList" style="display: none">
@@ -697,13 +803,16 @@
                                 <br />
                                 <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
                                 <br />
-                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_10_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}"/>
+                                <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="operationProcessType_Id_10_DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}" />
+                                <br />
+                                <p id="operationProcessType_Id_10_Status_Display" style="display:none"><input asp-for="OperationTaskViewModel.Status" type="checkbox" id="operationProcessType_Id_10_Status" /> Mark as completed </p>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="operationProcessType_Id_10">Cancel</button>
                         <button type="submit" class="btn font-weight-bold btn-light-success submitTask" name="operationProcessType_Id_10" form="operationProcessType_Id_10_Task_Form">Add Task</button>
+                        <button type="submit" class="btn font-weight-bold btn-light-primary editTask" name="operationProcessType_Id_10" form="operationProcessType_Id_10_Edit_Task_Form" style="display:none">Edit Task</button>
                     </div>
                 </div>
                 <div class="card card-custom" id="operationProcessType_Id_10_TaskList" style="display: none">
@@ -736,14 +845,13 @@
         $('#' + $(this).attr('name') + '_DueDate').val('');
         $('.submitTask').show();
         $('.editTask').hide();
-        $('#' + $(this).attr('name') + '_Status').hide();
+        $('#' + $(this).attr('name') + '_Status_Display').hide();
     });
     $('.cancelTask').on('click', function () {
         $('#' + $(this).attr('name') + '_Task').hide();
     });
     $('.submitTask').on('click', function () {
-        var name = $(this).attr('name');
-        $('#' + name + '_Task').hide();
+        $('#' + $(this).attr('name') + '_Task').hide();
         var note = $('#' + $(this).attr('name') + '_Note').val();
         var dueDate = new Date($('#' + $(this).attr('name') + '_DueDate').val());
         var data = {
@@ -752,7 +860,7 @@
             "status": false,
             "operationProcessId": operationProcessId
         };
-        if (note != null && dueDate != null) {
+        if (note != '' && dueDate != '') {
             $.ajax({
                 url: "@Environment.GetEnvironmentVariable("ApiEndpoint")" + "/OperationTask/",
                 type: 'POST',
@@ -764,5 +872,27 @@
                 }
             });
         }
+    });
+    $('.editTask').on('click', function () {
+        $('#' + $(this).attr('name') + '_Task').hide();
+        var note = $('#' + $(this).attr('name') + '_Note').val();
+        var dueDate = new Date($('#' + $(this).attr('name') + '_DueDate').val());
+        var status = $('#' + $(this).attr('name') + '_Status').prop('checked');
+        var data = {
+            "id": taskId,
+            "note": note,
+            "dueDate": dueDate,
+            "status": status
+        };
+        $.ajax({
+            url: "@Environment.GetEnvironmentVariable("ApiEndpoint")" + "/OperationTask/" + taskId,
+            type: 'PUT',
+            data: JSON.stringify(data),
+            contentType: 'application/json; charset=utf-8',
+            processData: true,
+            success: function (result) {
+                datatableTasks.reload();
+            }
+        });
     });
 </script>

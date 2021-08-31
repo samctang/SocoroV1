@@ -35,6 +35,8 @@ namespace Socoro.Api
                     builder => builder.WithOrigins(Environment.GetEnvironmentVariable("Origin")).WithMethods("GET").AllowAnyHeader());
                 options.AddPolicy("POST",
                     builder => builder.WithOrigins(Environment.GetEnvironmentVariable("Origin")).WithMethods("POST").AllowAnyHeader());
+                options.AddPolicy("PUT",
+                    builder => builder.WithOrigins(Environment.GetEnvironmentVariable("Origin")).WithMethods("PUT").AllowAnyHeader());
             });
             services.AddControllers();
             /*services.AddMvc(o =>
@@ -62,6 +64,7 @@ namespace Socoro.Api
             app.UseAuthorization();
             app.UseCors("GET");
             app.UseCors("POST");
+            app.UseCors("PUT");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

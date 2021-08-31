@@ -13,5 +13,6 @@ namespace Socoro.Application.Interfaces.Repositories
         Task<List<OperationTask>> GetListAsync();
         Task<int> InsertAsync(OperationTask operationTask);
         Task UpdateAsync(OperationTask operationTask);
+        Task<OperationTask> GetByIdAsync(int id);
     }
 }
