@@ -94,8 +94,8 @@
 <script>
     var typeId = '';
     var operationProcessId = '';
-    var datatableTasks = '';
-    var initDataTableTasks = function () { };
+    var taskId = 0;
+    var datatableTasks;
     var initDataTable = function () {
         var datatable = $('#kt_datatable').KTDatatable({
             // datasource definition
@@ -230,6 +230,7 @@
                             rows: {
                                 autoHide: false,
                                 afterTemplate: function (row, data, index) {
+                                    $(row).data('id', data.id);
                                     $(row).data('note', data.note);
                                     $(row).data('dueDate', data.dueDate);
                                     $(row).data('status', data.status);
@@ -276,13 +277,16 @@
                     initDataTableTasks();
                     $('#operationProcessType_Id_' + typeId + "_Task").hide();
                     $(datatableTasks.table).on('click', 'tbody tr', function () {
+                        taskId = $(this).data('id');
                         var note = $(this).data('note');
                         var dueDate = '';
                         if ($(this).data('dueDate') != null)
                             dueDate = $(this).data('dueDate').toString().substring(0, 10);
+                        var status = $(this).data('status');
                         $('#operationProcessType_Id_' + typeId + "_Note").val(note);
                         $('#operationProcessType_Id_' + typeId + "_DueDate").val(dueDate);
-                        $('#operationProcessType_Id_' + typeId + "_Status").show();
+                        $('#operationProcessType_Id_' + typeId + "_Status").val(status);
+                        $('#operationProcessType_Id_' + typeId + "_Status_Display").show();
                         $('.submitTask').hide();
                         $('.editTask').show();
                         $('#operationProcessType_Id_' + typeId + "_Task").show();
@@ -295,7 +299,6 @@
 
     $(document).ready(function () {
         initDataTable();
-        initDataTableTasks();
     });
 </script>
 

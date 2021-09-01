@@ -21,7 +21,10 @@ namespace Socoro.Infrastructure.Repositories
         {
             return await _repository.Entities.Where(p => p.OperationProcessId == operationProcessId).ToListAsync();
         }
-
+        public async Task<OperationTask> GetByIdAsync(int id)
+        {
+            return await _repository.Entities.Where(p => p.Id == id).FirstOrDefaultAsync();
+        }
         public async Task<List<OperationTask>> GetListAsync()
         {
             return await _repository.Entities.ToListAsync();

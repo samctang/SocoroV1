@@ -27,14 +27,15 @@ namespace Socoro.Api.Controllers
         }
 
         // PUT api/<controller>/5
-       /* [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, UpdateOperation command)
+        [EnableCors("PUT")]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, [FromBody]UpdateOperationTask command)
         {
             if (id != command.Id)
             {
                 return BadRequest();
             }
             return Ok(await _mediator.Send(command));
-        }*/
+        }
     }
 }
