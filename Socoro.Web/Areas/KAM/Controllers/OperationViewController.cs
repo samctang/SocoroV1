@@ -61,8 +61,10 @@ namespace Socoro.Web.Areas.KAM.Controllers
                     response = await client.PostAsync(requestUri, stringContent);
                 }
             }
-            OperationIntViewModel operationIntViewModel = new OperationIntViewModel();
-            operationIntViewModel.OperationViewModel = operationObj;
+            OperationIntViewModel operationIntViewModel = new OperationIntViewModel
+            {
+                OperationViewModel = operationObj
+            };
             TempData["OperationNo"] = currentOperationNo;
             return View(operationIntViewModel);
         }

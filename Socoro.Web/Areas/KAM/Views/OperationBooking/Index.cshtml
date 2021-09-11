@@ -1,0 +1,249 @@
+﻿@model Socoro.Web.Areas.KAM.Models.OperationIntViewModel
+
+<script language="JavaScript" type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
+<!--<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>-->
+<!--begin::Subheader-->
+<div class="subheader py-2 py-lg-6 subheader-transparent" id="kt_subheader">
+</div>
+<!--end::Subheader-->
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Entry-->
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container">
+            <!--begin::Card-->
+            <div class="card card-custom card-transparent">
+                <div class="card-body p-0">
+                    <!--begin::Card-->
+                    <div class="card card-custom card-shadowless rounded-top-0">
+                        <!--begin::Body-->
+                        <div class="card-body p-0">
+                            <div class="row justify-content-center py-8 px-8 py-lg-10 px-lg-10">
+                                <div class="col-xl-10 col-xxl-9">
+                                    <!--begin::Wizard Form-->
+                                    <form class="form" id="kt_form" method="post" enctype="multipart/form-data" asp-area="KAM" asp-controller="OperationCargo" asp-action="AddCargo" asp-route-id="@Model.OperationViewModel.Id">
+                                        <div class="row justify-content-center">
+                                            <div class="col-xl-9">
+                                                <!--begin::Wizard Step 1-->
+                                                <div class="my-5 step" data-wizard-type="step-content" data-wizard-state="current">
+                                                    <h5 class="text-dark font-weight-bold mb-10">Booking Information for Operation #@Model.OperationViewModel.OperationNo </h5>
+                                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                                    <!--begin::Group-->
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationBookingViewModel.BookingNumber"></label>:
+                                                        <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Physical address in which the container(s) are going to be loaded. This location may or may not be the shipper's warehouse but the information is always provided by them.">
+                                                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                    <rect x="0" y="0" width="24" height="24" />
+                                                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                                    <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                                                                </g>
+                                                            </svg><!--end::Svg Icon-->
+                                                        </span>
+                                                        <input asp-for="OperationBookingViewModel.BookingNumber" name="BookingNumber" type="text" class="form-control" placeholder="Booking Number" />
+                                                        <span asp-validation-for="OperationBookingViewModel.BookingNumber" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationBookingViewModel.Vessel"></label>:
+                                                        <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Email of the person in charge of the movement in the shipping company.
+
+This information is important because in case of needing to contact the shipping company for something regarding this movement, the provided email will be used.">
+                                                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                    <rect x="0" y="0" width="24" height="24" />
+                                                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                                    <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                                                                </g>
+                                                            </svg><!--end::Svg Icon-->
+                                                        </span>
+                                                        <input asp-for="OperationBookingViewModel.Vessel" name="Vessel" type="text" class="form-control" placeholder="Vessel" />
+                                                        <span asp-validation-for="OperationBookingViewModel.Vessel" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationBookingViewModel.Voyage"></label>:
+                                                        <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Phone number of the person in charge of the movement in the shipping company.
+
+This information is important because in case of needing to contact the shipping company for something regarding this movement, the provided phone number will be used.">
+                                                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                    <rect x="0" y="0" width="24" height="24" />
+                                                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                                    <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                                                                </g>
+                                                            </svg><!--end::Svg Icon-->
+                                                        </span>
+                                                        <input asp-for="OperationBookingViewModel.Voyage" name="Voyage" type="number" class="form-control" placeholder="Voyage" />
+                                                        <span asp-validation-for="OperationBookingViewModel.Voyage" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationBookingViewModel.DocumentDate"></label>:
+                                                        <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Date in which the cargo is going to be loaded at the shipper's designated location.
+
+This information is important because based on this date we schedule the pick up date to match our customer's needs.">
+                                                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                    <rect x="0" y="0" width="24" height="24" />
+                                                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                                    <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                                                                </g>
+                                                            </svg><!--end::Svg Icon-->
+                                                        </span>
+                                                        <input asp-for="OperationBookingViewModel.DocumentDate" name="DocumentDate" type="date" class="form-control" placeholder="Document Date" />
+                                                        <span asp-validation-for="OperationBookingViewModel.DocumentDate" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationBookingViewModel.DocumentTime"></label>:
+                                                        <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Time in which the cargo is going to be loaded at the shipper's designated location.
+
+This information is important because based on this time we schedule the pick up time to match our customer's needs.">
+                                                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                    <rect x="0" y="0" width="24" height="24" />
+                                                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                                    <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                                                                </g>
+                                                            </svg><!--end::Svg Icon-->
+                                                        </span>
+                                                        <input asp-for="OperationBookingViewModel.DocumentTime" name="DocumentTime" type="time" class="form-control" placeholder="12:00 AM" />
+                                                        <span asp-validation-for="OperationBookingViewModel.DocumentTime" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationBookingViewModel.CargoDate"></label>:
+                                                        <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Reference code or number provided by the shipper that we will use to identify the cargo that is going to be loaded at their designated location.">
+                                                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                    <rect x="0" y="0" width="24" height="24" />
+                                                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                                    <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                                                                </g>
+                                                            </svg><!--end::Svg Icon-->
+                                                        </span>
+                                                        <input asp-for="OperationBookingViewModel.CargoDate" name="CargoDate" type="date" class="form-control" placeholder="Cargo Date" />
+                                                        <span asp-validation-for="OperationBookingViewModel.CargoDate" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationBookingViewModel.CargoTime"></label>:
+                                                        <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="The Employer Identification Number (EIN), also known as the Federal Employer Identification Number (FEIN) or the Federal Tax Identification Number, is a unique nine-digit number assigned by the Internal Revenue Service (IRS) to business entities operating in the United States for the purposes of identification.
+
+This information is provided by the shipper and will be stored in our database for future movements with the same shipper (you won't need to provide this information for future operations).">
+                                                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                    <rect x="0" y="0" width="24" height="24" />
+                                                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                                    <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                                                                </g>
+                                                            </svg><!--end::Svg Icon-->
+                                                        </span>
+                                                        <input asp-for="OperationBookingViewModel.CargoTime" name="CargoTime" type="time" class="form-control" placeholder="Cargo Time" />
+                                                        <span asp-validation-for="OperationBookingViewModel.CargoTime" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationBookingViewModel.VGMDate"></label>:
+                                                        <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="When a shipment arrives at U.S. Customs but has not yet been paid for, it is considered under the control of customs until the tax and duty issues have been resolved.
+
+In some cases, a licensed freight company can move the shipment from customs to its own facilities and hold it as bonded cargo. EWC has the freedom to act in ways that your company cannot because your shipment is still under the control of U.S. Customs in an official bonded cargo warehouse.">
+                                                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                    <rect x="0" y="0" width="24" height="24" />
+                                                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                                    <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                                                                </g>
+                                                            </svg><!--end::Svg Icon-->
+                                                        </span>
+                                                        <input asp-for="OperationBookingViewModel.VGMDate" name="VGMDate" type="date" class="form-control" placeholder="VGM Date" />
+                                                        <span asp-validation-for="OperationBookingViewModel.VGMDate" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationBookingViewModel.DepartureDate"></label>:
+                                                        <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Self-propelled cargo are vehicles such as automobiles, motorcycles, snowmobiles, trucks, tractors, lawn mowers, golfcarts, etc., that convert their own energy supply into motive power used for propulsion.
+
+Batteries do so by converting electrochemical energy; engines do so by burning fuels to release their chemical energy.">
+                                                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                    <rect x="0" y="0" width="24" height="24" />
+                                                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                                    <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                                                                </g>
+                                                            </svg><!--end::Svg Icon-->
+                                                        </span>
+                                                        <input asp-for="OperationBookingViewModel.DepartureDate" name="DepartureDate" type="date" class="form-control" placeholder="Departure Date" />
+                                                        <span asp-validation-for="OperationBookingViewModel.DepartureDate" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationBookingViewModel.ArrivalDate"></label>:
+                                                        <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Number of containers needed to fit the shipper's cargo.">
+                                                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                    <rect x="0" y="0" width="24" height="24" />
+                                                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                                    <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                                                                </g>
+                                                            </svg><!--end::Svg Icon-->
+                                                        </span>
+                                                        <input asp-for="OperationBookingViewModel.ArrivalDate" name="ArrivalDate" type="date" class="form-control" placeholder="Arrival Date" />
+                                                        <span asp-validation-for="OperationBookingViewModel.ArrivalDate" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationBookingViewModel.Ramp"></label>:
+                                                        <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Number of containers needed to fit the shipper's cargo.">
+                                                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                    <rect x="0" y="0" width="24" height="24" />
+                                                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                                    <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                                                                </g>
+                                                            </svg><!--end::Svg Icon-->
+                                                        </span>
+                                                        <select asp-for="OperationBookingViewModel.Ramp" name="Ramp" class="selectpicker form-control" data-ng-style="select-with-transition">
+                                                            <option value="false" selected>No</option>
+                                                            <option value="true">Yes</option>
+                                                        </select>
+                                                        <span asp-validation-for="OperationBookingViewModel.Ramp" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationBookingViewModel.RampDate"></label>:
+                                                        <span class="svg-icon svg-icon-primary svg-icon-2x" data-toggle="tooltip" title="Number of containers needed to fit the shipper's cargo.">
+                                                            <!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\legacy\metronic\theme\html\demo12\dist/../src/media/svg/icons\Code\Question-circle.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                    <rect x="0" y="0" width="24" height="24" />
+                                                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+                                                                    <path d="M12,16 C12.5522847,16 13,16.4477153 13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 C11,16.4477153 11.4477153,16 12,16 Z M10.591,14.868 L10.591,13.209 L11.851,13.209 C13.447,13.209 14.602,11.991 14.602,10.395 C14.602,8.799 13.447,7.581 11.851,7.581 C10.234,7.581 9.121,8.799 9.121,10.395 L7.336,10.395 C7.336,7.875 9.31,5.922 11.851,5.922 C14.392,5.922 16.387,7.875 16.387,10.395 C16.387,12.915 14.392,14.868 11.851,14.868 L10.591,14.868 Z" fill="#000000" />
+                                                                </g>
+                                                            </svg><!--end::Svg Icon-->
+                                                        </span>
+                                                        <input asp-for="OperationBookingViewModel.RampDate" name="RampDate" type="date" class="form-control" placeholder="Ramp Date" />
+                                                        <span asp-validation-for="OperationBookingViewModel.RampDate" class="text-danger"></span>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-form-label" asp-for="OperationBookingViewModel.NoContainers"></label>:
+                                                        <input asp-for="OperationBookingViewModel.NoContainers" name="NoContainers" type="text" class="form-control" value="@Model.OperationBookingViewModel.NoContainers" readonly/>
+                                                        <span asp-validation-for="OperationBookingViewModel.NoContainers" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+                                                <!--end::Wizard Step 1-->
+                                                <div class="modal-footer">
+                                                    <a asp-area="KAM" asp-controller="OperationView" asp-action="Index">
+                                                        <input type="button" class="btn btn-light-primary font-weight-bold" value="Cancel" />
+                                                    </a>
+                                                    <input type="submit" class="btn btn-primary font-weight-bold" value="Submit" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!--end::Wizard Form-->
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Body-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Entry-->
+</div>

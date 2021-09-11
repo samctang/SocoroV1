@@ -23,8 +23,10 @@ namespace Socoro.Web.Areas.KAM.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            OperationViewModel operationViewModel = new OperationViewModel();
-            operationViewModel.CompanyId = 1;
+            OperationViewModel operationViewModel = new OperationViewModel
+            {
+                CompanyId = 1
+            };
             //Add other default values
             return View(operationViewModel);
         }
