@@ -117,12 +117,12 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <!--begin::Header Nav-->
                                     <ul class="menu-nav">
                                         <li class="menu-item menu-item-active" aria-haspopup="true">
-                                            <a href='@Url.Action("Index","Operation", new { area = "KAM"})' class="menu-link">
+                                            <a class="menu-link" asp-area="KAM" asp-controller="Operation" asp-action="Index">
                                                 <span class="menu-text">Operations</span>
                                             </a>
                                         </li>
                                         <li class="menu-item" aria-haspopup="true">
-                                            <a href="#" class="menu-link">
+                                            <a class="menu-link" asp-area="KAM" asp-controller="OperationTask" asp-action="Index">
                                                 <span class="menu-text">Tasks</span>
                                             </a>
                                         </li>

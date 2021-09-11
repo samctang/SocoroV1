@@ -3,6 +3,7 @@
 <script language="JavaScript" type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
 <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+<link href="~/css/datatable.css" rel="stylesheet" />
 <partial name="_ViewInfo" />
 <!--begin::Subheader-->
 <div class="subheader py-2 subheader-transparent" id="kt_subheader">
@@ -103,7 +104,7 @@
                 type: 'remote',
                 source: {
                     read: {
-                        url: '@Environment.GetEnvironmentVariable("ApiEndpoint")' + '/OperationProcess/' + @Model.OperationViewModel.Id,
+                        url: '@Environment.GetEnvironmentVariable("ApiEndpoint")' + '/OperationProcess/1/' + @Model.OperationViewModel.Id,
                         method: 'GET'
                     },
                 },
@@ -191,7 +192,7 @@
         $(datatable.table).on('click', 'tbody tr', function () {
             typeId = $(this).data('typeId');
             $.ajax({
-                url: "@Environment.GetEnvironmentVariable("ApiEndpoint")" + "/OperationProcess/" + @Model.OperationViewModel.Id + "/" + typeId,
+                url: "@Environment.GetEnvironmentVariable("ApiEndpoint")" + "/OperationProcess/2/" + @Model.OperationViewModel.Id + "/" + typeId,
                 type: 'GET',
                 contentType: 'application/json; charset=utf-8',
                 processData: true,
@@ -342,4 +343,27 @@
             $('.ConsigneeName').text(result.data.firstName + ' ' + result.data.lastName);
         }
     });
+
+    $('.editTask').on('click', function () {
+    $('#' + $(this).attr('name') + '_Task').hide();
+    var note = $('#' + $(this).attr('name') + '_Note').val();
+    var dueDate = new Date($('#' + $(this).attr('name') + '_DueDate').val());
+    var status = $('#' + $(this).attr('name') + '_Status').prop('checked');
+    var data = {
+        "id": taskId,
+        "note": note,
+        "dueDate": dueDate,
+        "status": status
+    };
+    $.ajax({
+        url: "@Environment.GetEnvironmentVariable("ApiEndpoint")" + "/OperationTask/" + taskId,
+        type: 'PUT',
+        data: JSON.stringify(data),
+        contentType: 'application/json; charset=utf-8',
+        processData: true,
+        success: function (result) {
+            datatableTasks.reload();
+        }
+    });
+});
 </script>

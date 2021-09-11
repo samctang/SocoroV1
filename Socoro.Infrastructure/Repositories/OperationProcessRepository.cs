@@ -35,6 +35,11 @@ namespace Socoro.Infrastructure.Repositories
             return await _repository.Entities.Where(p => p.OperationId == operationId && p.TypeId == typeId).FirstOrDefaultAsync();
         }
 
+        public async Task<OperationProcess> GetOperationIdById(int id)
+        {
+            return await _repository.Entities.Where(p => p.Id == id).FirstOrDefaultAsync();
+        }
+
         public async Task<int> InsertAsync(OperationProcess operationProcess)
         {
             await _repository.AddAsync(operationProcess);

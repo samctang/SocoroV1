@@ -9,8 +9,16 @@ namespace Socoro.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //NEED TO CHANGE
     public class OperationTaskController : BaseApiController<OperationTaskController>
     {
+        [EnableCors("GET")]
+        [HttpGet("{pageNo}/{pageSize}")]
+        public async Task<IActionResult> GetAllAsync(int pageNo, int pageSize)
+        {
+            var operation = await _mediator.Send(new GetAllOperationTasks(pageNo, pageSize));
+            return Ok(operation);
+        }
         [EnableCors("GET")]
         [HttpGet("{operationProcessId}")]
         public async Task<IActionResult> GetAllByIdAsync(int operationProcessId)

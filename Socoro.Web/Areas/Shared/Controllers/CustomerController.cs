@@ -16,24 +16,18 @@ namespace Socoro.Web.Areas.Shared.Controllers
         [HttpGet]
         public IActionResult Index(int id)
         {
-            CustomerViewModel customerViewModel = new CustomerViewModel();
-            //Add default values
-            customerViewModel.TypeId = id;
-            switch (id)
+            CustomerViewModel customerViewModel = new CustomerViewModel
             {
-                case 1:
-                    ViewBag.Customer = "Agent";
-                    break;
-                case 2:
-                    ViewBag.Customer = "Shipper";
-                    break;
-                case 3:
-                    ViewBag.Customer = "Consignee";
-                    break;
-                default:
-                    ViewBag.Customer = "Customer";
-                    break;
-            }
+                //Add default values
+                TypeId = id
+            };
+            ViewBag.Customer = id switch
+            {
+                1 => "Agent",
+                2 => "Shipper",
+                3 => "Consignee",
+                _ => "Customer",
+            };
             return View(customerViewModel);
         }
         [HttpPost]

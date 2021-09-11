@@ -8,6 +8,6 @@ namespace Socoro.Application.DTOs.Operation
         public string Note { get; set; }
         public DateTime DueDate { get; set; }
         public bool Status { get; set; }
-        public int OperationProcessId { get; set; }
+        public int? OperationProcessId { get; set; }
     }
 }
