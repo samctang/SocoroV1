@@ -251,6 +251,7 @@
 
         $(datatable.table).on('click', 'tbody tr', function () {
             var data = $(this).children("td").eq(0).text();
+            console.log(data);
             $.ajax({
                 url: "/KAM/Operation/GetOperationDetails/",
                 type: 'POST',

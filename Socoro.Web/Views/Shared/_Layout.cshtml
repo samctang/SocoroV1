@@ -79,7 +79,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <!--begin::Left-->
                             <div class="d-none d-lg-flex align-items-center mr-3">
                                 <!--begin::Logo-->
-                                <a href='@Url.Action("Index","Operation", new { area = "KAM"})' class="mr-10">
+                                <a class="mr-10" asp-area="KAM" asp-controller="Operation" asp-action="Index">
                                     <img alt="Logo" src="~/assets/media/logos/interworld-logo.png" class="max-h-150px" />
                                 </a>
                                 <!--end::Logo-->
@@ -140,17 +140,17 @@ License: You must have a valid license purchased only from themeforest(the above
                                                         </a>
                                                     </li>
                                                     <li class="menu-item menu-item-submenu" aria-haspopup="true">
-                                                        <a href="javascript:;" class="menu-link menu-toggle">
+                                                        <a class="menu-link" asp-area="Shared" asp-controller="Customer" asp-action="Index" asp-route-id="1">
                                                             <span class="menu-text">Register Agent</span>
                                                         </a>
                                                     </li>
                                                     <li class="menu-item menu-item-submenu" aria-haspopup="true">
-                                                        <a href="javascript:;" class="menu-link menu-toggle">
+                                                        <a class="menu-link" asp-area="Shared" asp-controller="Customer" asp-action="Index" asp-route-id="2">
                                                             <span class="menu-text">Register Shipper</span>
                                                         </a>
                                                     </li>
                                                     <li class="menu-item menu-item-submenu" aria-haspopup="true">
-                                                        <a href="javascript:;" class="menu-link menu-toggle">
+                                                        <a class="menu-link" asp-area="Shared" asp-controller="Customer" asp-action="Index" asp-route-id="3">
                                                             <span class="menu-text">Register Consignee</span>
                                                         </a>
                                                     </li>

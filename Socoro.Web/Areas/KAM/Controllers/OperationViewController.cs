@@ -38,7 +38,7 @@ namespace Socoro.Web.Areas.KAM.Controllers
             response = await client.GetAsync(requestUri);
             responseBody = await response.Content.ReadAsStringAsync();
             json = JsonConvert.DeserializeObject(responseBody);
-            if (json.data.Count == 0)
+            if (json != null && json.data.Count == 0)
             {
                 requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/operationProcessType/1/" + operationObj.TypeId;
                 response = await client.GetAsync(requestUri);

@@ -286,7 +286,7 @@
                         var status = $(this).data('status');
                         $('#operationProcessType_Id_' + typeId + "_Note").val(note);
                         $('#operationProcessType_Id_' + typeId + "_DueDate").val(dueDate);
-                        $('#operationProcessType_Id_' + typeId + "_Status").val(status);
+                        $('#operationProcessType_Id_' + typeId + "_Status").prop('checked',status);
                         $('#operationProcessType_Id_' + typeId + "_Status_Display").show();
                         $('.submitTask').hide();
                         $('.editTask').show();
@@ -343,27 +343,4 @@
             $('.ConsigneeName').text(result.data.firstName + ' ' + result.data.lastName);
         }
     });
-
-    $('.editTask').on('click', function () {
-    $('#' + $(this).attr('name') + '_Task').hide();
-    var note = $('#' + $(this).attr('name') + '_Note').val();
-    var dueDate = new Date($('#' + $(this).attr('name') + '_DueDate').val());
-    var status = $('#' + $(this).attr('name') + '_Status').prop('checked');
-    var data = {
-        "id": taskId,
-        "note": note,
-        "dueDate": dueDate,
-        "status": status
-    };
-    $.ajax({
-        url: "@Environment.GetEnvironmentVariable("ApiEndpoint")" + "/OperationTask/" + taskId,
-        type: 'PUT',
-        data: JSON.stringify(data),
-        contentType: 'application/json; charset=utf-8',
-        processData: true,
-        success: function (result) {
-            datatableTasks.reload();
-        }
-    });
-});
 </script>
