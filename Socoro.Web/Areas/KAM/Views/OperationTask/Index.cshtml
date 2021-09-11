@@ -1,4 +1,4 @@
-﻿@model Socoro.Web.Areas.KAM.Models.OperationIntViewModel;
+﻿@model Socoro.Web.Areas.KAM.Models.OperationTaskViewModel;
 
 <script language="JavaScript" type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
 <link href="~/css/datatable.css" rel="stylesheet" />
@@ -70,15 +70,15 @@
             <div class="modal-body">
                 <form id="operationProcessType_Id_1_Task_Form">
                     <div class="form-group">
-                        <label class="col-form-label notes" asp-for="OperationTaskViewModel.Note"></label>:
+                        <label class="col-form-label notes" asp-for="Note"></label>:
                         <br />
-                        <textarea class="col-form-label" asp-for="OperationTaskViewModel.Note" id="Note"></textarea>
+                        <textarea class="col-form-label" asp-for="Note" id="Note"></textarea>
                         <br />
-                        <label class="col-form-label" asp-for="OperationTaskViewModel.DueDate"></label>:
+                        <label class="col-form-label" asp-for="DueDate"></label>:
                         <br />
-                        <input asp-for="OperationTaskViewModel.DueDate" name="DueDate" type="date" id="DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}" />
+                        <input asp-for="DueDate" name="DueDate" type="date" id="DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}" />
                         <br />
-                        <p id="operationProcessType_Id_1_Status_Display" style="display:none"><input asp-for="OperationTaskViewModel.Status" type="checkbox" id="Status" /> Mark as completed </p>
+                        <p id="Status_Display"><input asp-for="Status" type="checkbox" id="Status" /> Mark as completed </p>
                     </div>
                 </form>
             </div>
