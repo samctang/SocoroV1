@@ -6,6 +6,7 @@ namespace Socoro.Web.Areas.Shared.Models
     {
         public int Id { get; set; }
         public int TypeId { get; set; }
+        [Required]
         public string Email { get; set; }
         [Required, Display(Name = "Company Name")]
         public string CompanyName { get; set; }
@@ -27,7 +28,7 @@ namespace Socoro.Web.Areas.Shared.Models
         public string PhyState { get; set; }
         [Display(Name = "Zip Code")]
         public string PhyZip { get; set; }
-        [Display(Name = "Documental Email")]
+        [Required, Display(Name = "Documental Email")]
         public string DocumentalEmail { get; set; }
         public int CompanyId { get; set; }
     }

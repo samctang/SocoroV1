@@ -1,49 +1,107 @@
-﻿@model Socoro.Web.Areas.KAM.Models.OperationIntViewModel;
+﻿@model Socoro.Web.Areas.KAM.Models.OperationTaskViewModel;
 
 <script language="JavaScript" type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
-
+<link href="~/css/datatable.css" rel="stylesheet" />
 <!--begin::Subheader-->
 <div class="subheader py-2 subheader-transparent" id="kt_subheader">
-
 </div>
 <!--end::Subheader-->
+<!--begin::Entry-->
 <div class="d-flex flex-column-fluid">
     <div class="container">
-        <div class="col-lg-12">
-            <!--begin::Advance Table Widget 1-->
-            <div class="card card-custom card-stretch gutter-b">
-                <!--begin::Header-->
-                <div class="card-header border-0 pt-5">
-                    <h3 class="card-title align-items-start flex-column">
-                        <span class="card-label font-weight-bolder text-dark">Viewing Tasks</span>
+        <div class="card card-custom">
+            <div class="card-header flex-wrap border-0 pt-6 pb-0">
+                <div class="card-title">
+                    <h3 class="card-label">
+                        Current Tasks
                     </h3>
                 </div>
-                <!--end::Header-->
-                <div class="card-body">
-                    <!--begin: Datatable-->
-                    <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
-                    <!--end: Datatable-->
-                </div>
-                <!--end::Body-->
             </div>
-            <!--end::Advance Table Widget 1-->
+            <div class="card-body">
+                <!--begin::Search Form-->
+                <div class="mb-7">
+                    <div class="row align-items-center">
+                        <div class="col-lg-9 col-xl-8">
+                            <div class="row align-items-center">
+                                <div class="col-md-4 my-2 my-md-0">
+                                    <div class="input-icon">
+                                        <input type="text" class="form-control" placeholder="Search..." id="kt_datatable_search_query" />
+                                        <span>
+                                            <i class="flaticon2-search-1 text-muted"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 my-2 my-md-0">
+                                    <div class="d-flex align-items-center">
+                                        <label class="mr-3 mb-0 d-none d-md-block">Task Type:</label>
+                                        <select class="form-control" id="kt_datatable_search_status">
+                                            <option value=""></option>
+                                            <option value="">Bonded Documentation</option>
+                                            <option value="">Documents Cut-Off Date</option>
+                                            <option value=""></option>
+                                            <!--for david-->
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end: Search Form-->
+                <!--begin: Datatable-->
+                <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
+                <!--end: Datatable-->
+            </div>
+        </div>
+        <!--end::Card-->
+    </div>
+    <!--end::Entry-->
+</div>
+<!--end::Content-->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Task</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="operationProcessType_Id_1_Task_Form">
+                    <div class="form-group">
+                        <label class="col-form-label notes" asp-for="Note"></label>:
+                        <br />
+                        <textarea class="col-form-label" asp-for="Note" id="Note"></textarea>
+                        <br />
+                        <label class="col-form-label" asp-for="DueDate"></label>:
+                        <br />
+                        <input asp-for="DueDate" name="DueDate" type="date" id="DueDate" class="form-control" placeholder="Due Date" pattern="\d{4}-\d{2}-\d{2}" />
+                        <br />
+                        <p id="Status_Display"><input asp-for="Status" type="checkbox" id="Status" /> Mark as completed </p>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn font-weight-bold btn-light-danger cancelTask" name="cancel">Cancel</button>
+                <button type="submit" class="btn font-weight-bold btn-light-primary editTask" name="edit">Edit Task</button>
+            </div>
         </div>
     </div>
 </div>
-
 <script>
     var typeId = '';
     var operationProcessId = '';
     var taskId = 0;
-    var datatableTasks;
+    var datatable = '';
     var initDataTable = function () {
-        var datatable = $('#kt_datatable').KTDatatable({
+        datatable = $('#kt_datatable').KTDatatable({
             // datasource definition
             data: {
                 type: 'remote',
                 source: {
                     read: {
-                        url: '@Environment.GetEnvironmentVariable("ApiEndpoint")' + '/OperationTask/',
+                        url: '@Environment.GetEnvironmentVariable("ApiEndpoint")' + '/OperationTask/1/10',
                         method: 'GET'
                     },
                 },
@@ -57,9 +115,9 @@
             },
 
             // column sorting
-            sortable: false,
+            sortable: true,
 
-            pagination: false,
+            pagination: true,
 
             search: {
                 input: $('#kt_datatable_search_query'),
@@ -69,55 +127,126 @@
             rows: {
                 autoHide: false,
                 afterTemplate: function (row, data, index) {
-                    $(row).data('typeId', data.typeId);
+                    $(row).data('id', data.id);
+                    $(row).data('note', data.note);
+                    $(row).data('dueDate', data.dueDate);
+                    $(row).data('status', data.status);
                 }
             },
 
-            columns: [{
-                field: 'process',
-                title: 'Step',
+            columns: [
+            {
+                field: 'operationNo',
+                title: 'Operation #',
                 template: function (row) {
                     var result = "";
                     $.ajax({
-                        url: "@Environment.GetEnvironmentVariable("ApiEndpoint")"+"/OperationProcessType/0/"+ row.typeId,
+                        url: "@Environment.GetEnvironmentVariable("ApiEndpoint")" + "/OperationProcess/0/" + row.operationProcessId,
                         data: {},
                         dataType: 'json',
                         traditional: true,
                         async: false,
                         success: function (data) {
-                            result = data;
+                            $.ajax({
+                                url: "@Environment.GetEnvironmentVariable("ApiEndpoint")" + "/Operation/1/" + data.data.operationId,
+                                data: {},
+                                dataType: 'json',
+                                traditional: true,
+                                async: false,
+                                success: function (data) {
+                                    result = data.data.operationNo;
+                                }
+                            });
                         }
                     });
-                    return result.data.process;
+                    return result;
+                }
+            },
+            {
+                field: 'note',
+                title: 'Note',
+                template: function (row) {
+                    return row.note;
                 }
             }, {
-                field: 'description',
-                title: 'Objective',
+                field: 'dueDate',
+                title: 'Due Date',
                 template: function (row) {
-                    var result = "";
-                    $.ajax({
-                        url: "@Environment.GetEnvironmentVariable("ApiEndpoint")"+"/OperationProcessType/0/"+ row.typeId,
-                        data: {},
-                        dataType: 'json',
-                        traditional: true,
-                        async: false,
-                        success: function (data) {
-                            result = data;
-                        }
-                    });
-                    return result.data.description;
+                    var date = row.dueDate;
+                    return date.substring(0, 10);
+                }
+            },
+            {
+                field: 'status',
+                title: 'Status',
+                template: function (row) {
+                    var spanClass = '';
+                    var status = '';
+                    if (row.status == 0) {
+                        spanClass = 'label-light-danger';
+                        status = 'Not Completed';
+                    } else {
+                        spanClass = 'label-light-success';
+                        status = 'Completed';
+                    }
+                    return '<span class="label font-weight-bold label-lg label-inline ' + spanClass + '"> ' + status + '</span >';
                 }
             }]
         });
-
+        datatable.sort('submittedDate', 'desc');
+        datatable.sort('status', 'asc');
         $(datatable.table).on('click', 'tbody tr', function () {
-            typeId = $(this).data('typeId');
-
-            });
+            taskId = $(this).data('id');
+            var note = $(this).data('note');
+            var dueDate = '';
+            if ($(this).data('dueDate') != null)
+                dueDate = $(this).data('dueDate').toString().substring(0, 10);
+            var status = $(this).data('status');
+            $('#Note').val(note);
+            $('#DueDate').val(dueDate);
+            $('#Status').val(status);
+            $('#modal').modal('show');
         });
+        $('#kt_datatable_search_status').on('change', function () {
+            datatable.search($(this).val(), 'status');
+        });
+
+        $('#kt_datatable_search_type').on('change', function () {
+            datatable.search($(this).val(), 'typeId');
+        });
+
+        $('#kt_datatable_search_status, #kt_datatable_search_type').selectpicker();
     };
 
     $(document).ready(function () {
         initDataTable();
     });
+</script>
+
+<script>
+$('.editTask').on('click', function () {
+    var note = $('#Note').val();
+    var dueDate = new Date($('#DueDate').val());
+    var status = $('#Status').prop('checked');
+    var data = {
+        "id": taskId,
+        "note": note,
+        "dueDate": dueDate,
+        "status": status
+    };
+    $.ajax({
+        url: "@Environment.GetEnvironmentVariable("ApiEndpoint")" + "/OperationTask/" + taskId,
+        type: 'PUT',
+        data: JSON.stringify(data),
+        contentType: 'application/json; charset=utf-8',
+        processData: true,
+        success: function (result) {
+            datatable.reload();
+        }
+    });
+    $('#modal').modal('hide');
+});
+$('.cancelTask').on('click', function () {
+    $('#modal').modal('hide');
+});
 </script>
