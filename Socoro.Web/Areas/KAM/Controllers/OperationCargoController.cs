@@ -27,9 +27,11 @@ namespace Socoro.Web.Areas.KAM.Controllers
         {
             string currentOperationNo = (string)TempData["OperationNo"];
 
-            OperationViewModel operationViewModel = new OperationViewModel();
-            operationViewModel.Id = id;
-            operationViewModel.OperationNo = currentOperationNo;
+            OperationViewModel operationViewModel = new OperationViewModel
+            {
+                Id = id,
+                OperationNo = currentOperationNo
+            };
 
             operationIntViewModel.OperationViewModel = operationViewModel;
             TempData["OperationNo"] = currentOperationNo;
@@ -48,6 +50,8 @@ namespace Socoro.Web.Areas.KAM.Controllers
                 response = await client.PostAsync(requestUri, stringContent);
                 if (response.IsSuccessStatusCode)
                 {
+                    //check cargoID
+                    TempData["CargoId"] = response.Content;
                     return RedirectToAction("Index", "Operation", new { area = "KAM" });
                 }
             }

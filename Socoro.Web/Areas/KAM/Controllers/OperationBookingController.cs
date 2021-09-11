@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace Socoro.Web.Areas.KAM.Controllers
 {
     [Area("KAM")]
-    public class OperationTaskController : BaseController<OperationTaskController>
+    public class OperationBookingController : BaseController<OperationBookingController>
     {
         HttpClient client = new HttpClient();
         string requestUri = String.Empty;
@@ -19,24 +19,19 @@ namespace Socoro.Web.Areas.KAM.Controllers
         dynamic json = new Object();
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
-            OperationViewModel operationObj;
-
             string currentOperationNo = (string)TempData["OperationNo"];
 
-            requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/Operation/2/" + currentOperationNo;
-            response = await client.GetAsync(requestUri);
-            responseBody = await response.Content.ReadAsStringAsync();
-            JsonOperationWrapper wrapper = JsonConvert.DeserializeObject<JsonOperationWrapper>(responseBody);
-            operationObj = wrapper.Data;
-
-            
+            OperationViewModel operationViewModel = new OperationViewModel
+            {
+                Id = id,
+                OperationNo = currentOperationNo
+            };
             OperationIntViewModel operationIntViewModel = new OperationIntViewModel
             {
-                OperationViewModel = operationObj
+                OperationViewModel = operationViewModel
             };
-
             TempData["OperationNo"] = currentOperationNo;
             return View(operationIntViewModel);
         }

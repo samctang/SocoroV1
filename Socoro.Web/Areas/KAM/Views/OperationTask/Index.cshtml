@@ -1,0 +1,123 @@
+﻿@model Socoro.Web.Areas.KAM.Models.OperationIntViewModel;
+
+<script language="JavaScript" type="text/javascript" src="~/lib/jquery/jquery.min.js"></script>
+
+<!--begin::Subheader-->
+<div class="subheader py-2 subheader-transparent" id="kt_subheader">
+
+</div>
+<!--end::Subheader-->
+<div class="d-flex flex-column-fluid">
+    <div class="container">
+        <div class="col-lg-12">
+            <!--begin::Advance Table Widget 1-->
+            <div class="card card-custom card-stretch gutter-b">
+                <!--begin::Header-->
+                <div class="card-header border-0 pt-5">
+                    <h3 class="card-title align-items-start flex-column">
+                        <span class="card-label font-weight-bolder text-dark">Viewing Tasks</span>
+                    </h3>
+                </div>
+                <!--end::Header-->
+                <div class="card-body">
+                    <!--begin: Datatable-->
+                    <div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
+                    <!--end: Datatable-->
+                </div>
+                <!--end::Body-->
+            </div>
+            <!--end::Advance Table Widget 1-->
+        </div>
+    </div>
+</div>
+
+<script>
+    var typeId = '';
+    var operationProcessId = '';
+    var taskId = 0;
+    var datatableTasks;
+    var initDataTable = function () {
+        var datatable = $('#kt_datatable').KTDatatable({
+            // datasource definition
+            data: {
+                type: 'remote',
+                source: {
+                    read: {
+                        url: '@Environment.GetEnvironmentVariable("ApiEndpoint")' + '/OperationTask/',
+                        method: 'GET'
+                    },
+                },
+                pageSize: 10,
+            },
+
+            // layout definition
+            layout: {
+                scroll: true, // enable/disable datatable scroll both horizontal and vertical when needed.
+                footer: false // display/hide footer
+            },
+
+            // column sorting
+            sortable: false,
+
+            pagination: false,
+
+            search: {
+                input: $('#kt_datatable_search_query'),
+                key: 'generalSearch'
+            },
+
+            rows: {
+                autoHide: false,
+                afterTemplate: function (row, data, index) {
+                    $(row).data('typeId', data.typeId);
+                }
+            },
+
+            columns: [{
+                field: 'process',
+                title: 'Step',
+                template: function (row) {
+                    var result = "";
+                    $.ajax({
+                        url: "@Environment.GetEnvironmentVariable("ApiEndpoint")"+"/OperationProcessType/0/"+ row.typeId,
+                        data: {},
+                        dataType: 'json',
+                        traditional: true,
+                        async: false,
+                        success: function (data) {
+                            result = data;
+                        }
+                    });
+                    return result.data.process;
+                }
+            }, {
+                field: 'description',
+                title: 'Objective',
+                template: function (row) {
+                    var result = "";
+                    $.ajax({
+                        url: "@Environment.GetEnvironmentVariable("ApiEndpoint")"+"/OperationProcessType/0/"+ row.typeId,
+                        data: {},
+                        dataType: 'json',
+                        traditional: true,
+                        async: false,
+                        success: function (data) {
+                            result = data;
+                        }
+                    });
+                    return result.data.description;
+                }
+            }]
+        });
+
+        $(datatable.table).on('click', 'tbody tr', function () {
+            typeId = $(this).data('typeId');
+
+            });
+        });
+    };
+
+    $(document).ready(function () {
+        initDataTable();
+    });
+</script>
