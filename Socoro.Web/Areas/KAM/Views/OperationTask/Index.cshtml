@@ -204,7 +204,7 @@
             var status = $(this).data('status');
             $('#Note').val(note);
             $('#DueDate').val(dueDate);
-            $('#Status').val(status);
+            $('#Status').prop('checked',status);
             $('#modal').modal('show');
         });
         $('#kt_datatable_search_status').on('change', function () {
