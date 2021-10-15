@@ -34,7 +34,7 @@ namespace Socoro.Web.Areas.KAM.Controllers
             JsonOperationWrapper wrapper = JsonConvert.DeserializeObject<JsonOperationWrapper>(responseBody);
             operationObj = wrapper.Data;
 
-            requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/OperationProcess/" + operationObj.Id;
+            requestUri = Environment.GetEnvironmentVariable("ApiEndpoint") + "/OperationProcess/1/" + operationObj.Id;
             response = await client.GetAsync(requestUri);
             responseBody = await response.Content.ReadAsStringAsync();
             json = JsonConvert.DeserializeObject(responseBody);
