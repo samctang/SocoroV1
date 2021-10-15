@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Socoro.Infrastructure.Migrations
 {
-    public partial class init : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -129,12 +129,29 @@ namespace Socoro.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "OperationContainerTypes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OperationContainerTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "OperationProcessTypes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TypeId = table.Column<int>(type: "int", nullable: false),
+                    OperationTypeId = table.Column<int>(type: "int", nullable: false),
                     Process = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -260,7 +277,7 @@ namespace Socoro.Infrastructure.Migrations
                     MailCity = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MailState = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MailZip = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DoB = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DoB = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Gender = table.Column<string>(type: "nvarchar(1)", nullable: false),
                     HireDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CompanyId = table.Column<int>(type: "int", nullable: true),
@@ -305,6 +322,37 @@ namespace Socoro.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "OperationBookingMessages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EmployeeId = table.Column<int>(type: "int", nullable: true),
+                    CarrierId = table.Column<int>(type: "int", nullable: true),
+                    Message = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OperationBookingMessages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OperationBookingMessages_Carriers_CarrierId",
+                        column: x => x.CarrierId,
+                        principalTable: "Carriers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_OperationBookingMessages_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
+                        principalTable: "Employees",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Operations",
                 columns: table => new
                 {
@@ -312,9 +360,9 @@ namespace Socoro.Infrastructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OperationNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TypeId = table.Column<int>(type: "int", nullable: false),
-                    Agent = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Shipper = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Consignee = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Agent = table.Column<int>(type: "int", nullable: false),
+                    Shipper = table.Column<int>(type: "int", nullable: false),
+                    Consignee = table.Column<int>(type: "int", nullable: false),
                     AgentRefNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ShipperRefNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ConsigneeRefNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -332,6 +380,7 @@ namespace Socoro.Infrastructure.Migrations
                     DestinationState = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DestinationZip = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DestinationCountry = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Carrier = table.Column<int>(type: "int", nullable: true),
                     Progress = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SubmittedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -361,6 +410,68 @@ namespace Socoro.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "OperationCargos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LoadingAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ContactEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ContactPhone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LoadingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LoadingTime = table.Column<TimeSpan>(type: "time", nullable: false),
+                    Reference = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EIN = table.Column<int>(type: "int", nullable: false),
+                    Bonded = table.Column<bool>(type: "bit", nullable: false),
+                    Propelled = table.Column<bool>(type: "bit", nullable: false),
+                    NoContainers = table.Column<int>(type: "int", nullable: false),
+                    OperationId = table.Column<int>(type: "int", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OperationCargos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OperationCargos_Operations_OperationId",
+                        column: x => x.OperationId,
+                        principalTable: "Operations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OperationInsurances",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Value = table.Column<int>(type: "int", nullable: false),
+                    Freight = table.Column<int>(type: "int", nullable: false),
+                    Duties = table.Column<int>(type: "int", nullable: false),
+                    OtherCosts = table.Column<int>(type: "int", nullable: false),
+                    VoluntaryCoverage = table.Column<int>(type: "int", nullable: false),
+                    LostProfit = table.Column<int>(type: "int", nullable: false),
+                    OperationId = table.Column<int>(type: "int", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OperationInsurances", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OperationInsurances_Operations_OperationId",
+                        column: x => x.OperationId,
+                        principalTable: "Operations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "OperationProcesses",
                 columns: table => new
                 {
@@ -381,6 +492,131 @@ namespace Socoro.Infrastructure.Migrations
                         name: "FK_OperationProcesses_Operations_OperationId",
                         column: x => x.OperationId,
                         principalTable: "Operations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OperationQuotes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Profit = table.Column<int>(type: "int", nullable: false),
+                    Documentation = table.Column<int>(type: "int", nullable: false),
+                    FF = table.Column<int>(type: "int", nullable: false),
+                    VGM = table.Column<int>(type: "int", nullable: false),
+                    Inland = table.Column<int>(type: "int", nullable: false),
+                    Others = table.Column<int>(type: "int", nullable: false),
+                    Explanation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OperationId = table.Column<int>(type: "int", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OperationQuotes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OperationQuotes_Operations_OperationId",
+                        column: x => x.OperationId,
+                        principalTable: "Operations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OperationBookings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BookingNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Vessel = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Voyage = table.Column<int>(type: "int", nullable: false),
+                    DocumentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DocumentTime = table.Column<TimeSpan>(type: "time", nullable: false),
+                    CargoDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CargoTime = table.Column<TimeSpan>(type: "time", nullable: false),
+                    VGMDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DepartureDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ArrivalDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Ramp = table.Column<bool>(type: "bit", nullable: false),
+                    RampDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    OperationCargoId = table.Column<int>(type: "int", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OperationBookings", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OperationBookings_OperationCargos_OperationCargoId",
+                        column: x => x.OperationCargoId,
+                        principalTable: "OperationCargos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OperationContainers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TypeId = table.Column<int>(type: "int", nullable: false),
+                    GrossWeight = table.Column<int>(type: "int", nullable: false),
+                    CommercialDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Hazardous = table.Column<bool>(type: "bit", nullable: false),
+                    HazardClass = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UNCode = table.Column<int>(type: "int", nullable: false),
+                    ContainerNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SealNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TareWeight = table.Column<int>(type: "int", nullable: false),
+                    Commodities = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Marks = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OperationCargoId = table.Column<int>(type: "int", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OperationContainers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OperationContainers_OperationCargos_OperationCargoId",
+                        column: x => x.OperationCargoId,
+                        principalTable: "OperationCargos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OperationTasks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Note = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DueDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Status = table.Column<bool>(type: "bit", nullable: false),
+                    OperationProcessId = table.Column<int>(type: "int", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OperationTasks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OperationTasks_OperationProcesses_OperationProcessId",
+                        column: x => x.OperationProcessId,
+                        principalTable: "OperationProcesses",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -406,8 +642,43 @@ namespace Socoro.Infrastructure.Migrations
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_OperationBookingMessages_CarrierId",
+                table: "OperationBookingMessages",
+                column: "CarrierId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OperationBookingMessages_EmployeeId",
+                table: "OperationBookingMessages",
+                column: "EmployeeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OperationBookings_OperationCargoId",
+                table: "OperationBookings",
+                column: "OperationCargoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OperationCargos_OperationId",
+                table: "OperationCargos",
+                column: "OperationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OperationContainers_OperationCargoId",
+                table: "OperationContainers",
+                column: "OperationCargoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OperationInsurances_OperationId",
+                table: "OperationInsurances",
+                column: "OperationId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_OperationProcesses_OperationId",
                 table: "OperationProcesses",
+                column: "OperationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OperationQuotes_OperationId",
+                table: "OperationQuotes",
                 column: "OperationId");
 
             migrationBuilder.CreateIndex(
@@ -419,15 +690,17 @@ namespace Socoro.Infrastructure.Migrations
                 name: "IX_Operations_EmployeeId",
                 table: "Operations",
                 column: "EmployeeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OperationTasks_OperationProcessId",
+                table: "OperationTasks",
+                column: "OperationProcessId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "AuditLogs");
-
-            migrationBuilder.DropTable(
-                name: "Carriers");
 
             migrationBuilder.DropTable(
                 name: "CarrierTypes");
@@ -448,13 +721,40 @@ namespace Socoro.Infrastructure.Migrations
                 name: "EmployeeNotes");
 
             migrationBuilder.DropTable(
-                name: "OperationProcesses");
+                name: "OperationBookingMessages");
+
+            migrationBuilder.DropTable(
+                name: "OperationBookings");
+
+            migrationBuilder.DropTable(
+                name: "OperationContainers");
+
+            migrationBuilder.DropTable(
+                name: "OperationContainerTypes");
+
+            migrationBuilder.DropTable(
+                name: "OperationInsurances");
 
             migrationBuilder.DropTable(
                 name: "OperationProcessTypes");
 
             migrationBuilder.DropTable(
+                name: "OperationQuotes");
+
+            migrationBuilder.DropTable(
+                name: "OperationTasks");
+
+            migrationBuilder.DropTable(
                 name: "OperationTypes");
+
+            migrationBuilder.DropTable(
+                name: "Carriers");
+
+            migrationBuilder.DropTable(
+                name: "OperationCargos");
+
+            migrationBuilder.DropTable(
+                name: "OperationProcesses");
 
             migrationBuilder.DropTable(
                 name: "Operations");
